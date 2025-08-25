@@ -50,7 +50,7 @@ const GitHubOverview = () => {
                     className="w-16 h-16 rounded-full object-cover border border-gray-300 dark:border-gray-700"
                   />
                   <div>
-                    <div className="text-xl font-semibold">{data.name || "GitHub User"}</div>
+                    <div className="text-xl font-semibold">{data.name || "Ehsan Shahid"}</div>
                     <div className="text-sm text-[#6b7280] dark:text-[#9ca3af]">@{GITHUB_USERNAME}</div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import DarkModeToggle from '../components/DarkModeToggle';
+import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -46,7 +46,9 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <DarkModeToggle />
+            <div className="hidden md:block">
+              <DarkModeToggle />
+            </div>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-[#000000] dark:text-white md:hidden focus:outline-none"
@@ -81,6 +83,9 @@ const Navbar = () => {
 
         {menuOpen && (
           <div className="md:hidden mt-2 bg-[#f3f4f6] dark:bg-[#0b0b0b] rounded shadow-lg dark:shadow-none border border-gray-200 dark:border-[#facc15]/20 py-2">
+            <div className="px-4 pb-2 md:hidden">
+              <DarkModeToggle />
+            </div>
             {navLinks.map((link, index) => (
               <NavLink
                 key={index}
