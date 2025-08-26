@@ -4,8 +4,8 @@ import { FaLinkedin, FaGithub, FaInstagram, FaEnvelope, FaPhone } from "react-ic
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-[#111111] text-[#111827] dark:text-[#e5e7eb] border-t border-gray-200 dark:border-gray-800 mt-8">
-      <div className="max-w-7xl mx-auto px-4 py-4 md:px-6 md:py-6 grid gap-4 md:gap-6 md:grid-cols-3 place-items-center text-center">
-        <div className="flex flex-col items-center gap-1 md:gap-2">
+      <div className="max-w-7xl mx-auto px-4 py-4 md:px-6 md:py-6 flex items-center justify-between md:grid md:place-items-center gap-4 md:gap-6 md:grid-cols-3 md:text-center">
+        <div className="flex flex-col items-start md:items-center gap-1 md:gap-2">
           <div className="flex items-center gap-2">
             <img
               src="/ehsan.jpg"
@@ -35,8 +35,8 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div>
-          <h4 className="font-semibold mb-1 md:mb-2 tracking-wide text-xs md:text-sm">Social</h4>
+        <div className="flex items-center md:block">
+          <h4 className="hidden md:block font-semibold mb-1 md:mb-2 tracking-wide text-xs md:text-sm">Social</h4>
           <div className="flex items-center gap-2 md:gap-3 text-base md:text-lg">
             <a
               href="https://www.linkedin.com/in/chehsanshahid"

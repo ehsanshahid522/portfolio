@@ -24,7 +24,10 @@ const Navbar = () => {
               alt="Ehsan Shahid"
               className="w-10 h-10 rounded-full object-cover border border-gray-300 dark:border-gray-700"
             />
-            <span className="text-2xl font-bold text-[#000000] dark:text-white">Ehsan Shahid</span>
+            <div className="leading-tight">
+              <div className="text-2xl font-bold text-[#000000] dark:text-white">Ehsan Shahid</div>
+              <div className="text-xs text-[#6b7280] dark:text-[#9ca3af]">Web & App Developer • Designer</div>
+            </div>
           </Link>
 
           <div className="hidden md:flex space-x-6">

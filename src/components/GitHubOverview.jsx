@@ -1,4 +1,5 @@
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
 const GITHUB_USERNAME = "ehsanshahid522";
 
@@ -6,6 +7,7 @@ const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState("");
+  
 
   React.useEffect(() => {
     const fetchProfile = async () => {
@@ -25,10 +27,15 @@ const GitHubOverview = () => {
     fetchProfile();
   }, []);
 
+  
+
   return (
     <section className="px-6 py-16 bg-white dark:bg-[#111111] transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">🧑‍💻 GitHub Overview</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center flex items-center justify-center gap-3">
+          <FaGithub aria-label="GitHub" className="text-[#000000] dark:text-white" />
+          <span>GitHub Overview</span>
+        </h2>
 
         {loading && (
           <div className="text-center text-[#374151] dark:text-[#9ca3af]">Loading GitHub profile…</div>
@@ -40,8 +47,8 @@ const GitHubOverview = () => {
 
         {!loading && !error && data && (
           <div className="space-y-6">
-            <div className="grid lg:grid-cols-2 gap-6">
-              {/* Box 1: Profile + Stats */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Left: Profile Box */}
               <div className="bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-6 shadow">
                 <div className="flex items-center gap-4">
                   <img
@@ -81,18 +88,18 @@ const GitHubOverview = () => {
                 </a>
               </div>
 
-              {/* Box 2: GitHub Readme Stats */}
-              <div className="bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-4 shadow">
-                <img
-                  src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=transparent&title_color=facc15&icon_color=facc15`}
-                  alt="GitHub Stats"
-                  className="w-full rounded-lg"
-                  loading="lazy"
-                />
+              {/* Right: Status (top) + Languages (bottom) */}
+              <div className="space-y-6">
+                <div className="bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-4 shadow">
+                  <img
+                    src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=transparent&title_color=facc15&icon_color=facc15`}
+                    alt="GitHub Stats"
+                    className="w-full rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
-
-            {/* Full-width: Contribution Graph below the two boxes */}
             <div className="bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-4 shadow overflow-x-auto">
               <img
                 src={`https://github-readme-activity-graph.vercel.app/graph?username=${GITHUB_USERNAME}&hide_border=true&bg_color=00000000&color=9ca3af&line=facc15&point=facc15&area=true`}

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaInstagram, FaLaptopCode } from "react-icons/fa";
 import GitHubOverview from "../components/GitHubOverview";
 
 const skills = [
@@ -38,15 +38,22 @@ const projects = [];
 const HomePage = () => {
   return (
     <main className="bg-[#f3f4f6] dark:bg-[#000000] text-[#000000] dark:text-white transition-colors duration-300">
-      <section
-        id="home"
-        className="min-h-[85vh] flex items-center justify-center px-6 py-16"
-      >
-        <div className="max-w-4xl w-full text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+      <section id="home" className="relative overflow-hidden">
+        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full opacity-20 blur-3xl bg-gradient-to-tr from-[#facc15] to-transparent"></div>
+        <div className="min-h-[85vh] flex items-center justify-center px-6 py-16">
+          <div className="max-w-4xl w-full text-center">
+          <div className="flex justify-center mb-4">
+            <img
+              src="/ehsan.jpg"
+              alt="Ehsan Shahid"
+              className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#facc15] shadow"
+            />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
             👋 Hey, I'm{" "}
             <span className="text-[#facc15]">Ehsan Shahid</span>
           </h1>
+          <div className="text-sm md:text-base text-[#6b7280] dark:text-[#9ca3af] mb-4">Software Engineer • Web & App Developer • Designer</div>
 
           <p className="text-lg md:text-xl text-[#374151] dark:text-[#9ca3af] mb-6">
             I offer <span className="font-semibold">Web Development</span>,{" "}
@@ -56,16 +63,11 @@ const HomePage = () => {
             build something amazing together!
           </p>
 
+          
+
           <div className="flex flex-wrap justify-center gap-4 mt-6">
           <a
-            href="#services"
-            className="bg-[#facc15] text-black font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition"
-          >
-            Explore Services
-          </a>
-
-          <a
-            href="mailto:ehsanshahid522@gmail.com"
+            href="/book-meeting"
             className="bg-[#000000] text-white font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition"
           >
             Book a Meeting
@@ -73,11 +75,12 @@ const HomePage = () => {
         </div>
 
           {/* Socials */}
-          <div className="flex justify-center gap-6 mt-8 text-2xl">
+          <div className="flex justify-center gap-5 mt-8 text-2xl">
             <a
               href="https://www.linkedin.com/in/chehsanshahid"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
             >
               <FaLinkedin />
@@ -86,6 +89,7 @@ const HomePage = () => {
               href="https://github.com/ehsanshahid522"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
             >
               <FaGithub />
@@ -94,10 +98,12 @@ const HomePage = () => {
               href="https://instagram.com/ehsanshahid_397/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
               className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
             >
               <FaInstagram />
             </a>
+          </div>
           </div>
         </div>
       </section>
@@ -107,8 +113,9 @@ const HomePage = () => {
         className="px-6 py-16 bg-white dark:bg-[#111111] transition-colors duration-300"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-            🔧 Skills Highlights
+          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center flex items-center justify-center gap-3">
+            <FaLaptopCode aria-label="Skills" className="text-[#000000] dark:text-white" />
+            <span>Skills Highlights</span>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
