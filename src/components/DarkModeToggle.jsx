@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 const DarkModeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
+    // Apply dark mode by default if no preference is found
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {

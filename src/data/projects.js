@@ -1,6 +1,23 @@
 const projects = [
   {
     id: 1,
+    title: "Applied Machine Learning (AML) Project",
+    description: "A comprehensive machine learning project hosted on Hugging Face, exploring advanced data analysis, model training, and predictive analytics. It features various ML implementations for real-world problem solving.",
+    image: "/aml-project-preview.jpg",
+    technologies: ["Python", "Gradio", "Scikit-Learn", "Hugging Face", "Machine Learning", "Data Analysis"],
+    liveUrl: "https://ehsanshahid522-aml-project.hf.space/",
+    githubUrl: "https://github.com/ehsanshahid522/", // Update with exact repo if found
+    features: [
+      "Dynamic ML model demonstration",
+      "Interactive data visualization",
+      "Hugging Face Spaces deployment",
+      "Real-time predictions",
+      "Clean UI for model interaction"
+    ],
+    category: "Machine Learning"
+  },
+  {
+    id: 2,
     title: "Order Profit AI",
     description: "A premium AI-powered e-commerce profit analytics dashboard that provides real-time insights into revenue, profit margins, and order trends. Built with a modern glassmorphism design for a state-of-the-art user experience.",
     image: "/order-profit-preview.jpg",
@@ -18,7 +35,7 @@ const projects = [
     category: "Web Development"
   },
   {
-    id: 2,
+    id: 3,
     title: "Snapstrom",
     description: "A full-stack web application built with React frontend and Node.js backend, featuring user authentication, database integration, responsive design, and interactive UI components.",
     image: "/snapstrom-preview.jpg",

@@ -13,7 +13,7 @@ const skills = [
   },
   {
     title: "Design",
-    items: ["Figma", "Photoshop", "Brand Identity", "UI/UX"," Social Media Posts ", "Logo Design"],
+    items: ["Figma", "Photoshop", "Brand Identity", "UI/UX", " Social Media Posts ", "Logo Design"],
   },
   {
     title: "Tools",
@@ -31,7 +31,6 @@ const stats = [
   { label: "Social Media Followers", value: "2000+" }
 ];
 
-const projects = [];
 
 
 
@@ -42,68 +41,68 @@ const HomePage = () => {
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full opacity-20 blur-3xl bg-gradient-to-tr from-[#facc15] to-transparent"></div>
         <div className="min-h-[85vh] flex items-center justify-center px-6 py-16">
           <div className="max-w-4xl w-full text-center">
-          <div className="flex justify-center mb-4">
-            <img
-              src="/ehsan.jpg"
-              alt="Ehsan Shahid"
-              className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#facc15] shadow"
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
-            👋 Hey, I'm{" "}
-            <span className="text-[#facc15]">Ehsan Shahid</span>
-          </h1>
-          <div className="text-sm md:text-base text-[#6b7280] dark:text-[#9ca3af] mb-4">Software Engineer • Web & App Developer • Designer</div>
+            <div className="flex justify-center mb-4">
+              <img
+                src="/ehsan.jpg"
+                alt="Ehsan Shahid"
+                className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#facc15] shadow"
+              />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
+              👋 Hey, I'm{" "}
+              <span className="text-[#facc15]">Ehsan Shahid</span>
+            </h1>
+            <div className="text-sm md:text-base text-[#6b7280] dark:text-[#9ca3af] mb-4">Software Engineer • Web & App Developer • Designer</div>
 
-          <p className="text-lg md:text-xl text-[#374151] dark:text-[#9ca3af] mb-6">
-            I offer <span className="font-semibold">Web Development</span>,{" "}
-            <span className="font-semibold">App Development</span>,{" "}
-            <span className="font-semibold">Graphic Designing</span>, and{" "}
-            <span className="font-semibold">Programming Tutoring</span>. Let’s
-            build something amazing together!
-          </p>
+            <p className="text-lg md:text-xl text-[#374151] dark:text-[#9ca3af] mb-6">
+              I offer <span className="font-semibold">Web Development</span>,{" "}
+              <span className="font-semibold">App Development</span>,{" "}
+              <span className="font-semibold">Graphic Designing</span>, and{" "}
+              <span className="font-semibold">Programming Tutoring</span>. Let’s
+              build something amazing together!
+            </p>
 
-          
 
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
-          <a
-            href="/book-meeting"
-            className="bg-[#000000] text-white font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition"
-          >
-            Book a Meeting
-          </a>
-        </div>
 
-          {/* Socials */}
-          <div className="flex justify-center gap-5 mt-8 text-2xl">
-            <a
-              href="https://www.linkedin.com/in/chehsanshahid"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="https://github.com/ehsanshahid522"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://instagram.com/ehsanshahid_397/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
-            >
-              <FaInstagram />
-            </a>
-          </div>
+            <div className="flex flex-wrap justify-center gap-4 mt-6">
+              <a
+                href="/book-meeting"
+                className="bg-[#000000] text-white font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition"
+              >
+                Book a Meeting
+              </a>
+            </div>
+
+            {/* Socials */}
+            <div className="flex justify-center gap-5 mt-8 text-2xl">
+              <a
+                href="https://www.linkedin.com/in/chehsanshahid"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://github.com/ehsanshahid522"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://instagram.com/ehsanshahid_397/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
+              >
+                <FaInstagram />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -168,8 +167,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      
-      
+
+
 
       {/* ============== GITHUB OVERVIEW (BOTTOM) ============== */}
       <GitHubOverview />
