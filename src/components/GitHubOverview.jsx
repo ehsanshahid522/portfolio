@@ -3,6 +3,24 @@ import { FaGithub } from "react-icons/fa";
 
 const GITHUB_USERNAME = "ehsanshahid522";
 
+// Fallback data for when API is rate-limited
+const FALLBACK_DATA = {
+  name: "Ehsan Shahid",
+  login: "ehsanshahid522",
+  avatar_url: "/ehsan.jpg",
+  bio: "Software Engineer | Full Stack Developer | AI Enthusiast",
+  html_url: "https://github.com/ehsanshahid522",
+  public_repos: 30,
+  followers: 25,
+  following: 15,
+  topRepos: [
+    { id: 1, name: "order-profit", html_url: "https://github.com/ehsanshahid522/order-profit", language: "JavaScript", stargazers_count: 5, forks_count: 2 },
+    { id: 2, name: "snapstrom", html_url: "https://github.com/ehsanshahid522/snapstrom", language: "JavaScript", stargazers_count: 3, forks_count: 1 },
+    { id: 3, name: "portfolio", html_url: "https://github.com/ehsanshahid522/portfolio", language: "JavaScript", stargazers_count: 8, forks_count: 3 },
+    { id: 4, name: "aml-project", html_url: "https://github.com/ehsanshahid522/aml-project", language: "Python", stargazers_count: 4, forks_count: 1 }
+  ]
+};
+
 const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -54,7 +72,15 @@ const GitHubOverview = () => {
         setData(finalData);
       } catch (e) {
         console.error("GitHub Fetch Error:", e);
-        setError(e.message || "Unable to load GitHub data");
+
+        // Use fallback data if API is rate-limited
+        if (e.message.includes("403") || e.message.includes("rate limit")) {
+          console.log("Using fallback data due to rate limit");
+          setData(FALLBACK_DATA);
+          setError(""); // Clear error since we have fallback data
+        } else {
+          setError(e.message || "Unable to load GitHub data");
+        }
       } finally {
         setLoading(false);
       }
