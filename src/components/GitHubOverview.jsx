@@ -15,44 +15,51 @@ const GitHubOverview = () => {
         setLoading(true);
         setError("");
 
+        console.log("Fetching GitHub data for:", GITHUB_USERNAME);
+
         // Fetch profile
-        const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
-          headers: {
-            "Accept": "application/vnd.github.v3+json"
-          }
-        });
+        const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
 
         if (!profileRes.ok) {
-          if (profileRes.status === 403) {
-            throw new Error("GitHub API rate limit exceeded. Please try again later.");
-          }
-          throw new Error(`GitHub Profile Error: ${profileRes.statusText}`);
+          const errorText = await profileRes.text();
+          console.error("Profile fetch failed:", profileRes.status, errorText);
+          throw new Error(`Failed to load profile (${profileRes.status})`);
         }
 
         const profileJson = await profileRes.json();
+        console.log("Profile loaded:", profileJson.login);
 
         // Fetch top repos
-        const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=6`, {
-          headers: {
-            "Accept": "application/vnd.github.v3+json"
-          }
-        });
+        const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
 
-        const reposJson = reposRes.ok ? await reposRes.json() : [];
+        let reposJson = [];
+        if (reposRes.ok) {
+          reposJson = await reposRes.json();
+          console.log("Repos loaded:", reposJson.length);
+        } else {
+          console.warn("Repos fetch failed, continuing without repos");
+        }
 
-        // Filter out forks for "top repos" if possible, or just take the first few
+        // Filter out forks
         const filteredRepos = reposJson
           .filter(repo => !repo.fork)
           .slice(0, 4);
 
-        setData({ ...profileJson, topRepos: filteredRepos.length > 0 ? filteredRepos : reposJson.slice(0, 4) });
+        const finalData = {
+          ...profileJson,
+          topRepos: filteredRepos.length > 0 ? filteredRepos : reposJson.slice(0, 4)
+        };
+
+        console.log("Setting data with", finalData.topRepos.length, "repos");
+        setData(finalData);
       } catch (e) {
         console.error("GitHub Fetch Error:", e);
-        setError(e.message || "Unable to load GitHub data right now.");
+        setError(e.message || "Unable to load GitHub data");
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
