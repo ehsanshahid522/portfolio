@@ -1,57 +1,54 @@
 const projects = [
   {
     id: 1,
-    title: "Applied Machine Learning (AML) Project",
-    description: "A comprehensive machine learning project hosted on Hugging Face, exploring advanced data analysis, model training, and predictive analytics. It features various ML implementations for real-world problem solving.",
-    image: "/aml-project-preview.jpg",
+    title: "AML Detection AI",
+    description: "A premium, high-tech dashboard for Anti-Money Laundering detection. Built with advanced Machine Learning models to identify suspicious financial patterns with high accuracy. Hosted on Hugging Face Spaces.",
+    image: "/aml-preview.png",
     technologies: ["Python", "Gradio", "Scikit-Learn", "Hugging Face", "Machine Learning", "Data Analysis"],
     liveUrl: "https://ehsanshahid522-aml-project.hf.space/",
-    githubUrl: "https://github.com/ehsanshahid522/", // Update with exact repo if found
+    githubUrl: "https://github.com/ehsanshahid522/",
     features: [
-      "Dynamic ML model demonstration",
-      "Interactive data visualization",
-      "Hugging Face Spaces deployment",
-      "Real-time predictions",
-      "Clean UI for model interaction"
+      "Real-time transaction anomaly scoring",
+      "Dynamic data visualization for risk profiles",
+      "Detection Active status monitoring",
+      "AI & ML integration for predictive analytics",
+      "Sophisticated dark-themed UI"
     ],
-    category: "Machine Learning"
+    category: "Machine Learning (AI)"
   },
   {
     id: 2,
     title: "Order Profit AI",
-    description: "A premium AI-powered e-commerce profit analytics dashboard that provides real-time insights into revenue, profit margins, and order trends. Built with a modern glassmorphism design for a state-of-the-art user experience.",
-    image: "/order-profit-preview.jpg",
+    description: "A professional and modern e-commerce profit analytics dashboard. Provides real-time insights into revenue, profit margins, and order trends using smart analytics.",
+    image: "/order-profit-preview.png",
     technologies: ["React", "Vite", "Tailwind CSS", "JavaScript", "Vercel", "AI Integration"],
     liveUrl: "https://order-profit.vercel.app/",
-    githubUrl: "https://github.com/ehsanshahid522/order-profit", // Assuming the repo name based on the URL
+    githubUrl: "https://github.com/ehsanshahid522/order-profit",
     features: [
-      "Real-time profit tracking",
-      "Dynamic data visualization with charts",
-      "Order management and status monitoring",
+      "Smart Analytics with AI insights",
+      "Vibrant bar and line charts for revenue trends",
+      "Net profit and margin tracking",
       "Premium Dark Glassmorphism UI",
-      "Responsive and mobile-friendly design",
       "Performance optimized with Vite"
     ],
-    category: "Web Development"
+    category: "E-commerce AI"
   },
   {
     id: 3,
-    title: "Snapstrom",
-    description: "A full-stack web application built with React frontend and Node.js backend, featuring user authentication, database integration, responsive design, and interactive UI components.",
-    image: "/snapstrom-preview.jpg",
+    title: "Snapstrom Web App",
+    description: "A modern SaaS web application with a full user management system. Features a clean navigation sidebar, interactive components, and real-time data visualization.",
+    image: "/snapstrom-preview.png",
     technologies: ["React", "Vite", "Node.js", "Express.js", "MongoDB", "JavaScript", "CSS", "HTML"],
     liveUrl: "https://snapstrom-project-1.vercel.app/login",
     githubUrl: "https://github.com/ehsanshahid522/snapstrom",
     features: [
-      "User authentication system",
-      "Database integration with MongoDB",
-      "RESTful API with Express.js",
-      "Responsive design",
-      "Modern UI/UX",
-      "Interactive components",
-      "Cross-browser compatibility"
+      "Comprehensive User Profile Management",
+      "Secure authentication and data protection",
+      "Interactive analytics dashboard",
+      "Sleek SaaS design with blue accents",
+      "Full-stack integration"
     ],
-    category: "Web Development"
+    category: "Web Application"
   }
 ];
 

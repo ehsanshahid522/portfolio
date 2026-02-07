@@ -21,10 +21,28 @@ const Projects = () => {
               className="bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               {/* Project Image */}
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-blue-100">Web Application</p>
+              <div className="relative h-56 overflow-hidden group">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#2ea043] to-[#000000] flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">{project.title}</span>
+                  </div>
+                )}
+                {/* Category Badge */}
+                <div className="absolute top-4 right-4 bg-[#2ea043] text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full shadow-lg z-10">
+                  {project.category || "Project"}
+                </div>
+                {/* Overlay on Hover */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-white text-center p-4">
+                    <p className="text-xs uppercase tracking-widest font-bold mb-1">{project.category}</p>
+                    <h3 className="text-lg font-bold leading-tight">{project.title}</h3>
+                  </div>
                 </div>
               </div>
 
@@ -33,7 +51,7 @@ const Projects = () => {
                 <h3 className="text-xl font-bold mb-3 text-[#000000] dark:text-white">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-[#374151] dark:text-[#9ca3af] mb-4 leading-relaxed">
                   {project.description}
                 </p>

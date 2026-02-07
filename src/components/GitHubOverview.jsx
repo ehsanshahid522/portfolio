@@ -14,18 +14,41 @@ const GitHubOverview = () => {
       try {
         setLoading(true);
         setError("");
+
         // Fetch profile
-        const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-        if (!profileRes.ok) throw new Error("Failed to load GitHub profile");
+        const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
+          headers: {
+            "Accept": "application/vnd.github.v3+json"
+          }
+        });
+
+        if (!profileRes.ok) {
+          if (profileRes.status === 403) {
+            throw new Error("GitHub API rate limit exceeded. Please try again later.");
+          }
+          throw new Error(`GitHub Profile Error: ${profileRes.statusText}`);
+        }
+
         const profileJson = await profileRes.json();
 
         // Fetch top repos
-        const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=4`);
+        const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=6`, {
+          headers: {
+            "Accept": "application/vnd.github.v3+json"
+          }
+        });
+
         const reposJson = reposRes.ok ? await reposRes.json() : [];
 
-        setData({ ...profileJson, topRepos: reposJson });
+        // Filter out forks for "top repos" if possible, or just take the first few
+        const filteredRepos = reposJson
+          .filter(repo => !repo.fork)
+          .slice(0, 4);
+
+        setData({ ...profileJson, topRepos: filteredRepos.length > 0 ? filteredRepos : reposJson.slice(0, 4) });
       } catch (e) {
-        setError("Unable to load GitHub data right now.");
+        console.error("GitHub Fetch Error:", e);
+        setError(e.message || "Unable to load GitHub data right now.");
       } finally {
         setLoading(false);
       }
