@@ -41,20 +41,20 @@ const HomePage = () => {
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full opacity-20 blur-3xl bg-gradient-to-tr from-[#facc15] to-transparent"></div>
         <div className="min-h-[85vh] flex items-center justify-center px-6 py-16">
           <div className="max-w-4xl w-full text-center">
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 animate-on-load animate-scale-in">
               <img
                 src="/ehsan.jpg"
                 alt="Ehsan Shahid"
                 className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#facc15] shadow"
               />
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-2 animate-on-load animate-fade-in delay-100">
               👋 Hey, I'm{" "}
               <span className="text-[#facc15]">Ehsan Shahid</span>
             </h1>
-            <div className="text-sm md:text-base text-[#6b7280] dark:text-[#9ca3af] mb-4">Software Engineer • Web & App Developer • Designer</div>
+            <div className="text-sm md:text-base text-[#6b7280] dark:text-[#9ca3af] mb-4 animate-on-load animate-fade-in delay-200">Software Engineer • Web & App Developer • Designer</div>
 
-            <p className="text-lg md:text-xl text-[#374151] dark:text-[#9ca3af] mb-6">
+            <p className="text-lg md:text-xl text-[#374151] dark:text-[#9ca3af] mb-6 animate-on-load animate-fade-in delay-300">
               I offer <span className="font-semibold">Web Development</span>,{" "}
               <span className="font-semibold">App Development</span>,{" "}
               <span className="font-semibold">Graphic Designing</span>, and{" "}
@@ -64,17 +64,17 @@ const HomePage = () => {
 
 
 
-            <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <div className="flex flex-wrap justify-center gap-4 mt-6 animate-on-load animate-fade-in delay-400">
               <a
                 href="/book-meeting"
-                className="bg-[#000000] text-white font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition"
+                className="bg-[#000000] text-white font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition-transform duration-300"
               >
                 Book a Meeting
               </a>
             </div>
 
             {/* Socials */}
-            <div className="flex justify-center gap-5 mt-8 text-2xl">
+            <div className="flex justify-center gap-5 mt-8 text-2xl animate-on-load animate-fade-in delay-500">
               <a
                 href="https://www.linkedin.com/in/chehsanshahid"
                 target="_blank"
@@ -121,14 +121,14 @@ const HomePage = () => {
             {skills.map((block, i) => (
               <div
                 key={i}
-                className="bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-6 shadow"
+                className={`bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-6 shadow hover:shadow-xl transition-shadow duration-300 animate-on-load animate-slide-up delay-${(i + 1) * 100}`}
               >
                 <h3 className="text-xl font-semibold mb-4">{block.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {block.items.map((item, idx) => (
                     <span
                       key={idx}
-                      className="text-sm px-3 py-1 rounded-full bg-white dark:bg-[#2b2b2b] text-[#000000] dark:text-white shadow-sm"
+                      className="text-sm px-3 py-1 rounded-full bg-white dark:bg-[#2b2b2b] text-[#000000] dark:text-white shadow-sm hover:scale-105 transition-transform duration-200"
                     >
                       {item}
                     </span>
@@ -153,7 +153,7 @@ const HomePage = () => {
             {stats.map((s, i) => (
               <div
                 key={i}
-                className="bg-white dark:bg-[#1f1f1f] rounded-xl p-6 text-center shadow"
+                className={`bg-white dark:bg-[#1f1f1f] rounded-xl p-6 text-center shadow hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-load animate-scale-in delay-${(i + 1) * 100}`}
               >
                 <div className="text-3xl md:text-4xl font-extrabold text-[#facc15]">
                   {s.value}

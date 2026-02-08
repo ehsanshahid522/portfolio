@@ -109,7 +109,7 @@ const GitHubOverview = () => {
           <div className="space-y-8">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Left: Profile Box */}
-              <div className="lg:col-span-1 bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b]">
+              <div className="lg:col-span-1 bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b] animate-on-load animate-fade-in">
                 <div className="flex items-center gap-4">
                   <img
                     src={data.avatar_url}
@@ -151,7 +151,7 @@ const GitHubOverview = () => {
               {/* Right: Top Repos and Stats */}
               <div className="lg:col-span-2 space-y-8">
                 {/* Stats Image */}
-                <div className="bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b]">
+                <div className="bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b] animate-on-load animate-scale-in delay-200">
                   <h3 className="text-lg font-bold mb-4 text-[#2ea043]">GitHub Stats</h3>
                   <img
                     src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=transparent&title_color=2ea043&icon_color=2ea043&text_color=9ca3af&hide_border=true`}
@@ -163,13 +163,13 @@ const GitHubOverview = () => {
 
                 {/* Top Repos Grid */}
                 <div className="grid sm:grid-cols-2 gap-4">
-                  {data.topRepos && data.topRepos.map((repo) => (
+                  {data.topRepos && data.topRepos.map((repo, idx) => (
                     <a
                       key={repo.id}
                       href={repo.html_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#111111] p-4 rounded-xl shadow-md border border-[#2b2b2b] hover:border-[#2ea043] transition-all group"
+                      className={`bg-[#111111] p-4 rounded-xl shadow-md border border-[#2b2b2b] hover:border-[#2ea043] transition-all group animate-on-load animate-slide-up delay-${(idx + 3) * 100}`}
                     >
                       <div className="font-bold text-white group-hover:text-[#2ea043] truncate">{repo.name}</div>
                       <div className="text-xs text-[#9ca3af] mt-1 italic">{repo.language || "JavaScript"}</div>
@@ -184,7 +184,7 @@ const GitHubOverview = () => {
             </div>
 
             {/* Bottom: Contribution Graph (Heatmap) */}
-            <div className="bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b]">
+            <div className="bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b] animate-on-load animate-fade-in delay-700">
               <h3 className="text-lg font-bold mb-6 text-[#2ea043] flex items-center gap-2">
                 <span>Contribution Activity</span>
               </h3>

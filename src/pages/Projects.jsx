@@ -15,10 +15,10 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className={`bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-on-load animate-fade-in delay-${(index + 1) * 200}`}
             >
               {/* Project Image */}
               <div className="relative h-56 overflow-hidden group">
