@@ -5,7 +5,7 @@ const projects = [
     description: "A premium, high-tech dashboard for Anti-Money Laundering detection. Built with advanced Machine Learning models to identify suspicious financial patterns with high accuracy. Hosted on Hugging Face Spaces.",
     image: "/aml-preview.png",
     technologies: ["Python", "Gradio", "Scikit-Learn", "Hugging Face", "Machine Learning", "Data Analysis"],
-    liveUrl: "https://ehsanshahid522-aml-project.hf.space/",
+    liveUrl: "https://ehsanshahid522-aml-project-deploy.hf.space/",
     githubUrl: "https://github.com/ehsanshahid522/",
     features: [
       "Real-time transaction anomaly scoring",
