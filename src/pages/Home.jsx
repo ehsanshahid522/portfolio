@@ -1,181 +1,194 @@
-import React from "react";
-import { FaLinkedin, FaGithub, FaInstagram, FaLaptopCode } from "react-icons/fa";
-import GitHubOverview from "../components/GitHubOverview";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import GitHubOverview from '../components/GitHubOverview';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }
+  }),
+};
 
 const skills = [
-  {
-    title: "Frontend",
-    items: ["React.js", "Tailwind CSS", "JavaScript", "HTML", "CSS", "XML", "React Native", "Bootstrap Css"],
-  },
-  {
-    title: "Backend",
-    items: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Java", "Python", "SQL", "Kotlin", "Dart"],
-  },
-  {
-    title: "Design",
-    items: ["Figma", "Photoshop", "Brand Identity", "UI/UX", " Social Media Posts ", "Logo Design"],
-  },
-  {
-    title: "Tools",
-    items: ["VS Code", "Cursor", "Android Studio", "GitHub", "MongoDB", "AI Tools"],
-  },
+  { name: 'React.js', level: 90 },
+  { name: 'Node.js', level: 85 },
+  { name: 'Python', level: 80 },
+  { name: 'MongoDB', level: 75 },
+  { name: 'Tailwind CSS', level: 90 },
+  { name: 'Machine Learning', level: 70 },
 ];
 
-const stats = [
-  { label: "Projects Completed", value: "30+" },
-  { label: "Clients Served", value: "20+" },
-  { label: "Years of Experience", value: "2+" },
-  { label: "Technologies Used", value: "15+" },
-  { label: "Happy Clients", value: "25+" },
-  { label: "Courses Taught", value: "5+" },
-  { label: "Social Media Followers", value: "2000+" }
-];
-
-
-
-
-const HomePage = () => {
+const Home = () => {
   return (
-    <main className="bg-[#f3f4f6] dark:bg-[#000000] text-[#000000] dark:text-white transition-colors duration-300">
-      <section id="home" className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full opacity-20 blur-3xl bg-gradient-to-tr from-[#facc15] to-transparent"></div>
-        <div className="min-h-[85vh] flex items-center justify-center px-6 py-16">
-          <div className="max-w-4xl w-full text-center">
-            <div className="flex justify-center mb-4 animate-on-load animate-scale-in">
-              <img
-                src="/ehsan.jpg"
-                alt="Ehsan Shahid"
-                className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#facc15] shadow"
-              />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-2 animate-on-load animate-fade-in delay-100">
-              👋 Hey, I'm{" "}
-              <span className="text-[#facc15]">Ehsan Shahid</span>
-            </h1>
-            <div className="text-sm md:text-base text-[#6b7280] dark:text-[#9ca3af] mb-4 animate-on-load animate-fade-in delay-200">Software Engineer • Web & App Developer • Designer</div>
-
-            <p className="text-lg md:text-xl text-[#374151] dark:text-[#9ca3af] mb-6 animate-on-load animate-fade-in delay-300">
-              I offer <span className="font-semibold">Web Development</span>,{" "}
-              <span className="font-semibold">App Development</span>,{" "}
-              <span className="font-semibold">Graphic Designing</span>, and{" "}
-              <span className="font-semibold">Programming Tutoring</span>. Let’s
-              build something amazing together!
-            </p>
-
-
-
-            <div className="flex flex-wrap justify-center gap-4 mt-6 animate-on-load animate-fade-in delay-400">
-              <a
-                href="/book-meeting"
-                className="bg-[#000000] text-white font-medium px-6 py-3 rounded-xl shadow hover:scale-105 transition-transform duration-300"
-              >
-                Book a Meeting
-              </a>
-            </div>
-
-            {/* Socials */}
-            <div className="flex justify-center gap-5 mt-8 text-2xl animate-on-load animate-fade-in delay-500">
-              <a
-                href="https://www.linkedin.com/in/chehsanshahid"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="https://github.com/ehsanshahid522"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="https://instagram.com/ehsanshahid_397/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-[#000000] dark:text-white hover:text-[#facc15] transition"
-              >
-                <FaInstagram />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="skills"
-        className="px-6 py-16 bg-white dark:bg-[#111111] transition-colors duration-300"
-      >
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center flex items-center justify-center gap-3">
-            <FaLaptopCode aria-label="Skills" className="text-[#000000] dark:text-white" />
-            <span>Skills Highlights</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {skills.map((block, i) => (
-              <div
+    <main>
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center gap-12">
+        <div className="flex-1 space-y-6">
+          <motion.span
+            variants={fadeUp} initial="hidden" animate="visible" custom={0}
+            className="badge inline-block"
+          >
+            Available for work
+          </motion.span>
+          <motion.h1
+            variants={fadeUp} initial="hidden" animate="visible" custom={1}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+          >
+            Hi, I'm <span className="gradient-text">Ehsan Shahid</span>
+          </motion.h1>
+          <motion.p
+            variants={fadeUp} initial="hidden" animate="visible" custom={2}
+            className="text-lg text-[#94a3b8] max-w-lg leading-relaxed"
+          >
+            Software Engineer specializing in modern web applications, AI-powered tools, and full-stack solutions.
+          </motion.p>
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="visible" custom={3}
+            className="flex flex-wrap items-center gap-4 pt-2"
+          >
+            <a href="/projects" className="btn-primary">View Projects</a>
+            <a href="/contact" className="btn-outline">Contact Me</a>
+          </motion.div>
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="visible" custom={4}
+            className="flex items-center gap-5 pt-4"
+          >
+            {[
+              { icon: <FaGithub size={20} />, url: 'https://github.com/ehsanshahid522' },
+              { icon: <FaLinkedin size={20} />, url: 'https://www.linkedin.com/in/chehsanshahid' },
+              { icon: <FaInstagram size={20} />, url: 'https://instagram.com/ehsanshahid_397/' },
+            ].map((s, i) => (
+              <motion.a
                 key={i}
-                className={`bg-[#f3f4f6] dark:bg-[#1f1f1f] rounded-xl p-6 shadow hover:shadow-xl transition-shadow duration-300 animate-on-load animate-slide-up delay-${(i + 1) * 100}`}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.2, color: '#6366f1' }}
+                whileTap={{ scale: 0.9 }}
+                className="text-[#64748b] transition-colors"
               >
-                <h3 className="text-xl font-semibold mb-4">{block.title}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {block.items.map((item, idx) => (
-                    <span
-                      key={idx}
-                      className="text-sm px-3 py-1 rounded-full bg-white dark:bg-[#2b2b2b] text-[#000000] dark:text-white shadow-sm hover:scale-105 transition-transform duration-200"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                {s.icon}
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="relative flex-shrink-0"
+        >
+          <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-3xl animate-pulse" />
+          <img
+            src="/ehsan.jpg"
+            alt="Ehsan Shahid"
+            className="relative w-64 h-64 md:w-72 md:h-72 object-cover rounded-2xl border border-[#334155] shadow-xl"
+          />
+        </motion.div>
+      </section>
+
+      {/* Stats */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { value: '30+', label: 'Projects' },
+            { value: '20+', label: 'Clients' },
+            { value: '2+', label: 'Years Exp.' },
+            { value: '100%', label: 'Delivery' },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ y: -4, boxShadow: '0 8px 30px rgba(99, 102, 241, 0.15)' }}
+              className="card p-6 text-center cursor-default"
+            >
+              <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
+              <div className="text-sm text-[#94a3b8]">{stat.label}</div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      <section
-        id="stats"
-        className="px-6 py-16 bg-[#f3f4f6] dark:bg-[#000000] transition-colors duration-300"
-      >
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-            📈 Quick Stats
-          </h2>
+      <div className="section-divider max-w-6xl mx-auto" />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((s, i) => (
-              <div
-                key={i}
-                className={`bg-white dark:bg-[#1f1f1f] rounded-xl p-6 text-center shadow hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-load animate-scale-in delay-${(i + 1) * 100}`}
-              >
-                <div className="text-3xl md:text-4xl font-extrabold text-[#facc15]">
-                  {s.value}
-                </div>
-                <div className="mt-2 text-sm text-[#374151] dark:text-[#9ca3af]">
-                  {s.label}
-                </div>
+      {/* Skills */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <motion.h2
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="section-title"
+        >
+          Skills
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="section-subtitle"
+        >
+          Technologies I work with
+        </motion.p>
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+          {skills.map((skill, i) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+            >
+              <div className="flex justify-between mb-2">
+                <span className="text-sm font-medium text-[#e2e8f0]">{skill.name}</span>
+                <span className="text-sm text-[#64748b]">{skill.level}%</span>
               </div>
-            ))}
-          </div>
+              <div className="h-2.5 bg-[#1e293b] rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${skill.level}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full rounded-full"
+                  style={{ background: 'linear-gradient(90deg, #6366f1, #a78bfa)' }}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
+      <div className="section-divider max-w-6xl mx-auto" />
 
-
-
-      {/* ============== GITHUB OVERVIEW (BOTTOM) ============== */}
-      <GitHubOverview />
+      {/* GitHub */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <motion.h2
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="section-title"
+        >
+          GitHub
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="section-subtitle"
+        >
+          My open source activity
+        </motion.p>
+        <GitHubOverview />
+      </section>
     </main>
   );
 };
 
-export default HomePage;
-
-
+export default Home;

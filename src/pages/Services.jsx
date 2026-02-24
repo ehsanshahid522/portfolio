@@ -1,51 +1,57 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { FaLaptopCode, FaMobileAlt, FaPalette, FaChartLine } from 'react-icons/fa';
 
 const services = [
-  {
-    title: 'Web Development',
-    description: 'Modern and responsive websites using React.js, Node.js, MongoDB, Tailwind CSS, and more.',
-  },
-  {
-    title: 'App Development',
-    description: 'Cross-platform mobile apps using React Native with smooth UI and performance.',
-  },
-  {
-    title: 'Graphic Design',
-    description: 'Complete branding, social media designs, and eye-catching UI/UX design services.',
-  },
-  {
-    title: 'Programming & Teaching',
-    description: 'C++, Python, and software engineering tutoring with real-world coding examples.',
-  },
-  {
-    title: 'Digital Marketing',
-    description: 'SEO, Google Ads, and social media marketing strategies for your business.',
-  },
+  { title: 'Web Development', desc: 'Building fast, responsive web apps with React, Next.js, and modern tooling.', icon: <FaLaptopCode /> },
+  { title: 'Mobile Apps', desc: 'Creating cross-platform mobile experiences for iOS and Android.', icon: <FaMobileAlt /> },
+  { title: 'UI/UX Design', desc: 'Designing clean, user-friendly interfaces that are a joy to use.', icon: <FaPalette /> },
+  { title: 'AI & Data', desc: 'Integrating machine learning models and data analytics into products.', icon: <FaChartLine /> },
 ];
 
 const Services = () => {
   return (
-    <section
-      id="services"
-      className="bg-[#f3f4f6] dark:bg-[#000000] text-[#000000] dark:text-white py-16 px-4 sm:px-8 transition-all duration-300"
-    >
-      <h2 className="text-4xl font-bold text-center mb-10">💼 My Services</h2>
+    <main className="max-w-6xl mx-auto px-6 py-24">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="section-title"
+      >
+        Services
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="section-subtitle"
+      >
+        What I can do for you
+      </motion.p>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-white dark:bg-[#1f1f1f] p-6 rounded-2xl shadow hover:shadow-lg transition-transform hover:scale-105"
+      <div className="grid md:grid-cols-2 gap-8">
+        {services.map((s, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -5, transition: { duration: 0.25 } }}
+            className="card p-8 space-y-4"
           >
-            <h3 className="text-2xl font-semibold text-[#000000] dark:text-white mb-2">{service.title}</h3>
-            <p className="text-[#374151] dark:text-[#d1d5db]">{service.description}</p>
-          </div>
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="w-12 h-12 rounded-xl bg-primary/10 text-primary text-xl flex items-center justify-center"
+            >
+              {s.icon}
+            </motion.div>
+            <h3 className="text-xl font-bold">{s.title}</h3>
+            <p className="text-[#94a3b8] leading-relaxed">{s.desc}</p>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </main>
   );
 };
 
 export default Services;
-
-

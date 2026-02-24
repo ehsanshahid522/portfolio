@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,11 +9,10 @@ import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import BookMeeting from './pages/BookMeeting';
 
-function App() 
-{
+function App() {
   return (
     <Router>
-      <div className="bg-[#f3f4f6] text-[#000000] dark:bg-[#000000] dark:text-white transition-colors duration-300">
+      <div className="min-h-screen bg-[#0f172a] text-slate-200">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

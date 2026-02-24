@@ -1,56 +1,72 @@
-import React, { useState } from 'react';
-
-const skills = {
-  'Web Development': ['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js', 'Mongoose', 'MERN Stack', 'Tailwind CSS'],
-  'App Development': ['React Native', 'Flutter', 'Android Application'],
-  'Graphic Design': ['Brand Identity', 'UX/UI Design', 'LinkedIn Growth', 'Social Media Design'],
-  'Programming Languages': ['C++', 'C', 'Python', 'Java', 'Kotlin', 'Dart'],
-  'SEO': ['On-Page SEO', 'Off-Page SEO', 'Technical SEO'],
-};
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
-  const [expanded, setExpanded] = useState(null);
-
-  const toggleExpand = (category) => {
-    setExpanded(expanded === category ? null : category);
-  };
-
   return (
-    <section
-      id="about"
-      className="bg-[#f3f4f6] dark:bg-black text-[#000] dark:text-white py-16 px-4 sm:px-8 transition-all duration-300"
-    >
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-8">👨‍💻 About Me</h2>
-        <p className="text-lg text-[#374151] dark:text-[#d1d5db] mb-6 text-center">
-          I’m a Software Engineering student at UCP (2022–2026), a professional Web & App Developer, Graphic Designer, and LinkedIn Branding Expert.
-        </p>
+    <main className="max-w-6xl mx-auto px-6 py-24">
+      <div className="grid md:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="relative"
+        >
+          <motion.div
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -inset-4 bg-primary/15 rounded-3xl blur-3xl"
+          />
+          <img src="/ehsan.jpg" alt="Ehsan Shahid" className="relative w-full max-w-md rounded-2xl border border-[#334155] shadow-xl" />
+        </motion.div>
 
-        <div className="space-y-4">
-          {Object.entries(skills).map(([category, items]) => (
-            <div key={category} className="bg-white dark:bg-[#1f1f1f] rounded-xl shadow p-4">
-              <div
-                onClick={() => toggleExpand(category)}
-                className="cursor-pointer flex justify-between items-center"
+        <div className="space-y-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="section-title"
+          >
+            About Me
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-[#94a3b8] leading-relaxed"
+          >
+            I'm Ehsan Shahid, a Software Engineer with 2+ years of experience in full-stack development. I build modern web applications, AI-powered tools, and everything in between.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-[#94a3b8] leading-relaxed"
+          >
+            I focus on writing clean code, creating great user experiences, and delivering projects on time. I've worked with 20+ clients and successfully delivered 30+ projects.
+          </motion.p>
+          <div className="grid grid-cols-3 gap-4 pt-4">
+            {[
+              { value: '30+', label: 'Projects' },
+              { value: '20+', label: 'Clients' },
+              { value: '2+', label: 'Years' },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+                whileHover={{ y: -4, boxShadow: '0 8px 30px rgba(99, 102, 241, 0.15)' }}
+                className="card p-5 text-center cursor-default"
               >
-                <h3 className="text-xl font-semibold">{category}</h3>
-                <span className="text-xl">{expanded === category ? '−' : '+'}</span>
-              </div>
-              {expanded === category && (
-                <ul className="mt-3 list-disc list-inside text-[#374151] dark:text-gray-300">
-                  {items.map((skill, idx) => (
-                    <li key={idx}>{skill}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+                <div className="text-2xl font-bold text-primary">{s.value}</div>
+                <div className="text-xs text-[#94a3b8] mt-1">{s.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
 export default About;
-
-

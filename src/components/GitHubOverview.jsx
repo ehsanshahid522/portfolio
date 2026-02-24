@@ -1,209 +1,108 @@
-import React from "react";
-import { FaGithub } from "react-icons/fa";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaGithub, FaStar, FaCodeBranch, FaExternalLinkAlt } from 'react-icons/fa';
 
-const GITHUB_USERNAME = "ehsanshahid522";
+const GITHUB_USERNAME = 'ehsanshahid522';
 
-// Fallback data for when API is rate-limited
 const FALLBACK_DATA = {
-  name: "Ehsan Shahid",
-  login: "ehsanshahid522",
-  avatar_url: "/ehsan.jpg",
-  bio: "Software Engineer | Full Stack Developer | AI Enthusiast",
-  html_url: "https://github.com/ehsanshahid522",
+  name: 'Ehsan Shahid',
+  login: 'ehsanshahid522',
+  avatar_url: '/ehsan.jpg',
+  bio: 'Software Engineer | Full Stack Developer | AI Enthusiast',
+  html_url: 'https://github.com/ehsanshahid522',
   public_repos: 30,
   followers: 25,
   following: 15,
   topRepos: [
-    { id: 1, name: "order-profit", html_url: "https://github.com/ehsanshahid522/order-profit", language: "JavaScript", stargazers_count: 5, forks_count: 2 },
-    { id: 2, name: "snapstrom", html_url: "https://github.com/ehsanshahid522/snapstrom", language: "JavaScript", stargazers_count: 3, forks_count: 1 },
-    { id: 3, name: "portfolio", html_url: "https://github.com/ehsanshahid522/portfolio", language: "JavaScript", stargazers_count: 8, forks_count: 3 },
-    { id: 4, name: "aml-project", html_url: "https://github.com/ehsanshahid522/aml-project", language: "Python", stargazers_count: 4, forks_count: 1 }
-  ]
+    { id: 1, name: 'order-profit', html_url: 'https://github.com/ehsanshahid522/order-profit', language: 'JavaScript', stargazers_count: 5, forks_count: 2 },
+    { id: 2, name: 'snapstrom', html_url: 'https://github.com/ehsanshahid522/snapstrom', language: 'JavaScript', stargazers_count: 3, forks_count: 1 },
+    { id: 3, name: 'portfolio', html_url: 'https://github.com/ehsanshahid522/portfolio', language: 'JavaScript', stargazers_count: 8, forks_count: 3 },
+    { id: 4, name: 'aml-project', html_url: 'https://github.com/ehsanshahid522/aml-project', language: 'Python', stargazers_count: 4, forks_count: 1 },
+  ],
 };
 
 const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState("");
-
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        setError("");
-
-        console.log("Fetching GitHub data for:", GITHUB_USERNAME);
-
-        // Fetch profile
         const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-
-        if (!profileRes.ok) {
-          const errorText = await profileRes.text();
-          console.error("Profile fetch failed:", profileRes.status, errorText);
-          throw new Error(`Failed to load profile (${profileRes.status})`);
-        }
-
+        if (!profileRes.ok) throw new Error('API Limit');
         const profileJson = await profileRes.json();
-        console.log("Profile loaded:", profileJson.login);
-
-        // Fetch top repos
         const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
-
-        let reposJson = [];
-        if (reposRes.ok) {
-          reposJson = await reposRes.json();
-          console.log("Repos loaded:", reposJson.length);
-        } else {
-          console.warn("Repos fetch failed, continuing without repos");
-        }
-
-        // Filter out forks
-        const filteredRepos = reposJson
-          .filter(repo => !repo.fork)
-          .slice(0, 4);
-
-        const finalData = {
-          ...profileJson,
-          topRepos: filteredRepos.length > 0 ? filteredRepos : reposJson.slice(0, 4)
-        };
-
-        console.log("Setting data with", finalData.topRepos.length, "repos");
-        setData(finalData);
+        let reposJson = reposRes.ok ? await reposRes.json() : [];
+        setData({ ...profileJson, topRepos: reposJson.filter(r => !r.fork).slice(0, 4) });
       } catch (e) {
-        console.error("GitHub Fetch Error:", e);
-
-        // Use fallback data if API is rate-limited
-        if (e.message.includes("403") || e.message.includes("rate limit")) {
-          console.log("Using fallback data due to rate limit");
-          setData(FALLBACK_DATA);
-          setError(""); // Clear error since we have fallback data
-        } else {
-          setError(e.message || "Unable to load GitHub data");
-        }
+        setData(FALLBACK_DATA);
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
+  if (loading) return <div className="h-32 flex items-center justify-center text-[#64748b] text-sm">Loading GitHub data...</div>;
+
   return (
-    <section className="px-6 py-16 bg-[#0a0a0a] transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center flex items-center justify-center gap-3">
-          <FaGithub aria-label="GitHub" className="text-white" />
-          <span className="text-white">GitHub Overview</span>
-        </h2>
-
-        {loading && (
-          <div className="text-center text-[#9ca3af]">Loading GitHub profile…</div>
-        )}
-
-        {error && (
-          <div className="text-center text-red-500">{error}</div>
-        )}
-
-        {!loading && !error && data && (
-          <div className="space-y-8">
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* Left: Profile Box */}
-              <div className="lg:col-span-1 bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b] animate-on-load animate-fade-in">
-                <div className="flex items-center gap-4">
-                  <img
-                    src={data.avatar_url}
-                    alt={data.name || GITHUB_USERNAME}
-                    className="w-20 h-20 rounded-full object-cover border-2 border-[#2ea043] shadow-md"
-                  />
-                  <div>
-                    <div className="text-xl font-bold text-white">{data.name || "Ehsan Shahid"}</div>
-                    <div className="text-sm text-[#9ca3af]">@{GITHUB_USERNAME}</div>
-                  </div>
-                </div>
-                {data.bio && (
-                  <div className="mt-4 text-sm text-[#9ca3af] leading-relaxed">{data.bio}</div>
-                )}
-                <div className="grid grid-cols-3 gap-4 text-center mt-8">
-                  <div>
-                    <div className="text-2xl font-bold text-[#2ea043]">{data.public_repos}</div>
-                    <div className="text-xs text-[#9ca3af] uppercase tracking-wider font-semibold">Repos</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-[#2ea043]">{data.followers}</div>
-                    <div className="text-xs text-[#9ca3af] uppercase tracking-wider font-semibold">Followers</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-[#2ea043]">{data.following}</div>
-                    <div className="text-xs text-[#9ca3af] uppercase tracking-wider font-semibold">Following</div>
-                  </div>
-                </div>
-                <a
-                  href={data.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 w-full text-center bg-[#2ea043] text-white font-bold px-4 py-3 rounded-xl hover:bg-[#268c3a] transition-all flex items-center justify-center gap-2"
-                >
-                  <FaGithub /> View on GitHub
-                </a>
-              </div>
-
-              {/* Right: Top Repos and Stats */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Stats Image */}
-                <div className="bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b] animate-on-load animate-scale-in delay-200">
-                  <h3 className="text-lg font-bold mb-4 text-[#2ea043]">GitHub Stats</h3>
-                  <img
-                    src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=transparent&title_color=2ea043&icon_color=2ea043&text_color=9ca3af&hide_border=true`}
-                    alt="GitHub Stats"
-                    className="w-full rounded-lg"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Top Repos Grid */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {data.topRepos && data.topRepos.map((repo, idx) => (
-                    <a
-                      key={repo.id}
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`bg-[#111111] p-4 rounded-xl shadow-md border border-[#2b2b2b] hover:border-[#2ea043] transition-all group animate-on-load animate-slide-up delay-${(idx + 3) * 100}`}
-                    >
-                      <div className="font-bold text-white group-hover:text-[#2ea043] truncate">{repo.name}</div>
-                      <div className="text-xs text-[#9ca3af] mt-1 italic">{repo.language || "JavaScript"}</div>
-                      <div className="flex items-center gap-3 mt-3 text-sm text-[#9ca3af]">
-                        <span className="flex items-center gap-1 group-hover:text-[#2ea043]">⭐ {repo.stargazers_count}</span>
-                        <span className="flex items-center gap-1">🍴 {repo.forks_count}</span>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom: Contribution Graph (Heatmap) */}
-            <div className="bg-[#111111] rounded-2xl p-6 shadow-xl border border-[#2b2b2b] animate-on-load animate-fade-in delay-700">
-              <h3 className="text-lg font-bold mb-6 text-[#2ea043] flex items-center gap-2">
-                <span>Contribution Activity</span>
-              </h3>
-              <div className="overflow-x-auto">
-                <img
-                  src={`https://ghchart.rshah.org/2ea043/${GITHUB_USERNAME}`}
-                  alt="GitHub contribution graph heatmap"
-                  className="w-full min-w-[700px] h-auto filter brightness-110"
-                  loading="lazy"
-                />
-              </div>
-              <div className="mt-4 text-xs text-center text-[#9ca3af]">
-                GitHub Contribution Heatmap (Green Theme) for {GITHUB_USERNAME}
-              </div>
-            </div>
+    <div className="space-y-6">
+      {/* Profile */}
+      <div className="card p-6 flex items-center gap-5">
+        <img src={data.avatar_url} className="w-14 h-14 rounded-xl object-cover border border-[#334155]" alt="GitHub" />
+        <div className="flex-1">
+          <h3 className="font-bold">{data.name}</h3>
+          <p className="text-sm text-[#64748b]">@{data.login}</p>
+        </div>
+        <div className="hidden sm:flex gap-8 text-center">
+          <div>
+            <div className="text-xl font-bold text-primary">{data.public_repos}</div>
+            <div className="text-xs text-[#64748b]">Repos</div>
           </div>
-        )}
+          <div>
+            <div className="text-xl font-bold text-primary">{data.followers}</div>
+            <div className="text-xs text-[#64748b]">Followers</div>
+          </div>
+        </div>
       </div>
-    </section>
+
+      {/* Top Repos */}
+      <div className="grid sm:grid-cols-2 gap-4">
+        {data.topRepos.map((repo, i) => (
+          <motion.a
+            key={repo.id}
+            href={repo.html_url}
+            target="_blank"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            className="card p-5 block group"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <FaGithub className="text-[#64748b] group-hover:text-primary transition-colors" />
+              <FaExternalLinkAlt className="text-xs text-[#475569] opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <h4 className="font-semibold mb-1 truncate">{repo.name}</h4>
+            <p className="text-xs text-primary mb-3">{repo.language || 'Code'}</p>
+            <div className="flex gap-4">
+              <span className="flex items-center gap-1 text-xs text-[#64748b]"><FaStar /> {repo.stargazers_count}</span>
+              <span className="flex items-center gap-1 text-xs text-[#64748b]"><FaCodeBranch /> {repo.forks_count}</span>
+            </div>
+          </motion.a>
+        ))}
+      </div>
+
+      {/* Contribution chart */}
+      <div className="card p-6 overflow-x-auto">
+        <p className="text-sm text-[#64748b] mb-4">Contribution Activity</p>
+        <img
+          src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}
+          alt="GitHub Contributions"
+          className="w-full min-w-[700px] h-auto"
+        />
+      </div>
+    </div>
   );
 };
 

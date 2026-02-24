@@ -1,27 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const DarkModeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    // Apply dark mode by default if no preference is found
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  return (
-    <button
-      onClick={() => setIsDarkMode(!isDarkMode)}
-      className="bg-[#facc15] dark:bg-[#484848] text-black dark:text-white p-2 px-4 rounded-xl shadow-md transition"
-    >
-      {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
-    </button>
-  );
-};
+// Dark mode is always on for this template
+const DarkModeToggle = () => null;
 
 export default DarkModeToggle;
-
-
