@@ -24,7 +24,7 @@ const FALLBACK_DATA = {
 const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-  const chartRef = React.useRef(null);
+
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -44,14 +44,7 @@ const GitHubOverview = () => {
     fetchData();
   }, []);
 
-  // Auto-scroll graph to the right (today) on mobile
-  React.useEffect(() => {
-    if (!loading && chartRef.current) {
-      setTimeout(() => {
-        chartRef.current.scrollLeft = chartRef.current.scrollWidth;
-      }, 300);
-    }
-  }, [loading]);
+
 
   if (loading) return <div className="h-32 flex items-center justify-center text-[#64748b] text-sm">Loading GitHub data...</div>;
 
@@ -108,14 +101,26 @@ const GitHubOverview = () => {
         ))}
       </div>
 
-      {/* Contribution chart - scrolls to today on mobile */}
-      <div ref={chartRef} className="card p-4 sm:p-6 overflow-x-auto" style={{ scrollBehavior: 'smooth' }}>
+      {/* Contribution chart - mobile shows last 6 months, desktop shows full */}
+      <div className="card p-4 sm:p-6">
         <p className="text-sm text-[#64748b] mb-4">Contribution Activity</p>
-        <img
-          src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}
-          alt="GitHub Contributions"
-          className="w-full min-w-[700px] h-auto"
-        />
+        {/* Desktop: full scrollable graph */}
+        <div className="hidden sm:block overflow-x-auto">
+          <img
+            src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}
+            alt="GitHub Contributions"
+            className="w-full min-w-[700px] h-auto"
+          />
+        </div>
+        {/* Mobile: crop to show only right side (today / last ~6 months) */}
+        <div className="sm:hidden overflow-hidden" style={{ direction: 'rtl' }}>
+          <img
+            src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}
+            alt="GitHub Contributions"
+            className="h-auto min-w-[700px]"
+            style={{ direction: 'ltr' }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -4,24 +4,28 @@ import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaArrowUp } from 'react-
 const Footer = () => {
   return (
     <footer className="border-t border-[#1e293b] mt-16 sm:mt-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="text-center sm:text-left">
-          <div className="text-lg font-bold">Ehsan<span className="dot-accent">.</span></div>
-          <p className="text-sm text-[#64748b]">Software Engineer</p>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-5">
+        {/* Name + Social — always side by side */}
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="text-lg font-bold">Ehsan<span className="dot-accent">.</span></div>
+            <p className="text-sm text-[#64748b]">Software Engineer</p>
+          </div>
+          <div className="flex items-center gap-4">
+            {[
+              { icon: <FaGithub />, url: 'https://github.com/ehsanshahid522' },
+              { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/chehsanshahid' },
+              { icon: <FaInstagram />, url: 'https://instagram.com/ehsanshahid_397/' },
+              { icon: <FaEnvelope />, url: 'mailto:ehsanshahid522@gmail.com' },
+            ].map((s, i) => (
+              <a key={i} href={s.url} target="_blank" rel="noreferrer" className="text-lg text-[#475569] hover:text-primary transition-colors">
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-5">
-          {[
-            { icon: <FaGithub />, url: 'https://github.com/ehsanshahid522' },
-            { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/chehsanshahid' },
-            { icon: <FaInstagram />, url: 'https://instagram.com/ehsanshahid_397/' },
-            { icon: <FaEnvelope />, url: 'mailto:ehsanshahid522@gmail.com' },
-          ].map((s, i) => (
-            <a key={i} href={s.url} target="_blank" rel="noreferrer" className="text-lg text-[#475569] hover:text-primary transition-colors">
-              {s.icon}
-            </a>
-          ))}
-        </div>
-        <div className="flex items-center gap-4">
+        {/* Copyright + Scroll to top */}
+        <div className="flex items-center justify-between">
           <p className="text-xs text-[#475569]">&copy; {new Date().getFullYear()} Ehsan Shahid</p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
