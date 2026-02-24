@@ -3,9 +3,9 @@ import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaArrowUp } from 'react-
 
 const Footer = () => {
   return (
-    <footer className="border-t border-[#1e293b] mt-20">
-      <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
+    <footer className="border-t border-[#1e293b] mt-16 sm:mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="text-center sm:text-left">
           <div className="text-lg font-bold">Ehsan<span className="dot-accent">.</span></div>
           <p className="text-sm text-[#64748b]">Software Engineer</p>
         </div>

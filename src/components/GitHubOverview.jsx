@@ -24,6 +24,7 @@ const FALLBACK_DATA = {
 const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
+  const chartRef = React.useRef(null);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -43,18 +44,28 @@ const GitHubOverview = () => {
     fetchData();
   }, []);
 
+  // Auto-scroll graph to the right (today) on mobile
+  React.useEffect(() => {
+    if (!loading && chartRef.current) {
+      setTimeout(() => {
+        chartRef.current.scrollLeft = chartRef.current.scrollWidth;
+      }, 300);
+    }
+  }, [loading]);
+
   if (loading) return <div className="h-32 flex items-center justify-center text-[#64748b] text-sm">Loading GitHub data...</div>;
 
   return (
     <div className="space-y-6">
       {/* Profile */}
-      <div className="card p-6 flex items-center gap-5">
-        <img src={data.avatar_url} className="w-14 h-14 rounded-xl object-cover border border-[#334155]" alt="GitHub" />
-        <div className="flex-1">
+      <div className="card p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+        <img src={data.avatar_url} className="w-16 h-16 sm:w-14 sm:h-14 rounded-xl object-cover border border-[#334155]" alt="GitHub" />
+        <div className="flex-1 text-center sm:text-left">
           <h3 className="font-bold">{data.name}</h3>
           <p className="text-sm text-[#64748b]">@{data.login}</p>
         </div>
-        <div className="hidden sm:flex gap-8 text-center">
+        {/* Stats - visible on all screens */}
+        <div className="flex gap-6 sm:gap-8 text-center">
           <div>
             <div className="text-xl font-bold text-primary">{data.public_repos}</div>
             <div className="text-xs text-[#64748b]">Repos</div>
@@ -63,11 +74,15 @@ const GitHubOverview = () => {
             <div className="text-xl font-bold text-primary">{data.followers}</div>
             <div className="text-xs text-[#64748b]">Followers</div>
           </div>
+          <div>
+            <div className="text-xl font-bold text-primary">{data.following}</div>
+            <div className="text-xs text-[#64748b]">Following</div>
+          </div>
         </div>
       </div>
 
       {/* Top Repos */}
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {data.topRepos.map((repo, i) => (
           <motion.a
             key={repo.id}
@@ -77,7 +92,7 @@ const GitHubOverview = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            className="card p-5 block group"
+            className="card p-4 sm:p-5 block group"
           >
             <div className="flex items-center justify-between mb-3">
               <FaGithub className="text-[#64748b] group-hover:text-primary transition-colors" />
@@ -93,8 +108,8 @@ const GitHubOverview = () => {
         ))}
       </div>
 
-      {/* Contribution chart */}
-      <div className="card p-6 overflow-x-auto">
+      {/* Contribution chart - scrolls to today on mobile */}
+      <div ref={chartRef} className="card p-4 sm:p-6 overflow-x-auto" style={{ scrollBehavior: 'smooth' }}>
         <p className="text-sm text-[#64748b] mb-4">Contribution Activity</p>
         <img
           src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}

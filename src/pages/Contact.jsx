@@ -4,7 +4,7 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram, FaPaperPlane } from 'rea
 
 const Contact = () => {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-24">
+    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,20 +21,20 @@ const Contact = () => {
         Let's work together
       </motion.p>
 
-      <div className="grid md:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
         >
-          <div className="card p-8 space-y-4">
+          <div className="card p-6 sm:p-8 space-y-4">
             <h3 className="text-lg font-bold">Get in touch</h3>
             <p className="text-sm text-[#94a3b8] leading-relaxed">
               I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
             </p>
-            <a href="mailto:ehsanshahid522@gmail.com" className="flex items-center gap-3 text-primary hover:text-accent transition-colors font-medium">
-              <FaEnvelope /> ehsanshahid522@gmail.com
+            <a href="mailto:ehsanshahid522@gmail.com" className="flex items-center gap-3 text-primary hover:text-accent transition-colors font-medium text-sm sm:text-base break-all">
+              <FaEnvelope className="flex-shrink-0" /> ehsanshahid522@gmail.com
             </a>
           </div>
           <div className="flex gap-4">
@@ -62,7 +62,7 @@ const Contact = () => {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="card p-8 space-y-5"
+          className="card p-6 sm:p-8 space-y-5"
         >
           <div>
             <label className="text-sm text-[#94a3b8] mb-1.5 block">Name</label>

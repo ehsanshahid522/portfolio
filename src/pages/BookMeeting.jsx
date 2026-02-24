@@ -4,7 +4,7 @@ import { FaCalendarAlt } from 'react-icons/fa';
 
 const BookMeeting = () => {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-24">
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -25,9 +25,9 @@ const BookMeeting = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="card p-8 space-y-6"
+        className="card p-6 sm:p-8 space-y-5 sm:space-y-6"
       >
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           <div>
             <label className="text-sm text-[#94a3b8] mb-1.5 block">Name</label>
             <input type="text" className="input-field" placeholder="Your name" />
@@ -37,7 +37,7 @@ const BookMeeting = () => {
             <input type="email" className="input-field" placeholder="your@email.com" />
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           <div>
             <label className="text-sm text-[#94a3b8] mb-1.5 block">Date</label>
             <input type="date" className="input-field" />

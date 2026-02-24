@@ -11,7 +11,7 @@ const services = [
 
 const Services = () => {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-24">
+    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ const Services = () => {
         What I can do for you
       </motion.p>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
         {services.map((s, i) => (
           <motion.div
             key={i}
@@ -37,7 +37,7 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -5, transition: { duration: 0.25 } }}
-            className="card p-8 space-y-4"
+            className="card p-6 sm:p-8 space-y-4"
           >
             <motion.div
               whileHover={{ scale: 1.1, rotate: 5 }}
@@ -45,8 +45,8 @@ const Services = () => {
             >
               {s.icon}
             </motion.div>
-            <h3 className="text-xl font-bold">{s.title}</h3>
-            <p className="text-[#94a3b8] leading-relaxed">{s.desc}</p>
+            <h3 className="text-lg sm:text-xl font-bold">{s.title}</h3>
+            <p className="text-sm sm:text-base text-[#94a3b8] leading-relaxed">{s.desc}</p>
           </motion.div>
         ))}
       </div>
