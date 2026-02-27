@@ -7,12 +7,12 @@ const GITHUB_USERNAME = 'ehsanshahid522';
 const FALLBACK_DATA = {
   name: 'Ehsan Shahid',
   login: 'ehsanshahid522',
-  avatar_url: '/ehsan.jpg',
+  avatar_url: 'https://avatars.githubusercontent.com/u/186383785?v=4',
   bio: 'Software Engineer | Full Stack Developer | AI Enthusiast',
   html_url: 'https://github.com/ehsanshahid522',
-  public_repos: 30,
-  followers: 25,
-  following: 15,
+  public_repos: 10,
+  followers: 0,
+  following: 1,
   topRepos: [
     { id: 1, name: 'order-profit', html_url: 'https://github.com/ehsanshahid522/order-profit', language: 'JavaScript', stargazers_count: 5, forks_count: 2 },
     { id: 2, name: 'snapstrom', html_url: 'https://github.com/ehsanshahid522/snapstrom', language: 'JavaScript', stargazers_count: 3, forks_count: 1 },
@@ -24,19 +24,28 @@ const FALLBACK_DATA = {
 const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
         const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-        if (!profileRes.ok) throw new Error('API Limit');
+        if (!profileRes.ok) throw new Error('API Limit or Error');
         const profileJson = await profileRes.json();
+
         const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
         let reposJson = reposRes.ok ? await reposRes.json() : [];
-        setData({ ...profileJson, topRepos: reposJson.filter(r => !r.fork).slice(0, 4) });
+
+        setData({
+          ...profileJson,
+          name: profileJson.name || profileJson.login,
+          bio: profileJson.bio || 'Software Engineer | Full Stack Developer',
+          topRepos: reposJson.filter(r => !r.fork).slice(0, 4)
+        });
       } catch (e) {
+        console.error("GitHub API Error:", e);
         setData(FALLBACK_DATA);
+        setError(true);
       } finally {
         setLoading(false);
       }
