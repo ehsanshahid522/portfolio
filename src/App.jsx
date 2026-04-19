@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -9,12 +10,18 @@ import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import BookMeeting from './pages/BookMeeting';
 
-function App() {
+function AppRoutes() {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
-    <Router>
-      <div className="min-h-screen bg-[#0f172a] text-slate-200">
-        <Navbar />
-        <Routes>
+    <>
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<Services />} />
@@ -22,7 +29,20 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-        <Footer />
+      </AnimatePresence>
+      <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="app-shell min-h-screen text-slate-200">
+        <div className="app-backdrop app-backdrop-left" />
+        <div className="app-backdrop app-backdrop-right" />
+        <div className="app-noise" />
+        <AppRoutes />
       </div>
     </Router>
   );

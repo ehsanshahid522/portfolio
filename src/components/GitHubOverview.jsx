@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaStar, FaCodeBranch, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCodeBranch, FaExternalLinkAlt, FaGithub, FaStar } from 'react-icons/fa';
 
 const GITHUB_USERNAME = 'ehsanshahid522';
 
@@ -24,7 +24,6 @@ const FALLBACK_DATA = {
 const GitHubOverview = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +44,6 @@ const GitHubOverview = () => {
       } catch (e) {
         console.error("GitHub API Error:", e);
         setData(FALLBACK_DATA);
-        setError(true);
       } finally {
         setLoading(false);
       }
@@ -53,14 +51,17 @@ const GitHubOverview = () => {
     fetchData();
   }, []);
 
-
-
   if (loading) return <div className="h-32 flex items-center justify-center text-[#64748b] text-sm">Loading GitHub data...</div>;
 
   return (
     <div className="space-y-6">
       {/* Profile */}
-      <div className="card p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="card p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-5"
+      >
         <img src={data.avatar_url} className="w-16 h-16 sm:w-14 sm:h-14 rounded-xl object-cover border border-[#334155]" alt="GitHub" />
         <div className="flex-1 text-center sm:text-left">
           <h3 className="font-bold">{data.name}</h3>
@@ -81,7 +82,7 @@ const GitHubOverview = () => {
             <div className="text-xs text-[#64748b]">Following</div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Top Repos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -111,7 +112,13 @@ const GitHubOverview = () => {
       </div>
 
       {/* Contribution chart - mobile shows last 6 months, desktop shows full */}
-      <div className="card p-4 sm:p-6">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="card p-4 sm:p-6"
+      >
         <p className="text-sm text-[#64748b] mb-4">Contribution Activity</p>
         {/* Desktop: full scrollable graph */}
         <div className="hidden sm:block overflow-x-auto">
@@ -130,7 +137,7 @@ const GitHubOverview = () => {
             style={{ direction: 'ltr' }}
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

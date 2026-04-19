@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLaptopCode, FaMobileAlt, FaPalette, FaChartLine } from 'react-icons/fa';
+import { FaChartLine, FaLaptopCode, FaMobileAlt, FaPalette } from 'react-icons/fa';
+import PageShell from '../components/PageShell';
+import Reveal from '../components/Reveal';
 
 const services = [
   { title: 'Web Development', desc: 'Building fast, responsive web apps with React, Next.js, and modern tooling.', icon: <FaLaptopCode /> },
@@ -11,24 +13,16 @@ const services = [
 
 const Services = () => {
   return (
-    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="section-title"
-      >
-        Services
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="section-subtitle"
-      >
-        What I can do for you
-      </motion.p>
+    <PageShell>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <Reveal as="h1" className="section-title">
+          Services
+        </Reveal>
+        <Reveal as="p" delay={0.08} className="section-subtitle">
+          What I can do for you
+        </Reveal>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
         {services.map((s, i) => (
           <motion.div
             key={i}
@@ -36,12 +30,12 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -5, transition: { duration: 0.25 } }}
-            className="card p-6 sm:p-8 space-y-4"
+            whileHover={{ y: -8, transition: { duration: 0.25 } }}
+            className="card service-card p-6 sm:p-8 space-y-4"
           >
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="w-12 h-12 rounded-xl bg-primary/10 text-primary text-xl flex items-center justify-center"
+              whileHover={{ scale: 1.08, rotate: 8 }}
+              className="service-icon w-12 h-12 rounded-xl text-xl flex items-center justify-center"
             >
               {s.icon}
             </motion.div>
@@ -49,8 +43,9 @@ const Services = () => {
             <p className="text-sm sm:text-base text-[#94a3b8] leading-relaxed">{s.desc}</p>
           </motion.div>
         ))}
-      </div>
-    </main>
+        </div>
+      </section>
+    </PageShell>
   );
 };
 

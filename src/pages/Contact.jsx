@@ -1,27 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
+import PageShell from '../components/PageShell';
+import Reveal from '../components/Reveal';
 
 const Contact = () => {
   return (
-    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="section-title"
-      >
-        Contact
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="section-subtitle"
-      >
-        Let's work together
-      </motion.p>
+    <PageShell>
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <Reveal as="h1" className="section-title">
+          Contact
+        </Reveal>
+        <Reveal as="p" delay={0.08} className="section-subtitle">
+          Let's work together
+        </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -50,7 +44,7 @@ const Contact = () => {
                 rel="noreferrer"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 card flex items-center justify-center text-[#64748b] hover:text-primary hover:!border-primary/40 transition-colors"
+                className="social-pill text-[#64748b] hover:text-primary transition-colors"
               >
                 {s.icon}
               </motion.a>
@@ -85,8 +79,9 @@ const Contact = () => {
             Send Message <FaPaperPlane size={12} />
           </motion.button>
         </motion.form>
-      </div>
-    </main>
+        </div>
+      </section>
+    </PageShell>
   );
 };
 

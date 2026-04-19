@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  React.useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   const links = [
     { name: 'Home', path: '/' },
@@ -19,14 +24,15 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur-xl border-b border-[#1e293b]"
+      className="sticky top-0 z-50 bg-[#020617]/65 backdrop-blur-2xl border-b border-white/8"
     >
+      <div className="nav-glow" />
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight">
+        <Link to="/" className="text-xl font-bold tracking-tight relative z-10">
           Ehsan<span className="dot-accent">.</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 relative z-10">
           {links.map((link, i) => (
             <motion.div
               key={link.name}
@@ -46,7 +52,7 @@ const Navbar = () => {
                     {isActive && (
                       <motion.div
                         layoutId="nav-underline"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 via-primary to-violet-400 rounded-full"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -60,13 +66,13 @@ const Navbar = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Link to="/book-meeting" className="bg-primary hover:bg-accent text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all hover:shadow-lg hover:shadow-primary/20">
+            <Link to="/book-meeting" className="btn-primary text-sm px-5 py-2.5 rounded-xl">
               Hire Me
             </Link>
           </motion.div>
         </nav>
 
-        <button className="md:hidden text-xl text-[#94a3b8]" onClick={() => setOpen(!open)}>
+        <button className="md:hidden text-xl text-[#94a3b8] relative z-10" onClick={() => setOpen(!open)}>
           {open ? <FaTimes /> : <FaBars />}
         </button>
       </div>
@@ -78,7 +84,7 @@ const Navbar = () => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-[#0f172a] border-b border-[#1e293b]"
+            className="md:hidden overflow-hidden bg-[#020617]/95 backdrop-blur-2xl border-b border-white/8"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
               {links.map((link, i) => (
@@ -104,7 +110,7 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                <Link to="/book-meeting" onClick={() => setOpen(false)} className="block bg-primary text-white text-center font-semibold py-3 rounded-lg mt-3">
+                <Link to="/book-meeting" onClick={() => setOpen(false)} className="btn-primary w-full justify-center mt-3">
                   Hire Me
                 </Link>
               </motion.div>
