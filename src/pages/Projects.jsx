@@ -20,18 +20,15 @@ const Projects = () => {
           {projects.map((project, i) => (
           <motion.article
             key={project.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 + i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -10, rotateX: 2, transition: { duration: 0.25 } }}
-            className="card project-card overflow-hidden group"
+            whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+            className="card project-card overflow-hidden group isolation-auto"
           >
             <div className="project-card-glow" />
             <div className="h-40 sm:h-48 overflow-hidden">
               {project.image ? (
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
               ) : (
-                <div className="w-full h-full bg-[#1e293b] flex items-center justify-center text-[#475569] text-4xl">📦</div>
+                <div className="w-full h-full bg-[#161b22] flex items-center justify-center text-[#30363d] text-4xl">📦</div>
               )}
             </div>
             <div className="p-4 sm:p-6 space-y-3 relative z-10">
@@ -40,7 +37,7 @@ const Projects = () => {
               <p className="text-sm text-[#94a3b8] line-clamp-2">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
                 {project.technologies.slice(0, 4).map((tech, idx) => (
-                  <span key={idx} className="text-[10px] sm:text-xs bg-[#1e293b] text-[#94a3b8] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md">{tech}</span>
+                  <span key={idx} className="text-[10px] sm:text-xs bg-[#161b22] text-[#8b949e] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-[#30363d]">{tech}</span>
                 ))}
               </div>
               <div className="flex gap-3 pt-3">

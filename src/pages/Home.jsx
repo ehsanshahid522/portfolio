@@ -56,10 +56,16 @@ const Home = () => {
           <motion.div
             variants={fadeUp}
             custom={0.28}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 pt-2"
+            className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4"
           >
-            <Link to="/projects" className="btn-primary text-sm sm:text-base">
-              View Projects <FaArrowRight size={12} />
+            <Link to="/projects" className="btn-primary text-sm sm:text-base group">
+              View Projects 
+              <motion.span
+                animate={{ x: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              >
+                <FaArrowRight size={12} />
+              </motion.span>
             </Link>
             <Link to="/contact" className="btn-outline text-sm sm:text-base">
               Contact Me

@@ -26,12 +26,8 @@ const Services = () => {
         {services.map((s, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -8, transition: { duration: 0.25 } }}
-            className="card service-card p-6 sm:p-8 space-y-4"
+            whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+            className="card service-card p-6 sm:p-8 space-y-4 isolation-auto"
           >
             <motion.div
               whileHover={{ scale: 1.08, rotate: 8 }}

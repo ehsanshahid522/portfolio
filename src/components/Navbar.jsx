@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   React.useEffect(() => {
     setOpen(false);
@@ -26,6 +32,10 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="sticky top-0 z-50 bg-[#0a0a0a]/65 backdrop-blur-2xl border-b border-white/8"
     >
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary origin-left z-50"
+        style={{ scaleX }}
+      />
       <div className="nav-glow" />
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="text-xl font-bold tracking-tight relative z-10">
