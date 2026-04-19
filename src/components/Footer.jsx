@@ -45,7 +45,7 @@ const Footer = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.96 }}
-            className="w-8 h-8 rounded-lg bg-[#1e293b] border border-[#334155] flex items-center justify-center text-[#64748b] hover:text-primary hover:border-primary/50 transition-colors"
+            className="w-8 h-8 rounded-lg bg-[#171717] border border-[#262626] flex items-center justify-center text-[#64748b] hover:text-primary hover:border-primary/50 transition-colors"
           >
             <FaArrowUp size={12} />
           </motion.button>

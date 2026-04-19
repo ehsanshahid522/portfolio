@@ -3,12 +3,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #6366f1;
-  --color-accent: #818cf8;
-  --color-surface: #1e293b;
-  --color-surface-light: #334155;
-  --color-bg: #0f172a;
-  --color-bg-dark: #0b1120;
+  --color-primary: #fbbf24;
+  --color-accent: #f59e0b;
+  --color-surface: #171717;
+  --color-surface-light: #262626;
+  --color-bg: #0a0a0a;
+  --color-bg-dark: #000000;
 }
 
 @layer base {
@@ -25,11 +25,11 @@
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:
-      radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 28%),
-      radial-gradient(circle at top right, rgba(99, 102, 241, 0.22), transparent 32%),
-      radial-gradient(circle at 50% 120%, rgba(14, 165, 233, 0.12), transparent 40%),
-      linear-gradient(180deg, #020617 0%, #0b1120 40%, #020617 100%);
-    color: #e2e8f0;
+      radial-gradient(circle at top left, rgba(251, 191, 36, 0.08), transparent 30%),
+      radial-gradient(circle at top right, rgba(245, 158, 11, 0.08), transparent 35%),
+      radial-gradient(circle at 50% 120%, rgba(251, 191, 36, 0.05), transparent 45%),
+      linear-gradient(180deg, #0a0a0a 0%, #000000 50%, #0a0a0a 100%);
+    color: #f5f5f5;
     overflow-x: hidden;
     line-height: 1.6;
     min-height: 100vh;
@@ -101,13 +101,13 @@
   .app-backdrop-left {
     top: 5rem;
     left: -10rem;
-    background: rgba(59, 130, 246, 0.28);
+    background: rgba(251, 191, 36, 0.15);
   }
 
   .app-backdrop-right {
     right: -8rem;
     bottom: 4rem;
-    background: rgba(129, 140, 248, 0.24);
+    background: rgba(245, 158, 11, 0.12);
     animation-delay: -8s;
   }
 
@@ -141,7 +141,7 @@
     height: 14rem;
     top: 5rem;
     right: -3rem;
-    background: rgba(34, 211, 238, 0.12);
+    background: rgba(251, 191, 36, 0.08);
     animation: floatOrb 16s ease-in-out infinite;
   }
 
@@ -150,7 +150,7 @@
     height: 18rem;
     left: -7rem;
     bottom: 6rem;
-    background: rgba(99, 102, 241, 0.14);
+    background: rgba(245, 158, 11, 0.06);
     animation: floatOrb 22s ease-in-out infinite reverse;
   }
 
@@ -168,12 +168,12 @@
 
   .card {
     background:
-      linear-gradient(180deg, rgba(15, 23, 42, 0.86), rgba(15, 23, 42, 0.62)),
-      linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(14, 165, 233, 0.02));
-    border: 1px solid rgba(148, 163, 184, 0.12);
+      linear-gradient(180deg, rgba(23, 23, 23, 0.86), rgba(23, 23, 23, 0.62)),
+      linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(245, 158, 11, 0.02));
+    border: 1px solid rgba(163, 163, 163, 0.1);
     border-radius: 20px;
     backdrop-filter: blur(18px);
-    box-shadow: 0 20px 50px rgba(2, 6, 23, 0.28);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s, background 0.35s;
   }
 
@@ -184,13 +184,13 @@
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed 60%, #06b6d4);
+    background: linear-gradient(135deg, #d97706, #f59e0b 60%, #fbbf24);
     color: white;
     font-weight: 600;
     padding: 12px 28px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.26);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 30px rgba(245, 158, 11, 0.15);
     transition: transform 0.25s, box-shadow 0.25s, filter 0.25s;
     display: inline-flex;
     align-items: center;
@@ -259,16 +259,16 @@
 
   .badge {
     font-size: 12px;
-    background-color: rgba(99, 102, 241, 0.15);
-    color: #c4b5fd;
+    background-color: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
     padding: 6px 12px;
     border-radius: 999px;
     font-weight: 500;
-    border: 1px solid rgba(129, 140, 248, 0.18);
+    border: 1px solid rgba(251, 191, 36, 0.15);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #67e8f9, #818cf8 45%, #c084fc 85%);
+    background: linear-gradient(135deg, #fde047, #fbbf24 45%, #f59e0b 85%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -295,7 +295,7 @@
     position: absolute;
     inset: auto 0 -1px 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.5), rgba(167, 139, 250, 0.55), transparent);
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.35), transparent);
     opacity: 0.55;
   }
 
@@ -321,8 +321,8 @@
     width: 120%;
     aspect-ratio: 1;
     border-radius: 9999px;
-    border: 1px dashed rgba(125, 211, 252, 0.22);
-    box-shadow: inset 0 0 40px rgba(56, 189, 248, 0.08);
+    border: 1px dashed rgba(251, 191, 36, 0.15);
+    box-shadow: inset 0 0 40px rgba(245, 158, 11, 0.04);
   }
 
   .floating-panel {
@@ -360,12 +360,12 @@
     position: absolute;
     inset: -40% 20% auto;
     height: 5rem;
-    background: radial-gradient(circle, rgba(103, 232, 249, 0.24), transparent 70%);
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.15), transparent 70%);
     pointer-events: none;
   }
 
   .skill-bar {
-    box-shadow: 0 0 26px rgba(129, 140, 248, 0.35);
+    box-shadow: 0 0 26px rgba(251, 191, 36, 0.2);
   }
 
   .project-card {
@@ -399,14 +399,14 @@
     width: 7rem;
     height: 7rem;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(129, 140, 248, 0.22), transparent 68%);
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.12), transparent 68%);
     pointer-events: none;
   }
 
   .service-icon {
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.18), rgba(6, 182, 212, 0.18));
-    border: 1px solid rgba(125, 211, 252, 0.18);
-    color: #c4b5fd;
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(245, 158, 11, 0.1));
+    border: 1px solid rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
   }
 }
 

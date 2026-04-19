@@ -24,7 +24,7 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 bg-[#020617]/65 backdrop-blur-2xl border-b border-white/8"
+      className="sticky top-0 z-50 bg-[#0a0a0a]/65 backdrop-blur-2xl border-b border-white/8"
     >
       <div className="nav-glow" />
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -52,7 +52,7 @@ const Navbar = () => {
                     {isActive && (
                       <motion.div
                         layoutId="nav-underline"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 via-primary to-violet-400 rounded-full"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 via-primary to-yellow-500 rounded-full"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -84,7 +84,7 @@ const Navbar = () => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-[#020617]/95 backdrop-blur-2xl border-b border-white/8"
+            className="md:hidden overflow-hidden bg-[#0a0a0a]/95 backdrop-blur-2xl border-b border-white/8"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
               {links.map((link, i) => (
