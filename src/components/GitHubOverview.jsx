@@ -1,6 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCodeBranch, FaExternalLinkAlt, FaGithub, FaStar } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
+
+const THEME_GH_COLORS = {
+  indigo: '818cf8',
+  emerald: '10b981',
+  gold: 'f59e0b',
+  crimson: 'f43f5e',
+  vaporwave: 'd946ef',
+};
 
 const GITHUB_USERNAME = 'ehsanshahid522';
 
@@ -22,6 +31,8 @@ const FALLBACK_DATA = {
 };
 
 const GitHubOverview = () => {
+  const { theme } = useTheme();
+  const ghChartColor = THEME_GH_COLORS[theme] || '818cf8';
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
@@ -123,7 +134,7 @@ const GitHubOverview = () => {
         {/* Desktop: full scrollable graph */}
         <div className="hidden sm:block overflow-x-auto">
           <img
-            src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}
+            src={`https://ghchart.rshah.org/${ghChartColor}/${GITHUB_USERNAME}`}
             alt="GitHub Contributions"
             className="w-full min-w-[700px] h-auto"
           />
@@ -131,7 +142,7 @@ const GitHubOverview = () => {
         {/* Mobile: crop to show only right side (today / last ~6 months) */}
         <div className="sm:hidden overflow-hidden" style={{ direction: 'rtl' }}>
           <img
-            src={`https://ghchart.rshah.org/6366f1/${GITHUB_USERNAME}`}
+            src={`https://ghchart.rshah.org/${ghChartColor}/${GITHUB_USERNAME}`}
             alt="GitHub Contributions"
             className="h-auto min-w-[700px]"
             style={{ direction: 'ltr' }}

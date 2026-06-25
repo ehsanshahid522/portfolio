@@ -71,6 +71,7 @@ const Navbar = () => {
               </NavLink>
             </motion.div>
           ))}
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -119,8 +120,9 @@ const Navbar = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
+                className="flex items-center gap-3 mt-4"
               >
-                <Link to="/book-meeting" onClick={() => setOpen(false)} className="btn-primary w-full justify-center mt-3">
+                <Link to="/book-meeting" onClick={() => setOpen(false)} className="btn-primary flex-1 justify-center py-2 text-sm rounded-xl">
                   Hire Me
                 </Link>
               </motion.div>
