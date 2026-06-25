@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import BookMeeting from './pages/BookMeeting';
 import { ThemeProvider } from './context/ThemeContext';
+import MouseGlow from './components/MouseGlow';
 
 function AppRoutes() {
   const location = useLocation();
@@ -41,6 +42,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="app-shell min-h-screen text-slate-200">
+          <MouseGlow />
           <div className="app-backdrop app-backdrop-left" />
           <div className="app-backdrop app-backdrop-right" />
           <div className="app-noise" />

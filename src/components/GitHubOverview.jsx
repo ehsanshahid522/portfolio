@@ -62,6 +62,8 @@ const GitHubOverview = () => {
     fetchData();
   }, []);
 
+
+
   if (loading) return <div className="h-32 flex items-center justify-center text-[#64748b] text-sm">Loading GitHub data...</div>;
 
   return (
@@ -131,20 +133,21 @@ const GitHubOverview = () => {
         className="card p-4 sm:p-6"
       >
         <p className="text-sm text-[#64748b] mb-4">Contribution Activity</p>
+        
         {/* Desktop: full scrollable graph */}
-        <div className="hidden sm:block overflow-x-auto">
+        <div className="hidden sm:block overflow-x-auto bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
           <img
-            src={`https://ghchart.rshah.org/${ghChartColor}/${GITHUB_USERNAME}`}
+            src={`https://ghchart.rshah.org/000000/${GITHUB_USERNAME}`}
             alt="GitHub Contributions"
-            className="w-full min-w-[700px] h-auto"
+            className="w-full min-w-[700px] h-auto block"
           />
         </div>
-        {/* Mobile: crop to show only right side (today / last ~6 months) */}
-        <div className="sm:hidden overflow-hidden" style={{ direction: 'rtl' }}>
+        {/* Mobile: crop and allow scroll to show right side (today / last ~6 months) */}
+        <div className="sm:hidden overflow-x-auto bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm" style={{ direction: 'rtl' }}>
           <img
-            src={`https://ghchart.rshah.org/${ghChartColor}/${GITHUB_USERNAME}`}
+            src={`https://ghchart.rshah.org/000000/${GITHUB_USERNAME}`}
             alt="GitHub Contributions"
-            className="h-auto min-w-[700px]"
+            className="h-auto min-w-[700px] block"
             style={{ direction: 'ltr' }}
           />
         </div>

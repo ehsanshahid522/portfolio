@@ -12,18 +12,18 @@
 }
 
 :root {
-  /* Default: Indigo Nebula */
+  /* Default: Indigo Nebula - Softer / Slate-based */
   --primary: #818cf8;
   --primary-rgb: 129, 140, 248;
   --accent: #22d3ee;
   --accent-rgb: 34, 211, 238;
-  --surface: #0d1117;
-  --surface-rgb: 13, 17, 23;
-  --surface-light: #161b22;
-  --surface-light-rgb: 22, 27, 34;
-  --bg: #010409;
-  --bg-dark: #000000;
-  --border-color: rgba(48, 54, 61, 0.6);
+  --surface: #0f172a;
+  --surface-rgb: 15, 23, 42;
+  --surface-light: #1e293b;
+  --surface-light-rgb: 30, 41, 59;
+  --bg: #030712;
+  --bg-dark: #0b0f19;
+  --border-color: rgba(148, 163, 184, 0.12);
 }
 
 [data-theme="emerald"] {
@@ -31,13 +31,13 @@
   --primary-rgb: 16, 185, 129;
   --accent: #6ee7b7;
   --accent-rgb: 110, 231, 183;
-  --surface: #06120b;
-  --surface-rgb: 6, 18, 11;
-  --surface-light: #0e2217;
-  --surface-light-rgb: 14, 34, 23;
-  --bg: #020804;
-  --bg-dark: #000000;
-  --border-color: rgba(16, 185, 129, 0.2);
+  --surface: #092013;
+  --surface-rgb: 9, 32, 19;
+  --surface-light: #133a23;
+  --surface-light-rgb: 19, 58, 35;
+  --bg: #041009;
+  --bg-dark: #010503;
+  --border-color: rgba(16, 185, 129, 0.15);
 }
 
 [data-theme="gold"] {
@@ -45,13 +45,13 @@
   --primary-rgb: 245, 158, 11;
   --accent: #ec4899;
   --accent-rgb: 236, 72, 153;
-  --surface: #1c1917;
-  --surface-rgb: 28, 25, 23;
-  --surface-light: #292524;
-  --surface-light-rgb: 41, 37, 36;
-  --bg: #0c0a09;
-  --bg-dark: #000000;
-  --border-color: rgba(245, 158, 11, 0.2);
+  --surface: #27221e;
+  --surface-rgb: 39, 34, 30;
+  --surface-light: #3a332d;
+  --surface-light-rgb: 58, 51, 45;
+  --bg: #14110f;
+  --bg-dark: #0a0908;
+  --border-color: rgba(245, 158, 11, 0.15);
 }
 
 [data-theme="crimson"] {
@@ -59,13 +59,13 @@
   --primary-rgb: 244, 63, 94;
   --accent: #fb7185;
   --accent-rgb: 251, 113, 133;
-  --surface: #1a0a0d;
-  --surface-rgb: 26, 10, 13;
-  --surface-light: #2d1217;
-  --surface-light-rgb: 45, 18, 23;
-  --bg: #0f0507;
-  --bg-dark: #000000;
-  --border-color: rgba(244, 63, 94, 0.2);
+  --surface: #291216;
+  --surface-rgb: 41, 18, 22;
+  --surface-light: #3e1b21;
+  --surface-light-rgb: 62, 27, 33;
+  --bg: #170a0c;
+  --bg-dark: #0a0405;
+  --border-color: rgba(244, 63, 94, 0.15);
 }
 
 [data-theme="vaporwave"] {
@@ -73,13 +73,13 @@
   --primary-rgb: 217, 70, 239;
   --accent: #06b6d4;
   --accent-rgb: 6, 182, 212;
-  --surface: #160829;
-  --surface-rgb: 22, 8, 41;
-  --surface-light: #240d42;
-  --surface-light-rgb: 36, 13, 66;
-  --bg: #08010f;
-  --bg-dark: #000000;
-  --border-color: rgba(217, 70, 239, 0.25);
+  --surface: #240f42;
+  --surface-rgb: 36, 15, 66;
+  --surface-light: #381a63;
+  --surface-light-rgb: 56, 26, 99;
+  --bg: #120324;
+  --bg-dark: #080112;
+  --border-color: rgba(217, 70, 239, 0.18);
 }
 
 @layer base {
@@ -96,9 +96,9 @@
   body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background:
-      radial-gradient(circle at top left, rgba(var(--primary-rgb), 0.12), transparent 30%),
-      radial-gradient(circle at top right, rgba(var(--accent-rgb), 0.15), transparent 35%),
-      radial-gradient(circle at 50% 120%, rgba(var(--primary-rgb), 0.08), transparent 45%),
+      radial-gradient(circle at top left, rgba(var(--primary-rgb), 0.15), transparent 35%),
+      radial-gradient(circle at top right, rgba(var(--accent-rgb), 0.18), transparent 40%),
+      radial-gradient(circle at 50% 120%, rgba(var(--primary-rgb), 0.10), transparent 50%),
       linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 50%, var(--bg) 100%);
     color: #e6edf3;
     overflow-x: hidden;
@@ -511,6 +511,17 @@
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
   }
+
+  .github-svg-container svg {
+    width: 100%;
+    height: auto;
+    min-width: 700px;
+  }
+
+  .github-svg-container-mobile svg {
+    height: auto;
+    min-width: 700px;
+  }
 }
 
 @keyframes shimmer {
@@ -538,6 +549,55 @@
   100% {
     transform: translate3d(-35px, -35px, 0);
   }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(-3deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 9s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: floatMedium 6s ease-in-out infinite;
+}
+
+/* Skill brand neon glows */
+.skill-card-react:hover {
+  border-color: #22d3ee !important;
+  box-shadow: 0 12px 40px rgba(34, 211, 238, 0.25), 0 0 15px rgba(34, 211, 238, 0.15) !important;
+}
+
+.skill-card-node:hover {
+  border-color: #22c55e !important;
+  box-shadow: 0 12px 40px rgba(34, 197, 94, 0.25), 0 0 15px rgba(34, 197, 94, 0.15) !important;
+}
+
+.skill-card-python:hover {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.25), 0 0 15px rgba(59, 130, 246, 0.15) !important;
+}
+
+.skill-card-mongodb:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.25), 0 0 15px rgba(16, 185, 129, 0.15) !important;
+}
+
+.skill-card-tailwind:hover {
+  border-color: #06b6d4 !important;
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.25), 0 0 15px rgba(6, 182, 212, 0.15) !important;
+}
+
+.skill-card-ml:hover {
+  border-color: #d946ef !important;
+  box-shadow: 0 12px 40px rgba(217, 70, 239, 0.25), 0 0 15px rgba(217, 70, 239, 0.15) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
