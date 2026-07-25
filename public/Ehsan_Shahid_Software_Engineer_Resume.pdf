@@ -1,0 +1,101 @@
+%PDF-1.4
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+  /Type /Pages
+  /Kids [3 0 R]
+  /Count 1
+>>
+endobj
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources <<
+    /Font << /F1 4 0 R >>
+  >>
+  /MediaBox [0 0 612 792]
+  /Contents 5 0 R
+>>
+endobj
+4 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica-Bold
+>>
+endobj
+5 0 obj
+<< /Length 540 >>
+stream
+BT
+/F1 22 Tf
+50 740 Td
+(EHSAN SHAHID - SOFTWARE ENGINEER) Tj
+/F1 12 Tf
+0 -25 Td
+(Full Stack MERN Developer | React Native Developer | AI Applications Developer) Tj
+0 -15 Td
+(Email: ehsanshahid522@gmail.com | Phone: +92 309 4658397 | Lahore, Pakistan) Tj
+0 -15 Td
+(GitHub: github.com/ehsanshahid522 | LinkedIn: linkedin.com/in/chehsanshahid) Tj
+0 -30 Td
+(EDUCATION) Tj
+0 -15 Td
+(BS Software Engineering - University of Central Punjab \(UCP\), Class of 2026) Tj
+0 -30 Td
+(SUMMARY) Tj
+0 -15 Td
+(Software Engineering graduate specializing in Full Stack MERN development, React Native, and AI-powered) Tj
+0 -15 Td
+(applications. Built scalable web and mobile solutions with clean code, modern UI, and production architectures.) Tj
+0 -30 Td
+(KEY PROJECTS) Tj
+0 -15 Td
+(* Skinzy: Deep Learning AI Telemedicine Medical Application \(PyTorch, Next.js, FastAPI\)) Tj
+0 -15 Td
+(* Snapstrom: Modern Full Stack MERN SaaS Web Application \(React, Node.js, Express, MongoDB\)) Tj
+0 -15 Td
+(* Smart Parking ALPR: Desktop System with YOLOv8 & OpenCV License Plate Recognition) Tj
+0 -15 Td
+(* AML Detection AI: Anomaly scoring engine hosted on Hugging Face Spaces) Tj
+0 -15 Td
+(* Order Profit AI: E-commerce analytics & profit visualization dashboard) Tj
+0 -30 Td
+(SKILLS) Tj
+0 -15 Td
+(Frontend: React, Next.js, JavaScript, HTML, CSS, Tailwind CSS, Redux) Tj
+0 -15 Td
+(Backend: Node.js, Express.js, REST APIs, JWT, Socket.io, FastAPI) Tj
+0 -15 Td
+(Database: MongoDB, MySQL, Firebase) Tj
+0 -15 Td
+(Mobile: React Native, Expo, Java, Kotlin) Tj
+0 -15 Td
+(AI/ML: Python, PyTorch, OpenCV, Scikit-Learn, YOLOv8) Tj
+0 -15 Td
+(Tools: Git, GitHub, Postman, VS Code, Android Studio, Cursor, Docker) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000244 00000 n 
+0000000332 00000 n 
+trailer
+<<
+  /Size 6
+  /Root 1 0 R
+>>
+startxref
+924
+%%EOF

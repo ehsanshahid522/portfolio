@@ -6,7 +6,7 @@ import {
   FaComments, FaTasks, FaLightbulb, FaBriefcase, FaGraduationCap,
   FaLaptopCode, FaCheckCircle, FaStar, FaPython, FaDocker,
   FaServer, FaBrain, FaMicrochip, FaChartBar, FaChartLine, FaTerminal,
-  FaIdCard, FaMapMarkerAlt
+  FaIdCard, FaMapMarkerAlt, FaDownload, FaMobileAlt, FaLayerGroup
 } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
 import Reveal from '../components/Reveal';
@@ -14,22 +14,19 @@ import { fadeUp, staggerContainer, scaleIn } from '../lib/motion';
 
 const skillsData = [
   // Frontend
-  { name: 'HTML5', category: 'Frontend', icon: <FaHtml5 className="text-orange-500" /> },
-  { name: 'CSS3', category: 'Frontend', icon: <FaCss3Alt className="text-blue-500" /> },
-  { name: 'JavaScript', category: 'Frontend', icon: <FaJs className="text-yellow-400" /> },
   { name: 'React 18', category: 'Frontend', icon: <FaReact className="text-cyan-400" /> },
   { name: 'Next.js', category: 'Frontend', icon: <FaLaptopCode className="text-slate-200" /> },
-  { name: 'Vite', category: 'Frontend', icon: <FaTerminal className="text-purple-400" /> },
+  { name: 'JavaScript (ES6+)', category: 'Frontend', icon: <FaJs className="text-yellow-400" /> },
+  { name: 'HTML5', category: 'Frontend', icon: <FaHtml5 className="text-orange-500" /> },
+  { name: 'CSS3', category: 'Frontend', icon: <FaCss3Alt className="text-blue-500" /> },
   { name: 'Tailwind CSS', category: 'Frontend', icon: <FaCss3Alt className="text-sky-400" /> },
   { name: 'Redux Toolkit', category: 'Frontend', icon: <FaTasks className="text-purple-500" /> },
-  { name: 'Framer Motion', category: 'Frontend', icon: <FaReact className="text-pink-500" /> },
-  { name: 'Axios / APIs', category: 'Frontend', icon: <FaCode className="text-indigo-400" /> },
 
   // Backend
   { name: 'Node.js', category: 'Backend', icon: <FaNodeJs className="text-green-500" /> },
   { name: 'Express.js', category: 'Backend', icon: <FaServer className="text-slate-400" /> },
-  { name: 'REST APIs', category: 'Backend', icon: <FaServer className="text-sky-400" /> },
   { name: 'JWT Auth', category: 'Backend', icon: <FaCode className="text-red-400" /> },
+  { name: 'REST APIs', category: 'Backend', icon: <FaServer className="text-sky-400" /> },
   { name: 'Socket.io', category: 'Backend', icon: <FaComments className="text-blue-400" /> },
   { name: 'FastAPI', category: 'Backend', icon: <FaServer className="text-emerald-400" /> },
 
@@ -37,84 +34,72 @@ const skillsData = [
   { name: 'MongoDB', category: 'Database', icon: <FaDatabase className="text-green-600" /> },
   { name: 'Mongoose ODM', category: 'Database', icon: <FaCode className="text-orange-400" /> },
   { name: 'MySQL', category: 'Database', icon: <FaDatabase className="text-blue-600" /> },
-  { name: 'PostgreSQL', category: 'Database', icon: <FaDatabase className="text-cyan-600" /> },
-
-  // Machine Learning
-  { name: 'Python', category: 'Machine Learning', icon: <FaPython className="text-blue-500" /> },
-  { name: 'Scikit-Learn', category: 'Machine Learning', icon: <FaChartLine className="text-orange-400" /> },
-  { name: 'TensorFlow', category: 'Machine Learning', icon: <FaBrain className="text-orange-500" /> },
-  { name: 'Pandas', category: 'Machine Learning', icon: <FaChartBar className="text-purple-400" /> },
-  { name: 'NumPy', category: 'Machine Learning', icon: <FaMicrochip className="text-blue-400" /> },
-  { name: 'Hugging Face', category: 'Machine Learning', icon: <FaStar className="text-yellow-400" /> },
-  { name: 'Data Analysis', category: 'Machine Learning', icon: <FaChartLine className="text-teal-400" /> },
+  { name: 'Firebase', category: 'Database', icon: <FaCode className="text-amber-500" /> },
 
   // Mobile
-  { name: 'Android Java/Kotlin', category: 'Mobile', icon: <FaAndroid className="text-green-400" /> },
-  { name: 'Firebase', category: 'Mobile', icon: <FaCode className="text-amber-500" /> },
+  { name: 'React Native', category: 'Mobile', icon: <FaMobileAlt className="text-cyan-400" /> },
+  { name: 'Expo SDK', category: 'Mobile', icon: <FaMobileAlt className="text-slate-200" /> },
+  { name: 'Android Java', category: 'Mobile', icon: <FaAndroid className="text-green-400" /> },
+  { name: 'Kotlin', category: 'Mobile', icon: <FaAndroid className="text-purple-400" /> },
 
-  // Programming
-  { name: 'C++', category: 'Programming', icon: <FaCode className="text-blue-400" /> },
-  { name: 'Java', category: 'Programming', icon: <FaJava className="text-red-500" /> },
+  // AI & ML
+  { name: 'Python', category: 'AI & ML', icon: <FaPython className="text-blue-500" /> },
+  { name: 'PyTorch (CNN)', category: 'AI & ML', icon: <FaBrain className="text-orange-500" /> },
+  { name: 'OpenCV / YOLOv8', category: 'AI & ML', icon: <FaMicrochip className="text-emerald-400" /> },
+  { name: 'Scikit-Learn', category: 'AI & ML', icon: <FaChartLine className="text-amber-400" /> },
+  { name: 'Flask', category: 'AI & ML', icon: <FaServer className="text-teal-400" /> },
 
   // Tools
   { name: 'Git', category: 'Tools', icon: <FaGitAlt className="text-orange-600" /> },
   { name: 'GitHub', category: 'Tools', icon: <FaGithub className="text-white" /> },
+  { name: 'Postman', category: 'Tools', icon: <FaTerminal className="text-orange-500" /> },
   { name: 'VS Code', category: 'Tools', icon: <FaCode className="text-blue-500" /> },
   { name: 'Android Studio', category: 'Tools', icon: <FaAndroid className="text-green-500" /> },
-  { name: 'Postman', category: 'Tools', icon: <FaTerminal className="text-orange-500" /> },
-  { name: 'Docker', category: 'Tools', icon: <FaDocker className="text-blue-400" /> },
-  { name: 'Vercel', category: 'Tools', icon: <FaServer className="text-slate-200" /> },
-  { name: 'Cursor', category: 'Tools', icon: <FaCode className="text-cyan-500" /> },
-
-  // Soft Skills
-  { name: 'Teamwork', category: 'Soft Skills', icon: <FaUsers className="text-indigo-400" /> },
-  { name: 'Communication', category: 'Soft Skills', icon: <FaComments className="text-sky-400" /> },
-  { name: 'Management', category: 'Soft Skills', icon: <FaTasks className="text-teal-400" /> },
-  { name: 'Problem Solving', category: 'Soft Skills', icon: <FaLightbulb className="text-yellow-400" /> },
+  { name: 'Cursor AI', category: 'Tools', icon: <FaCode className="text-cyan-500" /> },
 ];
 
-const categories = ['All', 'Frontend', 'Backend', 'Database', 'Machine Learning', 'Mobile', 'Programming', 'Tools', 'Soft Skills'];
+const categories = ['All', 'Frontend', 'Backend', 'Database', 'Mobile', 'AI & ML', 'Tools'];
 
-const timelineData = [
+const timelineNodes = [
   {
-    type: 'edu',
+    year: '2026',
     title: 'BS Software Engineering Graduate',
-    location: 'University of Central Punjab (UCP), Lahore',
-    desc: 'Completed BS Software Engineering degree with strong expertise in OOP, Databases, Software Architecture, and Software Construction & Development.',
-    icon: <FaGraduationCap />,
-    time: 'Graduation - 2026'
+    subtitle: 'University of Central Punjab (UCP), Lahore',
+    desc: 'Completed BS Software Engineering degree with core focus on Software Architecture, OOP, Operating Systems, Database Systems, and Applied AI.',
+    icon: <FaGraduationCap className="text-cyan-400" />,
+    badge: 'Education'
   },
   {
-    type: 'tech',
-    title: 'AI & Machine Learning Architect (Skinzy & AML Detection)',
-    location: 'Deep Learning & Applied ML',
-    desc: 'Led the AI/ML design of Skinzy medical web app using PyTorch CNN model for skin classification, and AML Detection AI dashboard using Scikit-Learn on Hugging Face Spaces.',
-    icon: <FaBrain />,
-    time: 'Applied AI Specialization'
+    year: 'Skinzy',
+    title: 'AI Telemedicine Platform Developer',
+    subtitle: 'Deep Learning & Medical Systems',
+    desc: 'Engineered Skinzy AI telemedicine web app utilizing PyTorch CNN classifier, FastAPI asynchronous backend, and customized medical remedies engine.',
+    icon: <FaBrain className="text-pink-400" />,
+    badge: 'AI Telemedicine'
   },
   {
-    type: 'proj',
-    title: 'Smart Parking ALPR Developer',
-    location: 'Software Construction Semester Project',
-    desc: 'Engineered an automated desktop parking system in Java Swing (FlatLaf dark theme, JDBC, MySQL) integrated with license plate recognition using YOLOv8 & OpenCV over custom Socket transactions.',
-    icon: <FaMicrochip />,
-    time: 'Core Project - June 2026'
+    year: 'Snapstrom',
+    title: 'MERN Stack Web Developer',
+    subtitle: 'Full Stack Web Engineering',
+    desc: 'Built Snapstrom photo-sharing SaaS web application featuring JWT authentication, role-based controls, dynamic React UI, and MongoDB databases.',
+    icon: <FaLaptopCode className="text-emerald-400" />,
+    badge: 'MERN Stack'
   },
   {
-    type: 'proj',
-    title: 'MERN Stack & SaaS Developer (Snapstrom & Order Profit)',
-    location: 'Full Stack Web Engineering',
-    desc: 'Built Snapstrom, a MERN photo-sharing application with secure JWT auth, Mongoose relations, and dynamic layout systems, along with Order Profit AI analytics interface.',
-    icon: <FaLaptopCode />,
-    time: 'Web Development'
+    year: 'React Native',
+    title: 'Mobile Application Developer',
+    subtitle: 'Cross-Platform Mobile Apps',
+    desc: 'Designed and built React Native & Expo mobile application interfaces with responsive layouts, state management, and API connections.',
+    icon: <FaMobileAlt className="text-purple-400" />,
+    badge: 'Mobile Engineering'
   },
   {
-    type: 'exp',
-    title: 'Sales & Management Specialist',
-    location: 'Professional Experience & Leadership',
-    desc: 'Leveraged sales management expertise to lead team project coordination, client engagement, and high-performance agile workflows.',
-    icon: <FaBriefcase />,
-    time: 'Management Foundations'
+    year: 'Looking For Role',
+    title: 'Software Engineer / MERN Developer',
+    subtitle: 'Open for Full-Time Opportunities',
+    desc: 'Actively interviewing for Software Engineer, Full Stack MERN, and React Native positions to build production-level scalable applications.',
+    icon: <FaBriefcase className="text-amber-400" />,
+    badge: 'Career Target'
   }
 ];
 
@@ -127,8 +112,8 @@ const About = () => {
 
   return (
     <PageShell>
-      {/* Intro section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      {/* 1. INTRO & PHOTO SECTION */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -141,9 +126,9 @@ const About = () => {
             className="hero-ring"
           />
           <motion.div
-            animate={{ y: [0, -12, 0], rotate: [0, 1.2, 0] }}
+            animate={{ y: [0, -10, 0], rotate: [0, 1.2, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="hero-photo-shell w-full h-full p-2.5 sm:p-4"
+            className="hero-photo-shell w-full h-full p-3 sm:p-4"
           >
             <img
               src="/IMG_8341.jpg"
@@ -156,7 +141,7 @@ const About = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-slate-950/80 border border-primary/30 backdrop-blur-md rounded-full shadow-lg text-[10px] sm:text-xs font-semibold text-primary flex items-center gap-1.5 whitespace-nowrap"
+            className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-slate-950/90 border border-primary/30 backdrop-blur-md rounded-full shadow-lg text-xs font-semibold text-primary flex items-center gap-1.5 whitespace-nowrap"
           >
             <FaStar className="animate-pulse" /> UCP Software Engineering Graduate
           </motion.div>
@@ -169,105 +154,93 @@ const About = () => {
             animate="visible"
             className="badge badge-premium"
           >
-            About Me
+            About Ehsan Shahid
           </motion.span>
 
-          <Reveal as="h1" className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight" delay={0.08}>
-            Hi, I'm <span className="gradient-text">Ehsan Shahid</span>
+          <Reveal as="h1" className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white" delay={0.08}>
+            Software Engineer & <span className="gradient-text">Full Stack Developer</span>
           </Reveal>
 
-          <div className="space-y-4 text-slate-400 text-sm sm:text-base leading-relaxed">
-            <Reveal delay={0.16}>
-              <p>
-                I am Ehsan Shahid, a Software Engineering Graduate from the University of Central Punjab (UCP), Lahore. As a dedicated developer, I specialize in full-stack web engineering and applied artificial intelligence, focusing on building high-performance systems and clean user interfaces.
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Software Engineering graduate from the University of Central Punjab (UCP), Lahore. Specialized in building production-ready web and mobile applications with clean architecture, robust security, and seamless user experiences.
+          </p>
+
+          {/* 3 MANDATORY RECRUITER STRUCTURED BLOCKS */}
+          <div className="grid grid-cols-1 gap-4 pt-2 text-left">
+            {/* Block 1: Who am I */}
+            <div className="p-5 rounded-2xl bg-slate-950/70 border border-white/8 space-y-1">
+              <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">Who Am I</span>
+              <p className="text-sm font-semibold text-slate-100">
+                Software Engineering graduate from University of Central Punjab (UCP), Lahore.
               </p>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <p>
-                I have a strong track record of designing and delivering software solutions, having successfully shipped over 30 projects to more than 20 clients. I focus on writing clean, modular, and highly optimized code to build reliable and scalable software.
-              </p>
-            </Reveal>
+              <p className="text-xs text-slate-400">Class of 2026 | Specialized in Software Engineering & AI.</p>
+            </div>
+
+            {/* Block 2: What do I build */}
+            <div className="p-5 rounded-2xl bg-slate-950/70 border border-white/8 space-y-1">
+              <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">What Do I Build</span>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {['Full Stack Web Applications', 'React Native Apps', 'REST APIs', 'AI Solutions'].map((item) => (
+                  <span key={item} className="text-xs font-semibold px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
+                    ✓ {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Block 3: What do I enjoy */}
+            <div className="p-5 rounded-2xl bg-slate-950/70 border border-white/8 space-y-1">
+              <span className="text-xs font-bold text-purple-400 uppercase tracking-wider">What Do I Enjoy</span>
+              <div className="flex flex-wrap gap-2 pt-1">
+                {['Continuous Learning', 'Complex Problem Solving', 'Clean Code Architecture', 'System Design'].map((item) => (
+                  <span key={item} className="text-xs font-semibold px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-300">
+                    ★ {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Detailed Student Credentials Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 text-left">
-            {[
-              {
-                icon: <FaGraduationCap className="text-primary text-lg" />,
-                label: "Degree",
-                value: "BS Software Engineering",
-                sub: "8th Semester Graduate"
-              },
-              {
-                icon: <FaIdCard className="text-primary text-lg" />,
-                label: "Graduation Year",
-                value: "Class of 2026",
-                sub: "UCP Software Engineering"
-              },
-              {
-                icon: <FaMapMarkerAlt className="text-primary text-lg" />,
-                label: "Alma Mater",
-                value: "UCP Lahore",
-                sub: "University of Central Punjab"
-              },
-              {
-                icon: <FaLaptopCode className="text-primary text-lg" />,
-                label: "Focus Areas",
-                value: "Full-Stack & Applied AI",
-                sub: "MERN Dev & ML Engineer"
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + idx * 0.1, duration: 0.5 }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="flex items-center gap-3.5 p-4 bg-slate-900/30 border border-white/5 hover:border-primary/20 hover:bg-slate-800/10 rounded-2xl transition-all duration-300 shadow-lg shadow-black/10"
-              >
-                <div className="flex-shrink-0 w-10 h-10 bg-slate-950/60 border border-white/8 hover:border-primary/30 flex items-center justify-center rounded-xl shadow-inner transition-colors duration-300">
-                  {item.icon}
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-wider">{item.label}</span>
-                  <span className="block text-sm font-semibold text-slate-200">{item.value}</span>
-                  <span className="block text-[11px] text-slate-400">{item.sub}</span>
-                </div>
-              </motion.div>
-            ))}
+          <div className="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
+            <a
+              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary text-sm px-6 py-3"
+            >
+              <FaDownload size={12} /> Download Resume PDF
+            </a>
           </div>
         </div>
       </section>
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* Skills Showcase Section */}
+      {/* 2. CATEGORIZED SKILLS SHOWCASE */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-12">
           <Reveal as="h2" className="section-title">
-            Skills & Stack
+            Skills & Technical Stack
           </Reveal>
           <Reveal as="p" delay={0.08} className="section-subtitle">
-            Curated list of technical and professional abilities
+            Categorized technical capabilities and development tools
           </Reveal>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10 sm:mb-12">
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
           {categories.map((cat, idx) => (
-            <motion.button
+            <button
               key={cat}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.04 }}
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer border ${activeCategory === cat
-                  ? 'bg-primary border-primary/50 text-white shadow-lg shadow-primary/20'
-                  : 'bg-slate-900/40 border-white/5 text-slate-400 hover:border-white/15 hover:text-white hover:bg-slate-800/20'
+                  ? 'bg-primary border-primary/50 text-white shadow-lg shadow-primary/20 scale-105'
+                  : 'bg-slate-900/50 border-white/8 text-slate-400 hover:border-white/20 hover:text-white'
                 }`}
             >
               {cat}
-            </motion.button>
+            </button>
           ))}
         </div>
 
@@ -286,9 +259,9 @@ const About = () => {
                 exit={{ opacity: 0, scale: 0.9, y: 15 }}
                 transition={{ duration: 0.25, delay: idx * 0.02 }}
                 whileHover={{ y: -6, scale: 1.03 }}
-                className="card p-4 sm:p-5 flex items-center gap-3 cursor-default"
+                className="card p-4 flex items-center gap-3 cursor-default"
               >
-                <div className="text-2xl flex-shrink-0 w-8 h-8 rounded-lg bg-slate-900/60 border border-white/5 flex items-center justify-center shadow-inner">
+                <div className="text-2xl flex-shrink-0 w-9 h-9 rounded-xl bg-slate-900/80 border border-white/8 flex items-center justify-center shadow-inner">
                   {s.icon}
                 </div>
                 <span className="text-xs sm:text-sm font-semibold text-slate-200 truncate">{s.name}</span>
@@ -300,38 +273,46 @@ const About = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* Timeline Section */}
+      {/* 3. EXPERIENCE TIMELINE SECTION */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-16">
           <Reveal as="h2" className="section-title">
-            Timeline
+            Experience & Milestone Timeline
           </Reveal>
           <Reveal as="p" delay={0.08} className="section-subtitle">
-            Academic, developer progress and professional milestones
+            Academic degree progress and major production engineering projects
           </Reveal>
         </div>
 
-        <div className="relative border-l border-white/8 pl-6 sm:pl-10 ml-4 space-y-12">
-          {timelineData.map((node, i) => (
+        {/* Timeline List */}
+        <div className="relative border-l border-white/10 pl-6 sm:pl-10 ml-4 space-y-12">
+          {timelineNodes.map((node, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative"
             >
               {/* Timeline dot icon */}
-              <div className="absolute -left-[45px] sm:-left-[61px] top-1.5 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-950 border border-primary/30 flex items-center justify-center text-primary text-sm sm:text-base shadow-lg">
+              <div className="absolute -left-[45px] sm:-left-[61px] top-1.5 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-950 border border-primary/40 flex items-center justify-center text-primary text-base shadow-xl">
                 {node.icon}
               </div>
 
-              {/* Content Card */}
-              <div className="card p-5 sm:p-6 space-y-2">
-                <span className="text-[10px] font-bold text-primary tracking-wider uppercase">{node.time}</span>
-                <h3 className="text-base sm:text-lg font-bold text-slate-100">{node.title}</h3>
-                <span className="inline-block text-xs text-slate-400 font-medium mb-2">{node.location}</span>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{node.desc}</p>
+              {/* Node Card */}
+              <div className="card p-6 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-primary bg-primary/10 px-3 py-1 rounded-md border border-primary/20">
+                    {node.year}
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-900 px-2.5 py-1 rounded-md border border-white/5">
+                    {node.badge}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-white">{node.title}</h3>
+                <span className="inline-block text-xs font-semibold text-primary/90">{node.subtitle}</span>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{node.desc}</p>
               </div>
             </motion.div>
           ))}

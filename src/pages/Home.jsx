@@ -3,139 +3,136 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   FaArrowRight, FaGithub, FaInstagram, FaLinkedin, FaStar, 
-  FaReact, FaNodeJs, FaPython, FaDatabase, FaTerminal, FaBrain 
+  FaReact, FaNodeJs, FaPython, FaDatabase, FaBrain, FaDownload,
+  FaMobileAlt, FaServer, FaCode, FaCheckCircle, FaLaptopCode
 } from 'react-icons/fa';
 import GitHubOverview from '../components/GitHubOverview';
 import PageShell from '../components/PageShell';
 import Reveal from '../components/Reveal';
+import SkinzySpotlight from '../components/SkinzySpotlight';
+import Stats from '../components/Stats';
+import Achievements from '../components/Achievements';
+import Certifications from '../components/Certifications';
+import Testimonials from '../components/Testimonials';
+import skillCategories from '../data/skills';
 import { fadeUp, scaleIn, staggerContainer } from '../lib/motion';
 
-const coreSkills = [
-  { 
-    name: 'React.js & Next.js', 
-    level: '90%', 
-    badge: 'Expert',
-    icon: <FaReact className="text-cyan-400 animate-spin-slow" />, 
-    desc: 'Developing lightning-fast client interfaces, custom hooks, and Server-Side Rendered (SSR) SaaS portals.',
-    cardClass: 'skill-card-react'
-  },
-  { 
-    name: 'Node.js & Express', 
-    level: '85%', 
-    badge: 'Advanced',
-    icon: <FaNodeJs className="text-green-500 animate-pulse-subtle" />, 
-    desc: 'Architecting secure RESTful microservices, JWT authentication, and low-latency socket structures.',
-    cardClass: 'skill-card-node'
-  },
-  { 
-    name: 'Python Systems', 
-    level: '80%', 
-    badge: 'Advanced',
-    icon: <FaPython className="text-blue-500" />, 
-    desc: 'Structuring automated scraping scripts, ML data piping, and OpenCV real-time stream layers.',
-    cardClass: 'skill-card-python'
-  },
-  { 
-    name: 'MongoDB / SQL', 
-    level: '75%', 
-    badge: 'Proficient',
-    icon: <FaDatabase className="text-green-600" />, 
-    desc: 'Designing relational relational tables, Mongoose schemas, and writing highly optimized queries.',
-    cardClass: 'skill-card-mongodb'
-  },
-  { 
-    name: 'Tailwind CSS', 
-    level: '90%', 
-    badge: 'Expert',
-    icon: <FaTerminal className="text-cyan-500" />, 
-    desc: 'Crafting premium responsive layouts using Utility classes, fluid grids, and custom styling systems.',
-    cardClass: 'skill-card-tailwind'
-  },
-  { 
-    name: 'Machine Learning & AI', 
-    level: '70%', 
-    badge: 'Specialist',
-    icon: <FaBrain className="text-pink-500" />, 
-    desc: 'Deploying deep learning CNN classifiers, Scikit models, and interactive Gradio cloud applications.',
-    cardClass: 'skill-card-ml'
-  },
-];
-
 const spotlightCards = [
-  { value: '30+', label: 'Projects shipped', position: 'top-6 -left-4 sm:left-0' },
-  { value: 'AI', label: 'Automation focus', position: 'bottom-8 -right-2 sm:right-2' },
+  { value: '30+', label: 'Projects Shipped', position: 'top-6 -left-4 sm:left-0' },
+  { value: 'AI & MERN', label: 'Full Stack Focus', position: 'bottom-8 -right-2 sm:right-2' },
 ];
 
 const Home = () => {
   return (
     <PageShell>
-      {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-32 flex flex-col md:flex-row items-center gap-10 md:gap-14 relative">
+      {/* 1. HERO SECTION */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-28 flex flex-col md:flex-row items-center gap-10 md:gap-14 relative">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex-1 space-y-5 sm:space-y-6 text-center md:text-left relative z-10"
+          className="flex-1 space-y-6 text-center md:text-left relative z-10"
         >
-          <motion.span
-            variants={fadeUp}
-            custom={0.05}
-            className="badge badge-premium inline-flex items-center gap-2"
-          >
-            <FaStar size={10} className="animate-pulse" />
-            Available for work
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            custom={0.12}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight"
-          >
-            Hi, I'm <span className="gradient-text">Ehsan Shahid</span>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            custom={0.2}
-            className="text-base sm:text-lg text-[#94a3b8] max-w-xl mx-auto md:mx-0 leading-relaxed"
-          >
-            Software Engineer specializing in modern web applications, AI-powered tools, and full-stack solutions with a strong focus on elegant user experiences.
-          </motion.p>
+          {/* Status Badge */}
           <motion.div
             variants={fadeUp}
-            custom={0.28}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4"
+            custom={0.05}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-primary/30 text-xs font-semibold text-primary shadow-lg backdrop-blur-md"
           >
-            <Link to="/projects" className="btn-primary text-sm sm:text-base group">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>BS Software Engineering Graduate — Open for Work</span>
+          </motion.div>
+
+          {/* Name & Title */}
+          <motion.div variants={fadeUp} custom={0.12} className="space-y-2">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
+              Ehsan Shahid
+            </h1>
+            <div className="text-xl sm:text-2xl font-bold text-primary tracking-wide">
+              Software Engineer
+            </div>
+          </motion.div>
+
+          {/* Subtitles Pill Badges */}
+          <motion.div
+            variants={fadeUp}
+            custom={0.18}
+            className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-1"
+          >
+            <span className="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold flex items-center gap-1.5">
+              <FaReact /> Full Stack MERN Developer
+            </span>
+            <span className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold flex items-center gap-1.5">
+              <FaMobileAlt /> React Native Developer
+            </span>
+            <span className="px-3.5 py-1.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs sm:text-sm font-semibold flex items-center gap-1.5">
+              <FaBrain /> AI-Powered Application Developer
+            </span>
+          </motion.div>
+
+          {/* Recruiter 2-3 Line Description */}
+          <motion.p
+            variants={fadeUp}
+            custom={0.24}
+            className="text-base sm:text-lg text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed"
+          >
+            Software Engineering graduate specializing in Full Stack MERN development, React Native, and AI-powered applications. I build scalable web and mobile solutions with clean code, modern UI, and production-ready architectures.
+          </motion.p>
+
+          {/* 3 CTA Buttons */}
+          <motion.div
+            variants={fadeUp}
+            custom={0.3}
+            className="flex flex-wrap items-center justify-center md:justify-start gap-3.5 pt-3"
+          >
+            {/* CTA 1: View Projects */}
+            <Link to="/projects" className="btn-primary text-sm sm:text-base group py-3 px-6">
               View Projects 
               <motion.span
                 animate={{ x: [0, 4, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
               >
-                <FaArrowRight size={12} />
+                <FaArrowRight size={13} />
               </motion.span>
             </Link>
-            <Link to="/contact" className="btn-outline text-sm sm:text-base">
+
+            {/* CTA 2: Download Resume */}
+            <a
+              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-outline text-sm sm:text-base py-3 px-5 border-primary/40 hover:border-primary"
+            >
+              <FaDownload size={13} className="text-primary" /> Download Resume
+            </a>
+
+            {/* CTA 3: Contact Me */}
+            <Link to="/contact" className="btn-outline text-sm sm:text-base py-3 px-5">
               Contact Me
             </Link>
           </motion.div>
-          
+
+          {/* Social Links */}
           <motion.div
             variants={fadeUp}
             custom={0.36}
-            className="flex items-center justify-center md:justify-start gap-5 pt-4"
+            className="flex items-center justify-center md:justify-start gap-4 pt-2"
           >
             {[
-              { icon: <FaGithub size={20} />, url: 'https://github.com/ehsanshahid522' },
-              { icon: <FaLinkedin size={20} />, url: 'https://www.linkedin.com/in/chehsanshahid' },
-              { icon: <FaInstagram size={20} />, url: 'https://instagram.com/ehsanshahid_397/' },
+              { icon: <FaGithub size={20} />, url: 'https://github.com/ehsanshahid522', label: 'GitHub' },
+              { icon: <FaLinkedin size={20} />, url: 'https://www.linkedin.com/in/chehsanshahid', label: 'LinkedIn' },
+              { icon: <FaInstagram size={20} />, url: 'https://instagram.com/ehsanshahid_397/', label: 'Instagram' },
             ].map((s, i) => (
               <motion.a
                 key={i}
                 href={s.url}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={s.label}
                 whileHover={{ scale: 1.15, y: -4, color: '#818cf8' }}
                 whileTap={{ scale: 0.9 }}
-                className="social-pill text-[#64748b] transition-colors"
+                className="social-pill text-slate-400 transition-colors"
               >
                 {s.icon}
               </motion.a>
@@ -143,7 +140,7 @@ const Home = () => {
           </motion.div>
         </motion.div>
 
-        {/* Hero Visual Area with Floating Icons */}
+        {/* Hero Visual Photo Shell */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
@@ -151,48 +148,38 @@ const Home = () => {
           custom={0.2}
           className="hero-visual relative flex-shrink-0 order-first md:order-last"
         >
-          {/* Floating tech background shapes */}
-          <motion.div
-            className="absolute -top-10 -left-10 text-cyan-400/25 text-4xl hidden lg:block animate-float-slow"
-            style={{ zIndex: 0 }}
-          >
+          {/* Tech Floating Icons */}
+          <div className="absolute -top-10 -left-10 text-cyan-400/30 text-4xl hidden lg:block animate-float-slow" style={{ zIndex: 0 }}>
             <FaReact />
-          </motion.div>
-          <motion.div
-            className="absolute top-16 -right-12 text-green-500/20 text-3xl hidden lg:block animate-float-medium"
-            style={{ zIndex: 0 }}
-          >
+          </div>
+          <div className="absolute top-16 -right-12 text-emerald-500/25 text-3xl hidden lg:block animate-float-medium" style={{ zIndex: 0 }}>
             <FaNodeJs />
-          </motion.div>
-          <motion.div
-            className="absolute -bottom-8 left-14 text-yellow-500/25 text-3xl hidden lg:block animate-float-medium"
-            style={{ zIndex: 0 }}
-          >
+          </div>
+          <div className="absolute -bottom-8 left-14 text-yellow-500/30 text-3xl hidden lg:block animate-float-medium" style={{ zIndex: 0 }}>
             <FaPython />
-          </motion.div>
-          <motion.div
-            className="absolute bottom-16 right-0 text-pink-500/20 text-4xl hidden lg:block animate-float-slow"
-            style={{ zIndex: 0 }}
-          >
+          </div>
+          <div className="absolute bottom-16 right-0 text-pink-500/25 text-4xl hidden lg:block animate-float-slow" style={{ zIndex: 0 }}>
             <FaBrain />
-          </motion.div>
+          </div>
 
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
             className="hero-ring"
           />
+
           <motion.div
-            animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
+            animate={{ y: [0, -10, 0], rotate: [0, 1.2, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="hero-photo-shell relative z-10"
+            className="hero-photo-shell relative z-10 p-3 sm:p-4 rounded-[32px] bg-slate-900/60 border border-white/12 shadow-2xl"
           >
             <img
               src="/ehsan.jpg"
-              alt="Ehsan Shahid"
-              className="relative w-52 h-52 sm:w-60 sm:h-60 md:w-80 md:h-80 object-cover rounded-[28px] border border-white/10 shadow-2xl"
+              alt="Ehsan Shahid - Software Engineer"
+              className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover rounded-[26px] border border-white/10 shadow-2xl"
             />
           </motion.div>
+
           {spotlightCards.map((item, index) => (
             <motion.div
               key={item.label}
@@ -206,81 +193,64 @@ const Home = () => {
               className={`floating-panel ${item.position} z-20`}
             >
               <span className="text-lg font-bold text-white">{item.value}</span>
-              <span className="text-xs text-[#94a3b8]">{item.label}</span>
+              <span className="text-xs text-slate-400">{item.label}</span>
             </motion.div>
           ))}
         </motion.div>
       </section>
 
-      {/* Stats Section with Top-Border Glowing Neon Accent */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {[
-            { value: '30+', label: 'Projects' },
-            { value: '20+', label: 'Clients' },
-            { value: '2+', label: 'Years Exp.' },
-            { value: '100%', label: 'Delivery' },
-          ].map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="card stat-card p-4 sm:p-6 text-center cursor-default group relative overflow-hidden"
-            >
-              {/* Glowing Top Line */}
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-80 group-hover:opacity-100 group-hover:scale-x-110 transition-all duration-300" />
-              <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 transition-all duration-300 group-hover:scale-105">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-[#94a3b8]">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      {/* 2. STATS SECTION */}
+      <Stats />
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* Skills Section - Redesigned Interactive Grid */}
+      {/* 3. FEATURED SKINZY SPOTLIGHT */}
+      <SkinzySpotlight />
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 4. CATEGORIZED SKILLS OVERVIEW */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-        <Reveal as="h2" className="section-title">
-          Skills & Stack
-        </Reveal>
-        <Reveal as="p" delay={0.08} className="section-subtitle">
-          Core technologies I specialize in and apply to projects
-        </Reveal>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreSkills.map((skill, i) => (
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <Reveal as="h2" className="section-title">
+            Technical Stack & Capabilities
+          </Reveal>
+          <Reveal as="p" delay={0.08} className="section-subtitle">
+            Categorized technical stack applied across production applications
+          </Reveal>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {skillCategories.map((cat, idx) => (
             <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              key={cat.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              whileHover={{ y: -8 }}
-              className={`card p-6 sm:p-7 flex flex-col justify-between cursor-default transition-all duration-300 relative overflow-hidden group ${skill.cardClass}`}
+              transition={{ delay: idx * 0.08, duration: 0.5 }}
+              whileHover={{ y: -6 }}
+              className="card p-6 flex flex-col justify-between space-y-4 group relative"
             >
-              {/* Glowing Top Line */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/10 to-transparent group-hover:via-primary/50 transition-all duration-300" />
-              
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="text-3xl w-12 h-12 rounded-xl bg-slate-950/60 border border-white/5 flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:border-primary/20 transition-all duration-300">
-                    {skill.icon}
-                  </div>
-                  <span className="text-[10px] font-bold tracking-wider uppercase bg-[#1e293b] text-[#94a3b8] group-hover:bg-primary group-hover:text-white px-2.5 py-1 rounded-md border border-white/5 transition-colors duration-300">
-                    {skill.badge} ({skill.level})
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-white/8 pb-3">
+                  <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                    {cat.title}
+                  </h3>
+                  <span className="text-[10px] font-mono font-bold bg-primary/10 text-primary px-2.5 py-1 rounded-md border border-primary/20">
+                    {cat.skills.length} Stack Items
                   </span>
                 </div>
-                
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-slate-100 group-hover:text-primary transition-colors duration-300">
-                    {skill.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#94a3b8] leading-relaxed mt-2">
-                    {skill.desc}
-                  </p>
+                <p className="text-xs text-slate-400">{cat.description}</p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill.name}
+                      className="text-xs font-semibold px-3 py-1 rounded-lg bg-slate-950/70 border border-white/8 text-slate-200 flex items-center gap-1.5"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: skill.color }} />
+                      {skill.name}
+                    </span>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -290,15 +260,52 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* GitHub section */}
+      {/* 5. ACHIEVEMENTS SECTION */}
+      <Achievements />
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 6. GITHUB INTEGRATION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <Reveal as="h2" className="section-title">
-          GitHub
-        </Reveal>
-        <Reveal as="p" delay={0.08} className="section-subtitle">
-          My open source activity
-        </Reveal>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <Reveal as="h2" className="section-title">
+            GitHub Activity & Repositories
+          </Reveal>
+          <Reveal as="p" delay={0.08} className="section-subtitle">
+            Live commit activity, repository metrics, and open source code repositories
+          </Reveal>
+        </div>
         <GitHubOverview />
+      </section>
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 7. CERTIFICATIONS & TESTIMONIALS */}
+      <Certifications />
+      <Testimonials />
+
+      {/* BOTTOM CTA BANNER */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
+        <div className="card p-8 sm:p-12 space-y-6 relative overflow-hidden bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-primary/30 shadow-2xl">
+          <div className="text-3xl sm:text-4xl font-bold text-white">
+            Ready to hire a skilled <span className="gradient-text">Software Engineer</span>?
+          </div>
+          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
+            I am available for full-time Software Engineer, MERN Stack Developer, and React Native opportunities. Let's discuss your product requirements.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <Link to="/contact" className="btn-primary text-sm px-7 py-3">
+              Get In Touch <FaArrowRight size={12} />
+            </Link>
+            <a
+              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              className="btn-outline text-sm px-6 py-3"
+            >
+              <FaDownload size={12} className="text-primary" /> Download Resume PDF
+            </a>
+          </div>
+        </div>
       </section>
     </PageShell>
   );
