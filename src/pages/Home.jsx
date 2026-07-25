@@ -13,7 +13,6 @@ import SkinzySpotlight from '../components/SkinzySpotlight';
 import Stats from '../components/Stats';
 import Achievements from '../components/Achievements';
 import Certifications from '../components/Certifications';
-import Testimonials from '../components/Testimonials';
 import skillCategories from '../data/skills';
 import { fadeUp, scaleIn, staggerContainer } from '../lib/motion';
 
@@ -280,9 +279,8 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 7. CERTIFICATIONS & TESTIMONIALS */}
+      {/* 7. CERTIFICATIONS */}
       <Certifications />
-      <Testimonials />
 
       {/* BOTTOM CTA BANNER */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
