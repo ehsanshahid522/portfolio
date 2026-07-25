@@ -58,13 +58,6 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <a
-              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              className="text-xs text-primary font-semibold hover:underline flex items-center gap-1"
-            >
-              <FaDownload size={10} /> Download Resume
-            </a>
             <motion.button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               whileHover={{ y: -3 }}

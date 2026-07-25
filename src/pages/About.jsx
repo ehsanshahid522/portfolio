@@ -201,17 +201,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
-            <a
-              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary text-sm px-6 py-3"
-            >
-              <FaDownload size={12} /> Download Resume PDF
-            </a>
-          </div>
+
         </div>
       </section>
 

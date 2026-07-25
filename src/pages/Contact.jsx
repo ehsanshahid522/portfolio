@@ -112,18 +112,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Resume Download Box */}
-              <div className="pt-2">
-                <a
-                  href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
-                  download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary w-full justify-center text-sm py-3"
-                >
-                  <FaDownload size={14} /> Download Resume PDF
-                </a>
-              </div>
+
             </div>
 
             {/* Social Buttons */}

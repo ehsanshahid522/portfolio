@@ -78,14 +78,14 @@ const Home = () => {
             Software Engineering graduate specializing in Full Stack MERN development, React Native, and AI-powered applications. I build scalable web and mobile solutions with clean code, modern UI, and production-ready architectures.
           </motion.p>
 
-          {/* 3 CTA Buttons */}
+          {/* 2 CTA Buttons */}
           <motion.div
             variants={fadeUp}
             custom={0.3}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-3.5 pt-3"
+            className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-3"
           >
             {/* CTA 1: View Projects */}
-            <Link to="/projects" className="btn-primary text-sm sm:text-base group py-3 px-6">
+            <Link to="/projects" className="btn-primary text-sm sm:text-base group py-3 px-7">
               View Projects 
               <motion.span
                 animate={{ x: [0, 4, 0] }}
@@ -95,19 +95,8 @@ const Home = () => {
               </motion.span>
             </Link>
 
-            {/* CTA 2: Download Resume */}
-            <a
-              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-outline text-sm sm:text-base py-3 px-5 border-primary/40 hover:border-primary"
-            >
-              <FaDownload size={13} className="text-primary" /> Download Resume
-            </a>
-
-            {/* CTA 3: Contact Me */}
-            <Link to="/contact" className="btn-outline text-sm sm:text-base py-3 px-5">
+            {/* CTA 2: Contact Me */}
+            <Link to="/contact" className="btn-outline text-sm sm:text-base py-3 px-7">
               Contact Me
             </Link>
           </motion.div>
@@ -147,18 +136,24 @@ const Home = () => {
           custom={0.2}
           className="hero-visual relative flex-shrink-0 order-first md:order-last"
         >
-          {/* Tech Floating Icons */}
-          <div className="absolute -top-10 -left-10 text-cyan-400/30 text-4xl hidden lg:block animate-float-slow" style={{ zIndex: 0 }}>
+          {/* Creative Floating Tech Orbit Icons */}
+          <div className="absolute -top-12 -left-12 text-cyan-400/40 text-4xl hidden lg:block animate-float-slow drop-shadow-[0_0_12px_rgba(34,211,238,0.5)]" style={{ zIndex: 0 }}>
             <FaReact />
           </div>
-          <div className="absolute top-16 -right-12 text-emerald-500/25 text-3xl hidden lg:block animate-float-medium" style={{ zIndex: 0 }}>
+          <div className="absolute top-10 -right-14 text-emerald-400/40 text-3xl hidden lg:block animate-float-medium drop-shadow-[0_0_12px_rgba(16,185,129,0.5)]" style={{ zIndex: 0 }}>
             <FaNodeJs />
           </div>
-          <div className="absolute -bottom-8 left-14 text-yellow-500/30 text-3xl hidden lg:block animate-float-medium" style={{ zIndex: 0 }}>
+          <div className="absolute -bottom-10 left-10 text-yellow-400/40 text-3xl hidden lg:block animate-float-medium drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]" style={{ zIndex: 0 }}>
             <FaPython />
           </div>
-          <div className="absolute bottom-16 right-0 text-pink-500/25 text-4xl hidden lg:block animate-float-slow" style={{ zIndex: 0 }}>
+          <div className="absolute bottom-12 -right-10 text-pink-400/40 text-4xl hidden lg:block animate-float-slow drop-shadow-[0_0_12px_rgba(236,72,153,0.5)]" style={{ zIndex: 0 }}>
             <FaBrain />
+          </div>
+          <div className="absolute top-1/2 -left-16 -translate-y-1/2 text-purple-400/35 text-3xl hidden lg:block animate-float-fast drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]" style={{ zIndex: 0 }}>
+            <FaMobileAlt />
+          </div>
+          <div className="absolute -top-6 right-8 text-blue-400/35 text-3xl hidden lg:block animate-float-fast drop-shadow-[0_0_10px_rgba(59,130,246,0.4)]" style={{ zIndex: 0 }}>
+            <FaDatabase />
           </div>
 
           <motion.div
@@ -292,16 +287,9 @@ const Home = () => {
             I am available for full-time Software Engineer, MERN Stack Developer, and React Native opportunities. Let's discuss your product requirements.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link to="/contact" className="btn-primary text-sm px-7 py-3">
+            <Link to="/contact" className="btn-primary text-sm px-8 py-3.5">
               Get In Touch <FaArrowRight size={12} />
             </Link>
-            <a
-              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
-              className="btn-outline text-sm px-6 py-3"
-            >
-              <FaDownload size={12} className="text-primary" /> Download Resume PDF
-            </a>
           </div>
         </div>
       </section>
