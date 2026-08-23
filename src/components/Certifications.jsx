@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaReact, FaBrain, FaMobileAlt, FaCheckCircle, FaAward } from 'react-icons/fa';
 import certifications from '../data/certifications';
-import Reveal from './Reveal';
+import SectionHeader from './common/SectionHeader';
 
 const iconMap = {
   FaGraduationCap: <FaGraduationCap className="text-cyan-400" />,
@@ -14,14 +14,10 @@ const iconMap = {
 const Certifications = () => {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <Reveal as="h2" className="section-title">
-          Certifications & Degrees
-        </Reveal>
-        <Reveal as="p" delay={0.08} className="section-subtitle">
-          Academic credentials & specialized technical certifications
-        </Reveal>
-      </div>
+      <SectionHeader
+        title="Certifications & Degrees"
+        subtitle="Academic credentials & specialized technical certifications"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {certifications.map((item, idx) => (

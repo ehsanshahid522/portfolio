@@ -1,19 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import achievements from '../data/achievements';
-import Reveal from './Reveal';
+import SectionHeader from './common/SectionHeader';
 
 const Achievements = () => {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <Reveal as="h2" className="section-title">
-          Key Achievements & Milestones
-        </Reveal>
-        <Reveal as="p" delay={0.08} className="section-subtitle">
-          Proven impact across software engineering, AI deployment, and mobile platforms
-        </Reveal>
-      </div>
+      <SectionHeader
+        title="Key Achievements & Milestones"
+        subtitle="Proven impact across software engineering, AI deployment, and mobile platforms"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {achievements.map((item, idx) => (
@@ -26,7 +22,6 @@ const Achievements = () => {
             whileHover={{ y: -6 }}
             className="card p-6 flex flex-col justify-between group relative overflow-hidden"
           >
-            {/* Top Glow Accent */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent group-hover:via-accent transition-all duration-300" />
 
             <div className="space-y-4">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaBolt, FaMobileAlt, FaComments, FaRocket } from 'react-icons/fa';
-import Reveal from './Reveal';
+import SectionHeader from './common/SectionHeader';
 
 const valuePoints = [
   {
@@ -29,17 +29,11 @@ const valuePoints = [
 const WhyWorkWithMe = () => {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 relative">
-      <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
-        <Reveal as="span" className="text-xs font-mono font-bold px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary uppercase tracking-wider">
-          Client Value Guarantee
-        </Reveal>
-        <Reveal as="h2" delay={0.05} className="section-title">
-          Why Work With Me?
-        </Reveal>
-        <Reveal as="p" delay={0.1} className="section-subtitle">
-          I don't just write code — I build digital products designed to solve problems and drive business growth.
-        </Reveal>
-      </div>
+      <SectionHeader
+        tag="Client Value Guarantee"
+        title="Why Work With Me?"
+        subtitle="I don't just write code — I build digital products designed to solve problems and drive business growth."
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {valuePoints.map((item, idx) => (

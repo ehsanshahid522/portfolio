@@ -2,18 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  FaArrowRight, FaGithub, FaInstagram, FaLinkedin, 
-  FaReact, FaNodeJs, FaPython, FaBrain,
+  FaArrowRight, FaReact, FaNodeJs, FaPython, FaBrain,
   FaMobileAlt, FaWhatsapp, FaCheckCircle
 } from 'react-icons/fa';
 import GitHubOverview from '../components/GitHubOverview';
 import PageShell from '../components/PageShell';
-import Reveal from '../components/Reveal';
 import Stats from '../components/Stats';
 import WhyWorkWithMe from '../components/WhyWorkWithMe';
 import FreeConsultationBanner from '../components/FreeConsultationBanner';
 import Achievements from '../components/Achievements';
 import Certifications from '../components/Certifications';
+import SectionHeader from '../components/common/SectionHeader';
+import SocialLinks from '../components/common/SocialLinks';
 import skillCategories from '../data/skills';
 import services from '../data/services';
 import { fadeUp, scaleIn, staggerContainer } from '../lib/motion';
@@ -54,7 +54,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          {/* Headline - Sleek & balanced size */}
+          {/* Headline */}
           <motion.div variants={fadeUp} custom={0.16}>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-snug text-slate-200">
               Building Modern Web Applications & <span className="gradient-text">AI-Powered Solutions</span>
@@ -78,7 +78,7 @@ const Home = () => {
             </span>
           </motion.div>
 
-          {/* Description - Adjusted text size */}
+          {/* Description */}
           <motion.p
             variants={fadeUp}
             custom={0.24}
@@ -113,30 +113,9 @@ const Home = () => {
             </a>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div
-            variants={fadeUp}
-            custom={0.32}
-            className="flex items-center justify-center md:justify-start gap-3.5 pt-1"
-          >
-            {[
-              { icon: <FaGithub size={18} />, url: 'https://github.com/ehsanshahid522', label: 'GitHub' },
-              { icon: <FaLinkedin size={18} />, url: 'https://www.linkedin.com/in/chehsanshahid', label: 'LinkedIn' },
-              { icon: <FaInstagram size={18} />, url: 'https://instagram.com/ehsanshahid_397/', label: 'Instagram' },
-            ].map((s, i) => (
-              <motion.a
-                key={i}
-                href={s.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                whileHover={{ scale: 1.15, y: -3, color: '#818cf8' }}
-                whileTap={{ scale: 0.9 }}
-                className="social-pill text-slate-400 transition-colors"
-              >
-                {s.icon}
-              </motion.a>
-            ))}
+          {/* Centralized Social Links */}
+          <motion.div variants={fadeUp} custom={0.32}>
+            <SocialLinks />
           </motion.div>
         </motion.div>
 
@@ -210,17 +189,11 @@ const Home = () => {
 
       {/* 4. CLIENT SERVICES SECTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <Reveal as="span" className="text-xs font-mono font-bold px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary uppercase tracking-wider">
-            Solutions Offered
-          </Reveal>
-          <Reveal as="h2" delay={0.05} className="section-title">
-            Services & Expertise
-          </Reveal>
-          <Reveal as="p" delay={0.1} className="section-subtitle">
-            Tailored digital development services built to turn your vision into a scalable, high-converting product.
-          </Reveal>
-        </div>
+        <SectionHeader
+          tag="Solutions Offered"
+          title="Services & Expertise"
+          subtitle="Tailored digital development services built to turn your vision into a scalable, high-converting product."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {services.map((srv, idx) => (
@@ -271,17 +244,11 @@ const Home = () => {
 
       {/* 5. TECHNICAL STACK OVERVIEW */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <Reveal as="span" className="text-xs font-mono font-bold px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary uppercase tracking-wider">
-            Technical Stack
-          </Reveal>
-          <Reveal as="h2" delay={0.05} className="section-title">
-            Skills & Development Tools
-          </Reveal>
-          <Reveal as="p" delay={0.1} className="section-subtitle">
-            Categorized technical stack applied across production web applications and software solutions.
-          </Reveal>
-        </div>
+        <SectionHeader
+          tag="Technical Stack"
+          title="Skills & Development Tools"
+          subtitle="Categorized technical stack applied across production web applications and software solutions."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {skillCategories.map((cat, idx) => (
@@ -333,14 +300,11 @@ const Home = () => {
 
       {/* 7. GITHUB INTEGRATION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-18">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <Reveal as="h2" className="section-title">
-            GitHub Activity & Code Repositories
-          </Reveal>
-          <Reveal as="p" delay={0.08} className="section-subtitle">
-            Live commit activity, repository metrics, and open source code repositories
-          </Reveal>
-        </div>
+        <SectionHeader
+          title="GitHub Activity & Code Repositories"
+          subtitle="Live commit activity, repository metrics, and open source code repositories"
+          className="mb-8"
+        />
         <GitHubOverview />
       </section>
 

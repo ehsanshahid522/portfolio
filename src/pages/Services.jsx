@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaWhatsapp } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
-import Reveal from '../components/Reveal';
+import SectionHeader from '../components/common/SectionHeader';
 import services from '../data/services';
 import FreeConsultationBanner from '../components/FreeConsultationBanner';
 
@@ -10,17 +10,11 @@ const Services = () => {
   return (
     <PageShell>
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 space-y-16">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Reveal as="span" className="text-xs font-mono font-bold px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary uppercase tracking-wider">
-            Solutions Offered
-          </Reveal>
-          <Reveal as="h1" className="section-title text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
-            Client Services & <span className="gradient-text">Solutions</span>
-          </Reveal>
-          <Reveal as="p" delay={0.08} className="section-subtitle text-base sm:text-lg">
-            I help startups, business owners, and organizations turn ideas into fast, modern, and high-converting digital products.
-          </Reveal>
-        </div>
+        <SectionHeader
+          tag="Solutions Offered"
+          title={<>Client Services & <span className="gradient-text">Solutions</span></>}
+          subtitle="I help startups, business owners, and organizations turn ideas into fast, modern, and high-converting digital products."
+        />
 
         {/* Services List */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
