@@ -65,7 +65,7 @@ const Contact = () => {
 
             {/* WhatsApp Quick Connect Card */}
             <a
-              href="https://wa.me/923000000000?text=Hi%20Ehsan,%20I'd%20like%20to%20discuss%20a%20project."
+              href="https://wa.me/923457124397?text=Hi%20Ehsan,%20I'd%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
               className="card p-5 flex items-center justify-between group border border-emerald-500/30 hover:border-emerald-500/60 bg-slate-900/80 backdrop-blur-xl transition-all"
@@ -78,7 +78,7 @@ const Contact = () => {
                   <h3 className="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
                     Instant WhatsApp Chat
                   </h3>
-                  <p className="text-xs text-slate-400">Fastest response for urgent inquiries</p>
+                  <p className="text-xs text-slate-300 font-mono">+92 345 7124397 (0345-7124397)</p>
                 </div>
               </div>
               <span className="btn-primary text-xs py-2 px-4 bg-emerald-500 border-emerald-500 text-slate-950 hover:bg-emerald-400">

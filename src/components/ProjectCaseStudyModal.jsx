@@ -168,7 +168,7 @@ const ProjectCaseStudyModal = ({ project, onClose }) => {
               Need a similar solution for your business?
             </div>
             <a
-              href="https://wa.me/923000000000?text=Hi%20Ehsan,%20I%20saw%20your%20project%20case%20study%20and%20want%20to%20discuss%20a%20project."
+              href="https://wa.me/923457124397?text=Hi%20Ehsan,%20I%20saw%20your%20project%20case%20study%20and%20want%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
               className="btn-primary text-xs px-5 py-2.5"

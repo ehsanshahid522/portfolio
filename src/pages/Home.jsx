@@ -104,7 +104,7 @@ const Home = () => {
             </Link>
 
             <a
-              href="https://wa.me/923000000000?text=Hi%20Ehsan,%20I'd%20like%20to%20discuss%20a%20project."
+              href="https://wa.me/923457124397?text=Hi%20Ehsan,%20I'd%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
               className="btn-outline text-xs sm:text-sm py-3 px-5 flex items-center gap-2 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10"

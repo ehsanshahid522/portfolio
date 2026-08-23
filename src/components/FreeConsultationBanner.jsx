@@ -28,7 +28,7 @@ const FreeConsultationBanner = () => {
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
           <a
-            href="https://wa.me/923000000000?text=Hi%20Ehsan,%20I'd%20like%20to%20book%20a%20free%20consultation%20for%20my%20project."
+            href="https://wa.me/923457124397?text=Hi%20Ehsan,%20I'd%20like%20to%20book%20a%20free%20consultation%20for%20my%20project."
             target="_blank"
             rel="noreferrer"
             className="btn-primary text-sm sm:text-base px-8 py-3.5 flex items-center gap-2 group shadow-xl"

@@ -62,7 +62,7 @@ const Services = () => {
 
               <div className="pt-4 border-t border-white/8">
                 <a
-                  href={`https://wa.me/923000000000?text=Hi%20Ehsan,%20I'm%20interested%20in%20your%20${encodeURIComponent(srv.title)}%20service.`}
+                  href={`https://wa.me/923457124397?text=Hi%20Ehsan,%20I'm%20interested%20in%20your%20${encodeURIComponent(srv.title)}%20service.`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-primary text-xs py-3 px-6 w-full justify-center gap-2 shadow-lg"
