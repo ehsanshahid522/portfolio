@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt, FaGithub, FaExclamationTriangle, FaLightbulb, FaCheckCircle } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaExclamationTriangle, FaLightbulb } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
 import Reveal from '../components/Reveal';
 import projects from '../data/projects';

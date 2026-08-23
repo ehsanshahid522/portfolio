@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase,
-  FaAndroid, FaJava, FaGitAlt, FaGithub, FaCode, FaUsers,
-  FaComments, FaTasks, FaLightbulb, FaBriefcase, FaGraduationCap,
-  FaLaptopCode, FaCheckCircle, FaStar, FaPython, FaDocker,
-  FaServer, FaBrain, FaMicrochip, FaChartBar, FaChartLine, FaTerminal,
-  FaIdCard, FaMapMarkerAlt, FaDownload, FaMobileAlt, FaLayerGroup
+  FaAndroid, FaGitAlt, FaGithub, FaCode, FaComments, FaTasks,
+  FaBriefcase, FaGraduationCap, FaLaptopCode, FaStar, FaPython,
+  FaServer, FaBrain, FaMicrochip, FaChartLine, FaTerminal, FaMobileAlt
 } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
 import Reveal from '../components/Reveal';
-import { fadeUp, staggerContainer, scaleIn } from '../lib/motion';
+import { fadeUp } from '../lib/motion';
 
 const skillsData = [
   // Frontend
@@ -165,9 +163,8 @@ const About = () => {
             Software Engineering graduate from the University of Central Punjab (UCP), Lahore. Specialized in building production-ready web and mobile applications with clean architecture, robust security, and seamless user experiences.
           </p>
 
-          {/* 3 MANDATORY RECRUITER STRUCTURED BLOCKS */}
+          {/* 3 STRUCTURED BLOCKS */}
           <div className="grid grid-cols-1 gap-4 pt-2 text-left">
-            {/* Block 1: Who am I */}
             <div className="p-5 rounded-2xl bg-slate-950/70 border border-white/8 space-y-1">
               <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">Who Am I</span>
               <p className="text-sm font-semibold text-slate-100">
@@ -176,7 +173,6 @@ const About = () => {
               <p className="text-xs text-slate-400">Class of 2026 | Specialized in Software Engineering & AI.</p>
             </div>
 
-            {/* Block 2: What do I build */}
             <div className="p-5 rounded-2xl bg-slate-950/70 border border-white/8 space-y-1">
               <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">What Do I Build</span>
               <div className="flex flex-wrap gap-2 pt-1">
@@ -188,7 +184,6 @@ const About = () => {
               </div>
             </div>
 
-            {/* Block 3: What do I enjoy */}
             <div className="p-5 rounded-2xl bg-slate-950/70 border border-white/8 space-y-1">
               <span className="text-xs font-bold text-purple-400 uppercase tracking-wider">What Do I Enjoy</span>
               <div className="flex flex-wrap gap-2 pt-1">
@@ -200,8 +195,6 @@ const About = () => {
               </div>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -220,7 +213,7 @@ const About = () => {
 
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {categories.map((cat, idx) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -285,12 +278,10 @@ const About = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative"
             >
-              {/* Timeline dot icon */}
               <div className="absolute -left-[45px] sm:-left-[61px] top-1.5 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-950 border border-primary/40 flex items-center justify-center text-primary text-base shadow-xl">
                 {node.icon}
               </div>
 
-              {/* Node Card */}
               <div className="card p-6 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-primary bg-primary/10 px-3 py-1 rounded-md border border-primary/20">

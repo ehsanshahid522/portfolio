@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
-import { FaBars, FaTimes, FaDownload, FaBriefcase } from 'react-icons/fa';
+import { FaBars, FaTimes, FaDownload } from 'react-icons/fa';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import ThemeSelector from './ThemeSelector';
 

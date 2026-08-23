@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCheckCircle, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
+import { FaCheckCircle, FaWhatsapp } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
 import Reveal from '../components/Reveal';
 import services from '../data/services';
