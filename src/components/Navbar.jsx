@@ -40,11 +40,17 @@ const Navbar = () => {
       />
       <div className="nav-glow" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-extrabold tracking-tight relative z-10 flex items-center gap-1.5">
-          <span className="gradient-text">Ehsan</span>
-          <span className="text-primary">Shahid</span>
-          <span className="dot-accent">.</span>
-        </Link>
+        <div className="flex items-center gap-3 relative z-10">
+          <Link to="/" className="text-xl font-extrabold tracking-tight flex items-center gap-1">
+            <span className="gradient-text">Ehsan</span>
+            <span className="text-primary">Shahid</span>
+            <span className="dot-accent">.</span>
+          </Link>
+          <span className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[11px] font-semibold text-emerald-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span>Available for Work</span>
+          </span>
+        </div>
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-6 relative z-10">
