@@ -18,12 +18,82 @@
     <meta property="og:image" content="/ehsan.jpg" />
     <meta property="og:url" content="https://ehsanshahid.dev" />
 
+    <!-- Structured Data (JSON-LD for Scrapers & AI Crawlers) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ehsan Shahid",
+      "jobTitle": "Software Engineer",
+      "alumniOf": "University of Central Punjab (UCP)",
+      "knowsAbout": [
+        "Software Engineering",
+        "Full Stack MERN Development",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "React Native",
+        "AI-powered Applications",
+        "Python",
+        "JavaScript"
+      ],
+      "url": "https://ehsanshahid.dev",
+      "sameAs": [
+        "https://github.com/ehsanshahid522",
+        "https://www.linkedin.com/in/chehsanshahid",
+        "https://instagram.com/ehsanshahid_397/"
+      ],
+      "description": "Software Engineering graduate specializing in Full Stack MERN development, React Native, and AI-powered applications. Building scalable web and mobile solutions with clean code and modern architectures."
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Fallback Content for Web Scrapers & GPT Crawlers (Non-JS Readers) -->
+    <noscript>
+      <header>
+        <h1>Ehsan Shahid - Software Engineer</h1>
+        <p>BS Software Engineering Graduate — Open for Work</p>
+        <p>Specializing in Full Stack MERN Development, React Native, and AI-Powered Applications.</p>
+      </header>
+      <main>
+        <section id="about">
+          <h2>About Me</h2>
+          <p>Software Engineering graduate specializing in Full Stack MERN development, React Native, and AI-powered applications. I build scalable web and mobile solutions with clean code, modern UI, and production-ready architectures.</p>
+        </section>
+        <section id="skills">
+          <h2>Technical Stack & Capabilities</h2>
+          <ul>
+            <li>Frontend: React.js, React Native, JavaScript, HTML5, CSS3, Tailwind CSS, Vite, Redux</li>
+            <li>Backend: Node.js, Express.js, REST APIs, GraphQL, Python, FastAPI</li>
+            <li>Database: MongoDB, Mongoose, PostgreSQL, Firebase</li>
+            <li>AI & Tools: OpenAI API, Gemini API, LangChain, Git, GitHub, Vercel, Docker</li>
+          </ul>
+        </section>
+        <section id="projects">
+          <h2>Projects</h2>
+          <article>
+            <h3>Skinzy - AI Skin Cancer & Disease Detection App</h3>
+            <p>React Native mobile application integrated with AI deep learning models for real-time skin disease classification and dermatologist consultation booking.</p>
+          </article>
+          <article>
+            <h3>Full Stack E-Commerce & Portfolio Platforms</h3>
+            <p>Production-ready web applications built with MERN stack, secure authentication, and payment integrations.</p>
+          </article>
+        </section>
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>GitHub: https://github.com/ehsanshahid522</p>
+          <p>LinkedIn: https://www.linkedin.com/in/chehsanshahid</p>
+        </section>
+      </main>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
