@@ -6,15 +6,20 @@ import projects from '../data/projects';
 import ProjectCaseStudyModal from '../components/ProjectCaseStudyModal';
 import FreeConsultationBanner from '../components/FreeConsultationBanner';
 
-const categories = ['All', 'AI & Machine Learning', 'Full Stack (MERN)', 'AI & Desktop', 'Web Application'];
+const categories = ['All', 'Web Apps', 'Mobile Apps', 'AI Projects'];
+
+const filterMapping = {
+  'All': () => true,
+  'Web Apps': (p) => p.category.includes('Full Stack') || p.category.includes('Web Application'),
+  'Mobile Apps': (p) => p.category.includes('Mobile') || p.technologies.includes('React Native'),
+  'AI Projects': (p) => p.category.includes('AI') || p.technologies.includes('PyTorch') || p.technologies.includes('YOLOv8')
+};
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
 
-  const filteredProjects = selectedCategory === 'All'
-    ? projects
-    : projects.filter(p => p.category === selectedCategory);
+  const filteredProjects = projects.filter(filterMapping[selectedCategory] || (() => true));
 
   return (
     <PageShell>
@@ -22,17 +27,17 @@ const Projects = () => {
         <SectionHeader
           tag="Proven Track Record"
           title={<>Projects & <span className="gradient-text">Case Studies</span></>}
-          subtitle="Real-world full stack applications, AI deep learning models, and SaaS solutions. Each project highlights the business problem, my solution, and key engineering metrics."
+          subtitle="Real-world full stack web applications, mobile software, and AI deep learning models. Each project card highlights the business problem, solution, and key engineering metrics."
           className="mb-8"
         />
 
-        {/* Category Filters */}
+        {/* Category Filters (Point 5) */}
         <div className="flex flex-wrap items-center justify-center gap-2.5">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer border flex items-center gap-1.5 ${
+              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer border flex items-center gap-1.5 ${
                 selectedCategory === cat
                   ? 'bg-primary border-primary/50 text-white shadow-lg shadow-primary/20 scale-105'
                   : 'bg-slate-900/60 border-white/8 text-slate-400 hover:border-white/20 hover:text-white'

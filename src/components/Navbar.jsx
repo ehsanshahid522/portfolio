@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
-import { FaBars, FaTimes, FaDownload } from 'react-icons/fa';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { NavLink, Link } from 'react-router-dom';
+import { FaBars, FaTimes, FaDownload, FaBriefcase } from 'react-icons/fa';
 import ThemeSelector from './ThemeSelector';
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
-
-  React.useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
 
   const links = [
     { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Services', path: '/services' },
     { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Projects', path: '/projects' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -31,7 +26,7 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 bg-[#030712]/75 backdrop-blur-2xl border-b border-white/8"
+      className="sticky top-0 z-50 bg-[#030712]/85 backdrop-blur-2xl border-b border-white/8"
     >
       {/* Scroll indicator bar */}
       <motion.div
@@ -78,7 +73,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Theme & Resume Action CTAs */}
+        {/* Theme & Action CTAs */}
         <div className="hidden md:flex items-center gap-3 relative z-10">
           <ThemeSelector />
           <a
@@ -86,65 +81,68 @@ const Navbar = () => {
             download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="btn-outline text-xs px-4 py-2 rounded-xl flex items-center gap-2"
+            className="btn-outline text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 font-semibold"
           >
             <FaDownload size={11} className="text-primary" /> Resume
           </a>
-          <Link to="/contact" className="btn-primary text-xs px-4 py-2 rounded-xl">
-            Hire Me
+          <Link to="/contact" className="btn-primary text-xs px-4 py-2 rounded-xl font-bold shadow-lg flex items-center gap-1.5">
+            <FaBriefcase size={11} /> Hire Me
           </Link>
         </div>
 
-        {/* Mobile controls */}
+        {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center gap-2 relative z-10">
           <ThemeSelector />
-          <button className="text-xl text-[#94a3b8] p-2" onClick={() => setOpen(!open)} aria-label="Toggle Navigation">
-            {open ? <FaTimes /> : <FaBars />}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-[#94a3b8] hover:text-white focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-[#0a0a0a]/95 backdrop-blur-2xl border-b border-white/8"
-          >
-            <div className="px-6 py-5 flex flex-col gap-2">
-              {links.map((link) => (
-                <NavLink
-                  key={link.name}
-                  to={link.path}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `block text-base font-semibold py-2.5 transition-colors ${isActive ? 'text-primary' : 'text-[#94a3b8]'}`
-                  }
-                >
-                  {link.name}
-                </NavLink>
-              ))}
-              <div className="flex flex-col gap-3 pt-3 border-t border-white/10 mt-2">
-                <a
-                  href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
-                  download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-outline justify-center text-sm py-2.5 rounded-xl"
-                >
-                  <FaDownload size={12} className="text-primary" /> Download Resume
-                </a>
-                <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary justify-center text-sm py-2.5 rounded-xl">
-                  Contact Me
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden border-b border-[#334155] bg-[#030712] px-4 pt-3 pb-5 space-y-3"
+        >
+          {links.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `block text-base font-semibold py-2 px-3 rounded-lg ${isActive ? 'bg-[#1e293b] text-primary' : 'text-[#94a3b8]'}`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
+          <div className="pt-2 border-t border-[#334155] flex flex-col gap-2">
+            <a
+              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-outline text-sm py-2.5 justify-center flex items-center gap-2"
+            >
+              <FaDownload size={12} className="text-primary" /> Download Resume
+            </a>
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="btn-primary text-sm py-2.5 justify-center font-bold"
+            >
+              Hire Me
+            </Link>
+          </div>
+        </motion.div>
+      )}
     </motion.header>
   );
 };

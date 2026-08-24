@@ -9,6 +9,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import BookMeeting from './pages/BookMeeting';
+import NotFound from './pages/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
 import MouseGlow from './components/MouseGlow';
 
@@ -30,6 +31,7 @@ function AppRoutes() {
           <Route path="/book-meeting" element={<BookMeeting />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
       <Footer />

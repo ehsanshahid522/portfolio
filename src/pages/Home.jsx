@@ -3,11 +3,12 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   FaArrowRight, FaReact, FaNodeJs, FaPython, FaBrain,
-  FaMobileAlt, FaWhatsapp, FaCheckCircle, FaExclamationTriangle, FaLightbulb, FaExternalLinkAlt, FaGithub
+  FaMobileAlt, FaWhatsapp, FaCheckCircle, FaExclamationTriangle, FaLightbulb, FaGithub, FaDownload
 } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/common/SectionHeader';
 import SocialLinks from '../components/common/SocialLinks';
+import CurrentlyBuilding from '../components/CurrentlyBuilding';
 import DevelopmentProcess from '../components/DevelopmentProcess';
 import WhyWorkWithMe from '../components/WhyWorkWithMe';
 import FreeConsultationBanner from '../components/FreeConsultationBanner';
@@ -32,7 +33,7 @@ const Home = () => {
 
   return (
     <PageShell>
-      {/* 1. HERO SECTION - Killer Client Conversion Headline */}
+      {/* 1. HERO SECTION - Focused Positioning (Point 20) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative">
         <motion.div
           variants={staggerContainer}
@@ -50,30 +51,36 @@ const Home = () => {
             <span>🟢 Available for Freelance Projects</span>
           </motion.div>
 
-          {/* Greeting & Name */}
+          {/* Greeting & Focused Title (Point 20) */}
           <motion.div variants={fadeUp} custom={0.12} className="space-y-1.5">
             <p className="text-lg sm:text-xl font-bold text-primary tracking-wide">
               👋 Hi, I'm Ehsan Shahid
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              I Build Modern Web Applications & <span className="gradient-text">AI-Powered Solutions</span>
+              Full Stack Developer
             </h1>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-200">
+              Building Web, Mobile & <span className="gradient-text">AI-Powered Applications</span>
+            </h2>
           </motion.div>
 
-          {/* Tech Subtitle Badges */}
+          {/* Stack Pills (Point 20) */}
           <motion.div
             variants={fadeUp}
             custom={0.18}
             className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1"
           >
             <span className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold flex items-center gap-1.5">
-              <FaReact /> MERN Stack Specialist
-            </span>
-            <span className="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold flex items-center gap-1.5">
-              <FaMobileAlt /> React Native Apps
+              <FaReact /> React
             </span>
             <span className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-1.5">
-              <FaBrain /> AI Integration Specialist
+              <FaNodeJs /> Node.js
+            </span>
+            <span className="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold flex items-center gap-1.5">
+              <FaMobileAlt /> React Native
+            </span>
+            <span className="px-3 py-1 rounded-lg bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs font-semibold flex items-center gap-1.5">
+              <FaBrain /> AI Integration
             </span>
           </motion.div>
 
@@ -86,14 +93,14 @@ const Home = () => {
             Full Stack Developer specializing in MERN Stack. I help startups and businesses turn ideas into fast, scalable and user-friendly digital products.
           </motion.p>
 
-          {/* 2 Main Action CTAs */}
+          {/* 3 Action Buttons (Point 2: View Projects | Download CV | Let's Work Together) */}
           <motion.div
             variants={fadeUp}
             custom={0.28}
-            className="flex flex-wrap items-center justify-center md:justify-start gap-3.5 pt-2"
+            className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2"
           >
-            <Link to="/projects" className="btn-primary text-xs sm:text-sm group py-3.5 px-7 shadow-xl">
-              View My Work
+            <Link to="/projects" className="btn-primary text-xs sm:text-sm group py-3 px-5 shadow-xl">
+              View Projects
               <motion.span
                 animate={{ x: [0, 4, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -103,12 +110,22 @@ const Home = () => {
             </Link>
 
             <a
+              href="/Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              download="Ehsan_Shahid_Software_Engineer_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-outline text-xs sm:text-sm py-3 px-5 flex items-center gap-1.5 border-white/20 text-slate-200 font-semibold hover:border-primary"
+            >
+              <FaDownload size={12} className="text-primary" /> Download CV ↓
+            </a>
+
+            <a
               href="https://wa.me/923457124397?text=Hi%20Ehsan,%20I'd%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
-              className="btn-outline text-xs sm:text-sm py-3.5 px-6 flex items-center gap-2 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10 font-bold"
+              className="btn-outline text-xs sm:text-sm py-3 px-5 flex items-center gap-2 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10 font-bold"
             >
-              <FaWhatsapp size={16} /> Let's Work Together
+              <FaWhatsapp size={15} /> Let's Work Together
             </a>
           </motion.div>
 
@@ -181,7 +198,12 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 3. CLIENT SERVICES SECTION (Priority 2) */}
+      {/* 3. CURRENTLY BUILDING SPOTLIGHT (Point 6) */}
+      <CurrentlyBuilding />
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 4. CLIENT SERVICES SECTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Solutions Offered"
@@ -239,7 +261,7 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 4. FEATURED PROJECTS SHOWCASE WITH CASE STUDY MODAL (Priority 3 & 4) */}
+      {/* 5. FEATURED PROJECTS SHOWCASE WITH CASE STUDY MODAL */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Proven Track Record"
@@ -283,7 +305,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                {/* Requested Visual Feature Badges (Priority 3) */}
+                {/* Feature Badges */}
                 <div className="flex flex-wrap gap-2 py-1">
                   {proj.featureBadges?.map(badge => (
                     <span key={badge} className="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-950/90 border border-cyan-500/25 text-cyan-300">
@@ -308,13 +330,13 @@ const Home = () => {
                   </div>
                 </div>
 
-                {/* Action Buttons (Priority 3) */}
+                {/* Action Buttons (Point 4: 🌐 View Live Project) */}
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   <button
                     onClick={() => setSelectedCaseStudy(proj)}
-                    className="btn-primary text-xs py-2.5 px-5 shadow-lg"
+                    className="btn-primary text-xs py-2.5 px-5 shadow-lg font-bold"
                   >
-                    Case Study →
+                    📸 Case Study
                   </button>
 
                   {proj.liveUrl && (
@@ -322,9 +344,9 @@ const Home = () => {
                       href={proj.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-outline text-xs py-2.5 px-4"
+                      className="btn-outline text-xs py-2.5 px-4 font-semibold"
                     >
-                      Live Demo →
+                      🌐 View Live Project
                     </a>
                   )}
 
@@ -333,7 +355,7 @@ const Home = () => {
                       href={proj.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-outline text-xs py-2.5 px-4"
+                      className="btn-outline text-xs py-2.5 px-4 font-semibold flex items-center gap-1.5"
                     >
                       <FaGithub size={13} /> View Code
                     </a>
@@ -345,7 +367,7 @@ const Home = () => {
         </div>
 
         <div className="text-center pt-8">
-          <Link to="/projects" className="btn-outline text-xs sm:text-sm py-3 px-8 inline-flex items-center gap-2">
+          <Link to="/projects" className="btn-outline text-xs sm:text-sm py-3 px-8 inline-flex items-center gap-2 font-semibold">
             View All Projects & Code <FaArrowRight size={12} />
           </Link>
         </div>
@@ -353,17 +375,17 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 5. DEVELOPMENT PROCESS SECTION (Priority 13) */}
+      {/* 6. DEVELOPMENT PROCESS SECTION */}
       <DevelopmentProcess />
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 6. WHY WORK WITH ME (Priority 5) */}
+      {/* 7. WHY WORK WITH ME */}
       <WhyWorkWithMe />
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 7. TECHNICAL STACK OVERVIEW (Priority 9) */}
+      {/* 8. TECHNICAL STACK OVERVIEW */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Technical Stack"
@@ -414,12 +436,12 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 8. ACHIEVEMENTS & MILESTONES */}
+      {/* 9. ACHIEVEMENTS & MILESTONES */}
       <Achievements />
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 9. GITHUB INTEGRATION (Priority 11) */}
+      {/* 10. GITHUB INTEGRATION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-18">
         <SectionHeader
           title="GitHub Activity & Repositories"
@@ -431,13 +453,13 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 10. CERTIFICATIONS */}
+      {/* 11. CERTIFICATIONS */}
       <Certifications />
 
-      {/* 11. FINAL CTA BANNER (Priority 6) */}
+      {/* 12. FINAL CTA BANNER */}
       <FreeConsultationBanner />
 
-      {/* 12. CONTACT FORM SECTION WITH BUDGET FILTER (Priority 7) */}
+      {/* 13. CONTACT FORM SECTION WITH BUDGET FILTER */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <ContactForm />
       </section>
