@@ -1,59 +1,73 @@
 const services = [
   {
     id: "business-websites",
-    title: "Business & Startup Websites",
-    shortDesc: "Modern, ultra-fast, and responsive websites designed to convert visitors into loyal clients.",
-    description: "I build modern, high-performance websites for businesses and startups using React, Next.js, and Tailwind CSS. Tailored with clean UI/UX, SEO best practices, and fast load times to ensure maximum client conversions.",
+    title: "Business Websites",
+    shortDesc: "Fast, modern, and responsive websites for businesses.",
+    description: "I build high-performance, responsive websites for startups and established businesses using React, Next.js, and Tailwind CSS. Built to create a stunning online presence and convert visitors into clients.",
     icon: "🌐",
     features: [
-      "Custom Pixel-Perfect UI/UX Design",
-      "SEO & OpenGraph Social Meta Tags",
-      "100% Mobile & Desktop Responsive",
-      "Ultra-Fast Load Times & Performance"
+      "Custom Responsive UI/UX Design",
+      "SEO Meta Tags & Fast Performance",
+      "Mobile & Desktop Optimization",
+      "Clean Contact & Lead Forms"
     ],
-    ctaText: "Get a Custom Website →"
+    ctaText: "Get a Business Website →"
   },
   {
-    id: "ecommerce-development",
-    title: "E-Commerce Development",
-    shortDesc: "Custom online stores and shopping platforms engineered for seamless transactions.",
-    description: "Complete full-stack e-commerce solutions featuring product catalogs, shopping carts, secure payment gateway integrations, order analytics dashboards, and admin control panels.",
+    id: "ecommerce-websites",
+    title: "E-Commerce Websites",
+    shortDesc: "Custom online stores with product management and ordering systems.",
+    description: "Complete e-commerce platforms featuring custom product catalogs, shopping carts, secure payment gateways, inventory management, and intuitive admin dashboards.",
     icon: "🛒",
     features: [
-      "Product Catalog & Filter Systems",
-      "Secure Shopping Cart & Checkout",
-      "Stripe / Payment Gateway Integration",
-      "Admin Dashboard for Inventory & Sales"
+      "Product Catalog & Search Filters",
+      "Shopping Cart & Checkout Flow",
+      "Stripe & Payment Integrations",
+      "Sales Analytics & Admin Dashboard"
     ],
-    ctaText: "Build Your Store →"
+    ctaText: "Build Your Online Store →"
   },
   {
     id: "custom-web-apps",
-    title: "Custom MERN Web Applications",
-    shortDesc: "Scalable web applications, SaaS platforms, and interactive dashboards.",
-    description: "Custom software and web apps built on the MERN stack (MongoDB, Express, React, Node.js). Designed with role-based authentication, real-time data flow, and scalable database architecture.",
+    title: "Custom Web Applications",
+    shortDesc: "Dashboards, admin panels, SaaS platforms, and custom systems.",
+    description: "Tailored full-stack web software built with the MERN stack (MongoDB, Express, React, Node.js). Engineered with secure user authentication, role controls, and scalable databases.",
     icon: "💻",
     features: [
-      "Role-Based User Authentication (JWT)",
-      "Interactive Analytics & Data Visualizations",
-      "RESTful API & Database Architecture",
-      "Production-Ready Cloud Deployment"
+      "JWT Authentication & Role Control",
+      "Interactive Analytics & Dashboards",
+      "Scalable RESTful API Backend",
+      "Cloud Deployment & Database Setup"
     ],
-    ctaText: "Develop Your App →"
+    ctaText: "Develop Your Web App →"
   },
   {
-    id: "ai-integration",
-    title: "AI Integration & Automation",
-    shortDesc: "AI chatbots, LLM integration, intelligent workflows, and predictive ML models.",
-    description: "Transform your product with modern AI features. I integrate OpenAI API, Google Gemini, LangChain AI agents, PyTorch deep learning models, and computer vision (OpenCV/YOLOv8) into web & mobile applications.",
+    id: "ai-applications",
+    title: "AI-Powered Applications",
+    shortDesc: "AI chatbots, AI integrations, and intelligent web applications.",
+    description: "Supercharge your business with cutting-edge AI features. I integrate OpenAI API, Google Gemini, LangChain AI agents, PyTorch deep learning, and computer vision model microservices.",
     icon: "🤖",
     features: [
-      "OpenAI & Gemini API Integrations",
-      "AI Chatbots & Intelligent Assistant Tools",
-      "Automated Computer Vision & Image Analysis",
-      "Custom ML Model Microservices (FastAPI)"
+      "OpenAI & Gemini API Integration",
+      "Intelligent Chatbots & Assistants",
+      "AI Image Analysis & Computer Vision",
+      "FastAPI Python Model Endpoints"
     ],
-    ctaText: "Integrate AI Solutions →"
+    ctaText: "Integrate AI Features →"
+  },
+  {
+    id: "mobile-applications",
+    title: "Mobile Applications",
+    shortDesc: "Cross-platform mobile applications using React Native.",
+    description: "Build fast, native-feeling mobile apps for iOS and Android using React Native and Expo. Seamless API integration, smooth animations, and clean UI components.",
+    icon: "📱",
+    features: [
+      "iOS & Android Cross-Platform Code",
+      "React Native & Expo Ecosystem",
+      "REST API & Database Integration",
+      "Push Notifications & Offline State"
+    ],
+    ctaText: "Build a Mobile App →"
   }
 ];
 

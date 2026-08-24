@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   FaArrowRight, FaReact, FaNodeJs, FaPython, FaBrain,
-  FaMobileAlt, FaWhatsapp, FaCheckCircle
+  FaMobileAlt, FaWhatsapp, FaCheckCircle, FaExclamationTriangle, FaLightbulb, FaExternalLinkAlt, FaGithub
 } from 'react-icons/fa';
-import GitHubOverview from '../components/GitHubOverview';
 import PageShell from '../components/PageShell';
-import Stats from '../components/Stats';
-import WhyWorkWithMe from '../components/WhyWorkWithMe';
-import FreeConsultationBanner from '../components/FreeConsultationBanner';
-import Achievements from '../components/Achievements';
-import Certifications from '../components/Certifications';
 import SectionHeader from '../components/common/SectionHeader';
 import SocialLinks from '../components/common/SocialLinks';
+import DevelopmentProcess from '../components/DevelopmentProcess';
+import WhyWorkWithMe from '../components/WhyWorkWithMe';
+import FreeConsultationBanner from '../components/FreeConsultationBanner';
+import ContactForm from '../components/ContactForm';
+import ProjectCaseStudyModal from '../components/ProjectCaseStudyModal';
+import GitHubOverview from '../components/GitHubOverview';
+import Achievements from '../components/Achievements';
+import Certifications from '../components/Certifications';
+import Stats from '../components/Stats';
 import skillCategories from '../data/skills';
 import services from '../data/services';
+import projects from '../data/projects';
 import { fadeUp, scaleIn, staggerContainer } from '../lib/motion';
 
 const spotlightCards = [
@@ -24,9 +28,11 @@ const spotlightCards = [
 ];
 
 const Home = () => {
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
+
   return (
     <PageShell>
-      {/* 1. HERO SECTION - Clean, perfectly sized font & layout */}
+      {/* 1. HERO SECTION - Killer Client Conversion Headline */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative">
         <motion.div
           variants={staggerContainer}
@@ -38,63 +44,56 @@ const Home = () => {
           <motion.div
             variants={fadeUp}
             custom={0.05}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 text-xs font-semibold text-emerald-400 shadow-md backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-xs font-semibold text-emerald-400 shadow-md backdrop-blur-md"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>🟢 Available for Freelance & Full-Time Work</span>
+            <span>🟢 Available for Freelance Projects</span>
           </motion.div>
 
-          {/* Name & Title */}
+          {/* Greeting & Name */}
           <motion.div variants={fadeUp} custom={0.12} className="space-y-1.5">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              Ehsan Shahid
-            </h1>
             <p className="text-lg sm:text-xl font-bold text-primary tracking-wide">
-              Software Engineer & Full Stack Developer
+              👋 Hi, I'm Ehsan Shahid
             </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              I Build Modern Web Applications & <span className="gradient-text">AI-Powered Solutions</span>
+            </h1>
           </motion.div>
 
-          {/* Headline */}
-          <motion.div variants={fadeUp} custom={0.16}>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-snug text-slate-200">
-              Building Modern Web Applications & <span className="gradient-text">AI-Powered Solutions</span>
-            </h2>
-          </motion.div>
-
-          {/* Tech Subtitle Pills */}
+          {/* Tech Subtitle Badges */}
           <motion.div
             variants={fadeUp}
-            custom={0.2}
+            custom={0.18}
             className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1"
           >
             <span className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold flex items-center gap-1.5">
-              <FaReact /> Full Stack MERN
+              <FaReact /> MERN Stack Specialist
             </span>
             <span className="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold flex items-center gap-1.5">
               <FaMobileAlt /> React Native Apps
             </span>
             <span className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-1.5">
-              <FaBrain /> AI Integration
+              <FaBrain /> AI Integration Specialist
             </span>
           </motion.div>
 
-          {/* Description */}
+          {/* Client Description */}
           <motion.p
             variants={fadeUp}
             custom={0.24}
             className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed"
           >
-            Software Engineering graduate specializing in React, Node.js, MERN Stack, and AI integrations. I help startups and businesses turn ideas into fast, modern, and scalable digital products.
+            Full Stack Developer specializing in MERN Stack. I help startups and businesses turn ideas into fast, scalable and user-friendly digital products.
           </motion.p>
 
-          {/* Action CTAs */}
+          {/* 2 Main Action CTAs */}
           <motion.div
             variants={fadeUp}
             custom={0.28}
             className="flex flex-wrap items-center justify-center md:justify-start gap-3.5 pt-2"
           >
-            <Link to="/projects" className="btn-primary text-xs sm:text-sm group py-3 px-6">
-              View All Projects
+            <Link to="/projects" className="btn-primary text-xs sm:text-sm group py-3.5 px-7 shadow-xl">
+              View My Work
               <motion.span
                 animate={{ x: [0, 4, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -107,13 +106,13 @@ const Home = () => {
               href="https://wa.me/923457124397?text=Hi%20Ehsan,%20I'd%20like%20to%20discuss%20a%20project."
               target="_blank"
               rel="noreferrer"
-              className="btn-outline text-xs sm:text-sm py-3 px-5 flex items-center gap-2 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10"
+              className="btn-outline text-xs sm:text-sm py-3.5 px-6 flex items-center gap-2 border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10 font-bold"
             >
-              <FaWhatsapp size={15} /> Let's Work Together
+              <FaWhatsapp size={16} /> Let's Work Together
             </a>
           </motion.div>
 
-          {/* Centralized Social Links */}
+          {/* Social Links */}
           <motion.div variants={fadeUp} custom={0.32}>
             <SocialLinks />
           </motion.div>
@@ -153,7 +152,7 @@ const Home = () => {
           >
             <img
               src="/ehsan.jpg"
-              alt="Ehsan Shahid - Software Engineer"
+              alt="Ehsan Shahid - Full Stack Developer"
               className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 object-cover rounded-[22px] border border-white/10 shadow-2xl"
             />
           </motion.div>
@@ -182,20 +181,15 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 3. WHY WORK WITH ME */}
-      <WhyWorkWithMe />
-
-      <div className="section-divider max-w-6xl mx-auto" />
-
-      {/* 4. CLIENT SERVICES SECTION */}
+      {/* 3. CLIENT SERVICES SECTION (Priority 2) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Solutions Offered"
-          title="Services & Expertise"
+          title="What I Can Build For You"
           subtitle="Tailored digital development services built to turn your vision into a scalable, high-converting product."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((srv, idx) => (
             <motion.div
               key={srv.id}
@@ -204,14 +198,17 @@ const Home = () => {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.08, duration: 0.5 }}
               whileHover={{ y: -5 }}
-              className="card p-6 sm:p-8 flex flex-col justify-between space-y-6 group border border-white/8 hover:border-primary/40 bg-slate-900/70 backdrop-blur-xl"
+              className="card p-6 sm:p-7 flex flex-col justify-between space-y-5 group border border-white/8 hover:border-primary/40 bg-slate-900/70 backdrop-blur-xl"
             >
               <div className="space-y-4">
                 <div className="flex items-center gap-3 border-b border-white/8 pb-4">
                   <span className="text-3xl p-2.5 rounded-2xl bg-slate-950/80 border border-white/10">{srv.icon}</span>
-                  <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
-                    {srv.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                      {srv.title}
+                    </h3>
+                    <p className="text-[11px] text-primary font-medium">{srv.shortDesc}</p>
+                  </div>
                 </div>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {srv.description}
@@ -242,11 +239,135 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 5. TECHNICAL STACK OVERVIEW */}
+      {/* 4. FEATURED PROJECTS SHOWCASE WITH CASE STUDY MODAL (Priority 3 & 4) */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+        <SectionHeader
+          tag="Proven Track Record"
+          title="Featured Projects & Case Studies"
+          subtitle="Real-world applications with visual feature badges and detailed engineering case studies."
+        />
+
+        <div className="space-y-10">
+          {projects.filter(p => p.featured).map((proj, idx) => (
+            <motion.div
+              key={proj.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="card p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-white/10 hover:border-primary/40 bg-slate-900/80 backdrop-blur-2xl"
+            >
+              {/* Image Preview */}
+              <div className="lg:col-span-5 relative group overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+                <img
+                  src={proj.image}
+                  alt={proj.title}
+                  className="w-full h-52 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80" />
+                <div className="absolute bottom-3 left-3 z-10">
+                  <span className="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-slate-900/90 border border-primary/30 text-primary backdrop-blur-md">
+                    {proj.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Project Details */}
+              <div className="lg:col-span-7 space-y-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    {proj.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+                    {proj.tagline}
+                  </p>
+                </div>
+
+                {/* Requested Visual Feature Badges (Priority 3) */}
+                <div className="flex flex-wrap gap-2 py-1">
+                  {proj.featureBadges?.map(badge => (
+                    <span key={badge} className="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-950/90 border border-cyan-500/25 text-cyan-300">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Problem & Solution */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="p-3 rounded-xl bg-rose-950/20 border border-rose-500/20 text-xs text-slate-300 space-y-0.5">
+                    <span className="font-bold text-rose-400 flex items-center gap-1">
+                      <FaExclamationTriangle size={11} /> Problem:
+                    </span>
+                    <p>{proj.problem}</p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/20 text-xs text-slate-300 space-y-0.5">
+                    <span className="font-bold text-emerald-400 flex items-center gap-1">
+                      <FaLightbulb size={11} /> Solution:
+                    </span>
+                    <p>{proj.solution}</p>
+                  </div>
+                </div>
+
+                {/* Action Buttons (Priority 3) */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    onClick={() => setSelectedCaseStudy(proj)}
+                    className="btn-primary text-xs py-2.5 px-5 shadow-lg"
+                  >
+                    Case Study →
+                  </button>
+
+                  {proj.liveUrl && (
+                    <a
+                      href={proj.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-outline text-xs py-2.5 px-4"
+                    >
+                      Live Demo →
+                    </a>
+                  )}
+
+                  {proj.githubUrl && (
+                    <a
+                      href={proj.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-outline text-xs py-2.5 px-4"
+                    >
+                      <FaGithub size={13} /> View Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center pt-8">
+          <Link to="/projects" className="btn-outline text-xs sm:text-sm py-3 px-8 inline-flex items-center gap-2">
+            View All Projects & Code <FaArrowRight size={12} />
+          </Link>
+        </div>
+      </section>
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 5. DEVELOPMENT PROCESS SECTION (Priority 13) */}
+      <DevelopmentProcess />
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 6. WHY WORK WITH ME (Priority 5) */}
+      <WhyWorkWithMe />
+
+      <div className="section-divider max-w-6xl mx-auto" />
+
+      {/* 7. TECHNICAL STACK OVERVIEW (Priority 9) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Technical Stack"
-          title="Skills & Development Tools"
+          title="Skills & Technologies"
           subtitle="Categorized technical stack applied across production web applications and software solutions."
         />
 
@@ -293,15 +414,15 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 6. ACHIEVEMENTS SECTION */}
+      {/* 8. ACHIEVEMENTS & MILESTONES */}
       <Achievements />
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 7. GITHUB INTEGRATION */}
+      {/* 9. GITHUB INTEGRATION (Priority 11) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-18">
         <SectionHeader
-          title="GitHub Activity & Code Repositories"
+          title="GitHub Activity & Repositories"
           subtitle="Live commit activity, repository metrics, and open source code repositories"
           className="mb-8"
         />
@@ -310,11 +431,24 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 8. CERTIFICATIONS */}
+      {/* 10. CERTIFICATIONS */}
       <Certifications />
 
-      {/* 9. FREE PROJECT CONSULTATION BANNER */}
+      {/* 11. FINAL CTA BANNER (Priority 6) */}
       <FreeConsultationBanner />
+
+      {/* 12. CONTACT FORM SECTION WITH BUDGET FILTER (Priority 7) */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+        <ContactForm />
+      </section>
+
+      {/* CASE STUDY MODAL */}
+      {selectedCaseStudy && (
+        <ProjectCaseStudyModal
+          project={selectedCaseStudy}
+          onClose={() => setSelectedCaseStudy(null)}
+        />
+      )}
     </PageShell>
   );
 };
