@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaArrowUp, FaEnvelope, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaArrowUp } from 'react-icons/fa';
+import SocialLinks from './common/SocialLinks';
 
 const Footer = () => {
   return (
@@ -19,31 +20,12 @@ const Footer = () => {
               Ehsan<span className="text-primary">Shahid</span><span className="dot-accent">.</span>
             </div>
             <p className="text-xs text-slate-400">
-              Software Engineer | Full Stack MERN | React Native | AI Applications
+              Full Stack Developer | MERN Stack | React Native | AI Applications
             </p>
           </div>
 
-          {/* Social Pills */}
-          <div className="flex items-center gap-3">
-            {[
-              { icon: <FaGithub size={18} />, url: 'https://github.com/ehsanshahid522', label: 'GitHub' },
-              { icon: <FaLinkedin size={18} />, url: 'https://www.linkedin.com/in/chehsanshahid', label: 'LinkedIn' },
-              { icon: <FaInstagram size={18} />, url: 'https://instagram.com/ehsanshahid_397/', label: 'Instagram' },
-              { icon: <FaEnvelope size={18} />, url: 'mailto:ehsanshahid522@gmail.com', label: 'Email' },
-            ].map((s, i) => (
-              <motion.a
-                key={i}
-                href={s.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                whileHover={{ y: -3, scale: 1.1 }}
-                className="w-10 h-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/40 transition-colors"
-              >
-                {s.icon}
-              </motion.a>
-            ))}
-          </div>
+          {/* Centralized Social Links */}
+          <SocialLinks className="flex items-center gap-3" />
         </div>
 
         {/* Divider */}

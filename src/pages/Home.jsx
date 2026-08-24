@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   FaArrowRight, FaReact, FaNodeJs, FaPython, FaBrain,
-  FaMobileAlt, FaWhatsapp, FaCheckCircle, FaExclamationTriangle, FaLightbulb, FaGithub, FaDownload
+  FaMobileAlt, FaWhatsapp, FaDownload
 } from 'react-icons/fa';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/common/SectionHeader';
 import SocialLinks from '../components/common/SocialLinks';
+import ProjectCard from '../components/common/ProjectCard';
+import ServiceCard from '../components/common/ServiceCard';
 import CurrentlyBuilding from '../components/CurrentlyBuilding';
 import DevelopmentProcess from '../components/DevelopmentProcess';
 import WhyWorkWithMe from '../components/WhyWorkWithMe';
@@ -33,7 +35,7 @@ const Home = () => {
 
   return (
     <PageShell>
-      {/* 1. HERO SECTION - Focused Positioning (Point 20) */}
+      {/* 1. HERO SECTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative">
         <motion.div
           variants={staggerContainer}
@@ -51,7 +53,7 @@ const Home = () => {
             <span>🟢 Available for Freelance Projects</span>
           </motion.div>
 
-          {/* Greeting & Focused Title (Point 20) */}
+          {/* Greeting & Focused Title */}
           <motion.div variants={fadeUp} custom={0.12} className="space-y-1.5">
             <p className="text-lg sm:text-xl font-bold text-primary tracking-wide">
               👋 Hi, I'm Ehsan Shahid
@@ -64,7 +66,7 @@ const Home = () => {
             </h2>
           </motion.div>
 
-          {/* Stack Pills (Point 20) */}
+          {/* Stack Pills */}
           <motion.div
             variants={fadeUp}
             custom={0.18}
@@ -93,7 +95,7 @@ const Home = () => {
             Full Stack Developer specializing in MERN Stack. I help startups and businesses turn ideas into fast, scalable and user-friendly digital products.
           </motion.p>
 
-          {/* 3 Action Buttons (Point 2: View Projects | Download CV | Let's Work Together) */}
+          {/* 3 Action Buttons */}
           <motion.div
             variants={fadeUp}
             custom={0.28}
@@ -198,12 +200,12 @@ const Home = () => {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 3. CURRENTLY BUILDING SPOTLIGHT (Point 6) */}
+      {/* 3. CURRENTLY BUILDING SPOTLIGHT */}
       <CurrentlyBuilding />
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 4. CLIENT SERVICES SECTION */}
+      {/* 4. CLIENT SERVICES SECTION (Using Centralized ServiceCard) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Solutions Offered"
@@ -213,55 +215,14 @@ const Home = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((srv, idx) => (
-            <motion.div
-              key={srv.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.08, duration: 0.5 }}
-              whileHover={{ y: -5 }}
-              className="card p-6 sm:p-7 flex flex-col justify-between space-y-5 group border border-white/8 hover:border-primary/40 bg-slate-900/70 backdrop-blur-xl"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 border-b border-white/8 pb-4">
-                  <span className="text-3xl p-2.5 rounded-2xl bg-slate-950/80 border border-white/10">{srv.icon}</span>
-                  <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors">
-                      {srv.title}
-                    </h3>
-                    <p className="text-[11px] text-primary font-medium">{srv.shortDesc}</p>
-                  </div>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {srv.description}
-                </p>
-
-                <div className="space-y-2 pt-1">
-                  {srv.features.map((f, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-slate-400">
-                      <FaCheckCircle className="text-primary size-3 flex-shrink-0" />
-                      <span>{f}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  to="/contact"
-                  className="btn-outline text-xs py-2.5 px-5 w-full justify-center group-hover:bg-primary group-hover:text-slate-950 group-hover:border-primary transition-all font-semibold"
-                >
-                  {srv.ctaText}
-                </Link>
-              </div>
-            </motion.div>
+            <ServiceCard key={srv.id} service={srv} index={idx} isServicePage={false} />
           ))}
         </div>
       </section>
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* 5. FEATURED PROJECTS SHOWCASE WITH CASE STUDY MODAL */}
+      {/* 5. FEATURED PROJECTS SHOWCASE (Using Centralized ProjectCard) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
         <SectionHeader
           tag="Proven Track Record"
@@ -269,100 +230,13 @@ const Home = () => {
           subtitle="Real-world applications with visual feature badges and detailed engineering case studies."
         />
 
-        <div className="space-y-10">
-          {projects.filter(p => p.featured).map((proj, idx) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.filter(p => p.featured).map((proj) => (
+            <ProjectCard
               key={proj.id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="card p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-white/10 hover:border-primary/40 bg-slate-900/80 backdrop-blur-2xl"
-            >
-              {/* Image Preview */}
-              <div className="lg:col-span-5 relative group overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className="w-full h-52 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80" />
-                <div className="absolute bottom-3 left-3 z-10">
-                  <span className="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-slate-900/90 border border-primary/30 text-primary backdrop-blur-md">
-                    {proj.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Project Details */}
-              <div className="lg:col-span-7 space-y-4">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">
-                    {proj.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
-                    {proj.tagline}
-                  </p>
-                </div>
-
-                {/* Feature Badges */}
-                <div className="flex flex-wrap gap-2 py-1">
-                  {proj.featureBadges?.map(badge => (
-                    <span key={badge} className="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-950/90 border border-cyan-500/25 text-cyan-300">
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Problem & Solution */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-3 rounded-xl bg-rose-950/20 border border-rose-500/20 text-xs text-slate-300 space-y-0.5">
-                    <span className="font-bold text-rose-400 flex items-center gap-1">
-                      <FaExclamationTriangle size={11} /> Problem:
-                    </span>
-                    <p>{proj.problem}</p>
-                  </div>
-                  <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/20 text-xs text-slate-300 space-y-0.5">
-                    <span className="font-bold text-emerald-400 flex items-center gap-1">
-                      <FaLightbulb size={11} /> Solution:
-                    </span>
-                    <p>{proj.solution}</p>
-                  </div>
-                </div>
-
-                {/* Action Buttons (Point 4: 🌐 View Live Project) */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
-                  <button
-                    onClick={() => setSelectedCaseStudy(proj)}
-                    className="btn-primary text-xs py-2.5 px-5 shadow-lg font-bold"
-                  >
-                    📸 Case Study
-                  </button>
-
-                  {proj.liveUrl && (
-                    <a
-                      href={proj.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-outline text-xs py-2.5 px-4 font-semibold"
-                    >
-                      🌐 View Live Project
-                    </a>
-                  )}
-
-                  {proj.githubUrl && (
-                    <a
-                      href={proj.githubUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-outline text-xs py-2.5 px-4 font-semibold flex items-center gap-1.5"
-                    >
-                      <FaGithub size={13} /> View Code
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+              project={proj}
+              onSelectCaseStudy={setSelectedCaseStudy}
+            />
           ))}
         </div>
 
