@@ -1,12 +1,57 @@
-# React + Vite
+# Ehsan Shahid — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal website for presenting software projects, development services and ways to get in touch.
 
-Currently, two official plugins are available:
+**Live website: [ehsanshahid.online](https://ehsanshahid.online/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Website sections
 
-## Expanding the ESLint configuration
+- Introduction and availability.
+- Web, mobile and AI development services.
+- Project summaries, case studies and repository links.
+- About, technical skills and background.
+- Contact details and project enquiry form.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Stack
+
+React 19 · Vite 7 · React Router · Tailwind CSS · Framer Motion · React Icons
+
+The project also includes the EmailJS browser SDK for contact-form integration.
+
+## Run locally
+
+Use a Node.js version compatible with the repository's Vite tooling.
+
+~~~bash
+git clone https://github.com/ehsanshahid522/portfolio.git
+cd portfolio
+npm install
+npm run dev
+~~~
+
+Open the local URL printed by Vite.
+
+## Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Generate the production site in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run the configured ESLint checks |
+
+## Repository guide
+
+| Location | Purpose |
+| --- | --- |
+| `src/` | Application pages, components and styling |
+| `public/` | Public images, documents and static assets |
+| `index.html` | HTML entry point |
+| `vite.config.js` | Vite configuration |
+| `vercel.json` | Deployment and routing configuration |
+
+When adapting this project, update the profile content, project links, contact integration and domain configuration to match your own deployment.
+
+## Connect
+
+[LinkedIn](https://www.linkedin.com/in/chehsanshahid/) · [GitHub profile](https://github.com/ehsanshahid522) · [Email](mailto:ehsanshahid522@gmail.com)
